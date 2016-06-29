@@ -10,10 +10,10 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 gulp.task('default', ['copy-html', 'copy-images', 'styles', 'lint', 'scripts'], function() {
-	gulp.watch('sass/**/*.scss', ['styles']);
+	gulp.watch('sass/**/*.sass', ['styles']);
 	gulp.watch('js/**/*.js', ['lint']);
-	gulp.watch('/index.html', ['copy-html']);
-	gulp.watch('./dist/index.html').on('change', browserSync.reload);
+	gulp.watch('*.html', ['copy-html']);
+	gulp.watch('*.html').on('change', browserSync.reload);
 
 	browserSync.init({
 		server: './dist'
@@ -42,7 +42,7 @@ gulp.task('scripts-dist', function() {
 });
 
 gulp.task('copy-html', function() {
-	gulp.src('./index.html')
+	gulp.src('*.html')
 		.pipe(gulp.dest('./dist'));
 });
 
@@ -52,14 +52,14 @@ gulp.task('copy-images', function() {
 });
 
 gulp.task('styles', function() {
-	gulp.src('sass/**/*.scss')
+	gulp.src('sass/**/*.sass')
 		.pipe(sass({
 			outputStyle: 'compressed'
 		}).on('error', sass.logError))
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions']
 		}))
-		.pipe(gulp.dest('dist/css'))
+		.pipe(gulp.dest('dist/styles'))
 		.pipe(browserSync.stream());
 });
 
