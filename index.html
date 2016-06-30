@@ -1,86 +1,177 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Meet-Up Event Planner</title>
-    <link rel="stylesheet" href="styles/app.css" media="screen" title="no title" charset="utf-8">
+    <link rel='stylesheet' href='styles/app.css' media='screen' title='no title' charset='utf-8'>
   </head>
   <body>
 
-    <h1>Meet-Up Event Planner</h1>
+    <header>
+      <h1 class='lh1 tac'>Meet-Up Event Planner</h1>
+    </header>
 
     <form>
 
-      <section class="event-creator">
+      <section class='row'>
 
-        <label for="customer-name">
-          Your Name
-          <input id ="customer-name" type="text" />
-        </label>
+        <div class='cell cell--s well'>
 
-        <label for="customer-email">
-          Your Email
-          <input id ="customer-email" type="email" />
-        </label>
+          <div class='g'>
 
-        <label for="customer-password">
-          Create a Password
-          <input id ="customer-password" type="password" />
-        </label>
+            <div class='g-b g-b--l--1of2'>
+
+              <article class='temp card'>
+
+                <label for='customer-name'>
+                  Your Name
+                  <input id ='customer-name' type='text' />
+                </label>
+
+                <label for='customer-email'>
+                  Your Email
+                  <input id ='customer-email' type='email' />
+                </label>
+
+                <label for='customer-password'>
+                  Create a Password
+                  <input id ='customer-password' type='password' />
+                </label>
+
+              </article>
+
+            </div>
+
+            <div class='g-b g-b--l--1of2'>
+
+              <article class='temp card'>
+
+                <label for='event-location'>
+                  Event Location
+                  <input id ='event-location' type='text' />
+                </label>
+
+                <label for='event-name'>
+                  Event Name
+                  <input id ='event-name' type='text' />
+                </label>
+
+                <label for='event-type'>
+                  Event Type
+                  <input id ='event-type' type='text' />
+                </label>
+
+                <label for='event-start-date'>
+                  Event Start Date
+                  <input id ='event-start-date' type='text' />
+                </label>
+
+                <label for='event-end-date'>
+                  Event End Date
+                  <input id ='event-end-date' type='text' />
+                </label>
+
+                <label for='event-start-time'>
+                  Event Start Time
+                  <input id ='event-start-time' type='text' />
+                </label>
+
+                <label for='event-end-time'>
+                  Event End Time
+                  <input id ='event-end-time' type='text' />
+                </label>
+
+                <label for='event-host'>
+                  Event Host
+                  <input id ='event-host' type='text' />
+                </label>
+
+                <label for='event-description'>
+                  Event Description
+                  <textarea id ='event-description'></textarea
+                </label>
+
+                <p>Optional message to the guests with additional information about the event</p>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </section>
 
-      <section class="event-meta">
+      <section class='row'>
 
-        <label for="event-name">
-          Event Name
-          <input id ="event-name" type="text" />
-        </label>
+        <div class='cell well'>
 
-        <label for="event-type">
-          Event Type
-          <input id ="event-type" type="text" />
-        </label>
+          <div class='g'>
 
-        <label for="event-host">
-          Event Host
-          <input id ="event-host" type="text" />
-        </label>
+            <div class='g-b g-b--l--1of3'>
 
-        <label for="event-start-date">
-          Event Start Date
-          <input id ="event-start-date" type="text" />
-        </label>
+              <article class='temp card event-item mtm m-mtf'>
 
-        <label for="event-end-date">
-          Event End Date
-          <input id ="event-end-date" type="text" />
-        </label>
+                <img alt='temp placeholder' class='mbs' src='http://placehold.it/560x336' />
+                <h5 class='h4'>Nanodegree Alumni Bash</h5>
+                <ul>
+                  <li>July 30, 9pm-12am</li>
+                  <li>The Delerium Cafe</li>
+                  <li>
+                    <address>Impasse de la Fidélité 4, 1000 Bruxelles, Belgium</address>
+                  </li>
+                </ul>
 
-        <label for="event-start-time">
-          Event Start Time
-          <input id ="event-start-time" type="text" />
-        </label>
+                <p class='mbf mtm'>Guest List</p>
 
-        <label for="event-end-time">
-          Event End Time
-          <input id ="event-end-time" type="text" />
-        </label>
+              </article>
 
-        <label for="event-location">
-          Event Location
-          <input id ="event-location" type="text" />
-        </label>
+            </div>
 
-        <p>Guest List</p>
+            <div class='g-b g-b--l--1of3'>
 
-        <p>Optional message to the guests with additional information about the event</p>
+              <article class='temp card event-item mtm m-mtf'>
 
-      </section>
+                <img alt='temp placeholder' class='mbs' src='http://placehold.it/560x336' />
+                <h5 class='h4'>Nanodegree Alumni Bash</h5>
+                <ul>
+                  <li>July 30, 9pm-12am</li>
+                  <li>The Delerium Cafe</li>
+                  <li>
+                    <address>Impasse de la Fidélité 4, 1000 Bruxelles, Belgium</address>
+                  </li>
+                </ul>
 
-      <section class="event-listing">
+                <p class='mbf mtm'>Guest List</p>
 
-        <p>Event Listing</p>
+              </article>
+
+            </div>
+
+            <div class='g-b g-b--l--1of3'>
+
+              <article class='temp card event-item mtm m-mtf'>
+
+                <img alt='temp placeholder' class='mbs' src='http://placehold.it/560x336' />
+                <h5 class='h4'>Nanodegree Alumni Bash</h5>
+                <ul>
+                  <li>July 30, 9pm-12am</li>
+                  <li>The Delerium Cafe</li>
+                  <li>
+                    <address>Impasse de la Fidélité 4, 1000 Bruxelles, Belgium</address>
+                  </li>
+                </ul>
+
+                <p class='mbf mtm'>Guest List</p>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </section>
 
