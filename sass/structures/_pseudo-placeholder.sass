@@ -1,0 +1,68 @@
+// *************************************
+//
+//   Pseudo Placeholder
+//   -> Style and animation for using labels as placeholders
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .structure[.structure--modifier](.is-state)(.has-context)
+//   .structure-scaffolding
+//
+// *************************************
+
+.pseudo-placeholder
+  position: relative
+
+  + .pseudo-placeholder
+    margin-top: $b-space-l
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// .structure--modifier
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+.pseudo-input
+  border: 0
+  border-bottom: 1px solid $c-highlight
+  box-shadow: none
+  padding: 0 $b-space-xs 0
+  transition: border-width 0.1s linear
+
+  &:focus
+    border-bottom: 2px solid $c-highlight
+    outline: 0
+
+  &:focus,
+  &:valid
+
+    ~ .pseudo-label
+      color: $c-text
+      font-size: $b-fontSize-xs
+      transform: translateY(-150%)
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+
+// .has-structure
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+.pseudo-input
+  width: 100%
+
+.pseudo-label
+  bottom: 3px
+  color: $c-subdue
+  left: $b-space-xs
+  position: absolute
+  transition: all 0.1s linear
