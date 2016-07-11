@@ -36,12 +36,35 @@
 //   Scaffolding
 // -------------------------------------
 
-.pseudo
-  position: relative
+// .pseudo
+//   position: relative
+//
+//   .pseudo-label
+//     bottom: 0
+//     left: 0
+//     position: absolute
 
-  .pseudo-label
-    bottom: 0
-    left: 0
-    position: absolute
+fieldset
+  border: 0
+  padding: 0
 
-  .pseudo-input
+  + fieldset
+    margin-top: $b-space
+
+label
+ color: mix(#fff, $bigStone, 20%)
+
+input[type],
+textarea
+  border: 1px solid mix(#fff, $c-border, 50%)
+  border-radius: $b-borderRadius
+  font-size: 100%
+  line-height: 2
+  padding: 0 $b-space-xs
+
+textarea
+  line-height: 1.5
+
+.input-full
+  display: block
+  width: 100%
