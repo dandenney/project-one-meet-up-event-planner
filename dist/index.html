@@ -25,27 +25,25 @@
 
               <article class='temp card'>
 
-
-                <div class='pseudo-placeholder'>
-
+                <fieldset>
                   <label for='your-name'>
                     Your Name
-                    <input class='db' id ='your-name' placeholder='Dan Denney' type='text' required /></label>
-                </div>
+                    <input class='input-full' id ='your-name' placeholder='Dan Denney' type='text' required /></label>
+                </fieldset>
 
-                <div class='pseudo-placeholder'>
+                <fieldset>
                   <label for='your-email'>
                     Your Email
-                    <input class='db' id ='your-email' type='email' required />
+                    <input class='input-full' id ='your-email' type='email' required />
                   </label>
-                </div>
+                </fieldset>
 
-                <div class='pseudo-placeholder'>
+                <fieldset>
                   <label for='your-password'>
                     Create a Password
-                    <input class='db' id ='your-password' type='password' required />
+                    <input class='input-full' id ='your-password' type='password' required />
                   </label>
-                </div>
+                </fieldset>
 
               </article>
 
@@ -57,24 +55,30 @@
 
                 <h2>Event Information</h2>
 
-                <div class='pseudo-placeholder mtm'>
-                  <input class='pseudo-input' id ='event-name' type='text' required>
-                  <label class='pseudo-label' for='event-name'>Event Name</label>
-                </div>
+                <fieldset class='mts'>
+                  <label class='pseudo-label' for='event-name'>
+                    Event Name
+                    <input class='input-full' id ='event-name' type='text' required>
+                  </label>
+                </fieldset>
 
-                <div class='pseudo-placeholder'>
-                  <input class='pseudo-input' id ='event-location' type='text' required>
-                  <label class='pseudo-label' for='event-location'>Location</label>
-                </div>
+                <fieldset>
+                  <label class='pseudo-label' for='event-location'>
+                    Location
+                    <input class='input-full' id ='event-location' type='text' required>
+                    </label>
+                </fieldset>
 
-                <div class='pseudo-placeholder'>
-                  <input class='pseudo-input' id ='event-type' list='event-types' type='text' required>
-                  <datalist id='event-types'>
-                    <option value='Presentation'>
-                    <option value='Meet and Greet'>
-                  </datalist>
-                  <label class='pseudo-label' for='event-type'>Type</label>
-                </div>
+                <fieldset>
+                  <label class='pseudo-label' for='event-type'>
+                    Type
+                    <input class='input-full' id ='event-type' list='event-types' type='text' required>
+                    <datalist id='event-types'>
+                      <option value='Presentation'>
+                      <option value='Meet and Greet'>
+                    </datalist>
+                  </label>
+                </fieldset>
 
                 <!-- <label for='event-start-date'>
                   Event Start Date
@@ -96,24 +100,30 @@
                   <input id ='event-end-time' type='text' />
                 </label> -->
 
-                <div class='pseudo-placeholder'>
-                  <input class='pseudo-input' id ='event-datetime' type='datetime-local' required />
-                  <label class='pseudo-label' for='event-datetime'>Date and Time</label>
-                </div>
+                <fieldset>
+                  <label class='pseudo-label' for='event-datetime'>
+                    Date and Time
+                    <input class='input-full' id ='event-datetime' type='datetime-local' required />
+                  </label>
+                </fieldset>
 
-                <div class='pseudo-placeholder'>
-                  <input class='pseudo-input' id ='event-host' list='event-hosts' type='text' required>
-                  <datalist id='event-hosts'>
-                    <option value='Member One'>
-                    <option value='Member Two'>
-                  </datalist>
-                  <label class='pseudo-label' for='event-host'>Host</label>
-                </div>
+                <fieldset>
+                  <label class='pseudo-label' for='event-host'>
+                    Host
+                    <input class='input-full' id ='event-host' list='event-hosts' type='text' required>
+                    <datalist id='event-hosts'>
+                      <option value='Member One'>
+                      <option value='Member Two'>
+                    </datalist>
+                  </label>
+                </fieldset>
 
-                <div class='pseudo-placeholder'>
-                  <textarea class='pseudo-input' id ='event-description' rows='4'></textarea>
-                  <label class='pseudo-label' for='event-description'>Description</label>
-                </div>
+                <fieldset>
+                  <label class='pseudo-label' for='event-description'>
+                    Description
+                    <textarea class='input-full' id ='event-description' rows='4'></textarea>
+                  </label>
+                </fieldset>
 
               </article>
 
