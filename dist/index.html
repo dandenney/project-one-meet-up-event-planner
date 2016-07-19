@@ -25,6 +25,8 @@
 
               <article class='temp card'>
 
+                <h2>Create an Account</h2>
+
                 <fieldset>
                   <label for='your-name'>
                     Your Name
@@ -34,7 +36,7 @@
                 <fieldset>
                   <label for='your-email'>
                     Your Email
-                    <input class='input-full' id ='your-email' type='email' required />
+                    <input class='input-full' id ='your-email' placeholder='email@email.com' type='email' required />
                   </label>
                 </fieldset>
 
@@ -43,7 +45,17 @@
                     Create a Password
                     <input class='input-full' id ='your-password' type='password' required />
                   </label>
+                  <small>Requirements: <span id='js-require-characters'>minimum 8 characters</span>, <span id="js-require-capital">at least 1 capital letter</span>, and <span class='js-require-number'>at least 1 number</span>.</small>
                 </fieldset>
+
+                <fieldset>
+                  <label for='confirm-password'>
+                    Confirm Password
+                    <input class='input-full' id ='confirm-password' type='password' required />
+                  </label>
+                </fieldset>
+
+                <button class='btn mtl'>Create</button>
 
               </article>
 
@@ -145,7 +157,6 @@
 
               <article class='temp card event-item mtm m-mtf'>
 
-                <img alt='temp placeholder' class='mbs' src='http://placehold.it/560x336' />
                 <h5 class='h4'>Nanodegree Alumni Bash</h5>
                 <ul>
                   <li>July 30, 9pm-12am</li>
@@ -165,7 +176,6 @@
 
               <article class='temp card event-item mtm m-mtf'>
 
-                <img alt='temp placeholder' class='mbs' src='http://placehold.it/560x336' />
                 <h5 class='h4'>Nanodegree Alumni Bash</h5>
                 <ul>
                   <li>July 30, 9pm-12am</li>
@@ -185,7 +195,6 @@
 
               <article class='temp card event-item mtm m-mtf'>
 
-                <img alt='temp placeholder' class='mbs' src='http://placehold.it/560x336' />
                 <h5 class='h4'>Nanodegree Alumni Bash</h5>
                 <ul>
                   <li>July 30, 9pm-12am</li>
@@ -208,6 +217,8 @@
       </section>
 
     </form>
+
+    <script src='js/all.js'></script>
 
   </body>
 </html>
