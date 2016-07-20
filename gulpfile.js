@@ -25,6 +25,7 @@ gulp.task('dist', [
 	'copy-images',
 	'styles',
 	'lint',
+	'scripts',
 	'scripts-dist'
 ]);
 

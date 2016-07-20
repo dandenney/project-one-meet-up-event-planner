@@ -46,12 +46,18 @@ fieldset
 label
  color: mix(#fff, $bigStone, 20%)
 
-input[type],
+input,
 textarea
   border: 1px solid mix(#fff, $c-border, 30%)
   border-radius: $b-borderRadius
   font-size: 100%
   padding: $b-space-s
+
+  &.is-valid
+    border-color: green
+
+  &.is-invalid
+    border-color: red
 
 textarea
   line-height: 1.5
