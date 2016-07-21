@@ -11,7 +11,7 @@ var uglify = require('gulp-uglify');
 
 gulp.task('default', ['copy-html', 'copy-images', 'styles', 'lint', 'scripts'], function() {
 	gulp.watch('sass/**/*.sass', ['styles']);
-	gulp.watch('js/**/*.js', ['lint']);
+	gulp.watch('js/**/*.js', ['scripts']);
 	gulp.watch('*.html', ['copy-html']);
 	gulp.watch('*.html').on('change', browserSync.reload);
 
