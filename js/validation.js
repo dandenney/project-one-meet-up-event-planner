@@ -36,17 +36,12 @@ function checkRequirements() {
     numberMessage.classList.add('is-valid');
   }
 
-  if (firstPassword.length >= 8) {
-    if (firstPassword.match(/[A-Z]/g) && firstPassword.match(/\d/g)) {
-      firstPasswordInput.classList.remove('is-invalid');
-      firstPasswordInput.classList.add('is-valid');
-    } else {
-      firstPasswordInput.classList.remove('is-valid');
-      firstPasswordInput.classList.add('is-invalid');
-    }
+  console.clear();
+
+  if (firstPassword.length >= 8 && firstPassword.match(/[A-Z]/g) && firstPassword.match(/\d/g)) {
+    console.log('valid');
   } else {
-    firstPasswordInput.classList.remove('is-valid');
-    firstPasswordInput.classList.add('is-invalid');
+    console.log('invalid');
   }
 
 };
