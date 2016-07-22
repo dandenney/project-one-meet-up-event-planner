@@ -53,11 +53,17 @@ textarea
   font-size: 100%
   padding: $b-space-s
 
+  &:focus
+    border: 1px solid mix(#fff, $c-border, 30%)
+    outline: 0
+
   &.is-valid
-    border-color: green
+    border-color: $deYork
+    box-shadow: 0 0 1px 1px $deYork
 
   &.is-invalid
-    border-color: red
+    border-color: $tabasco
+    box-shadow: 0 0 1px 1px $tabasco
 
 textarea
   line-height: 1.5
@@ -67,10 +73,10 @@ textarea
   width: 100%
 
 span.is-invalid
-  color: red
+  color: $tabasco
 
 span.is-valid
-  color: green
+  color: mix(#000, $deYork, 30%)
 
 .require
   font-size: 12px
