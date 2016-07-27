@@ -57,11 +57,13 @@ textarea
     border: 1px solid mix(#fff, $c-border, 30%)
     outline: 0
 
-  &.is-valid
+  &.is-valid,
+  &:valid
     border-color: $deYork
     box-shadow: 0 0 1px 1px $deYork
 
-  &.is-invalid
+  &.is-invalid,
+  &:invalid
     border-color: $tabasco
     box-shadow: 0 0 1px 1px $tabasco
 
