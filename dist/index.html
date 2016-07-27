@@ -13,8 +13,6 @@
       <h1 class='lh1 tac'>Meet-Up Event Planner</h1>
     </header>
 
-    <form>
-
       <section class='row'>
 
         <div class='cell cell--s well'>
@@ -25,37 +23,43 @@
 
               <article class='temp card'>
 
-                <h2>Create an Account</h2>
+                <form class='js-form-account'>
 
-                <fieldset>
-                  <label for='your-name'>
-                    Your Name
-                    <input autofocus class='input-full' id ='your-name' placeholder='Dan Denney' required type='text' /></label>
-                </fieldset>
+                  <h2>Create an Account</h2>
 
-                <fieldset>
-                  <label for='your-email'>
-                    Your Email
-                    <input class='input-full' id ='your-email' placeholder='email@email.com' type='email' required />
-                  </label>
-                </fieldset>
+                  <fieldset>
+                    <label for='your-name'>
+                      Your Name
+                      <input autofocus class='input-full' id ='your-name' placeholder='Dan Denney' required type='text' /></label>
+                  </fieldset>
 
-                <fieldset>
-                  <label for='your-password'>
-                    Create a Password
-                    <input class='input-full' id ='your-password' type='password' required />
-                  </label>
-                  <p class='require'>Requirements: <span class='js-require-characters'>minimum 8 characters</span>, <span class="js-require-capital">at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
-                </fieldset>
+                  <fieldset>
+                    <label for='your-email'>
+                      Your Email
+                      <input class='input-full' id ='your-email' placeholder='email@email.com' type='email' required />
+                    </label>
+                  </fieldset>
 
-                <fieldset>
-                  <label for='confirm-password'>
-                    Confirm Password
-                    <input class='input-full' id ='confirm-password' type='password' required />
-                  </label>
-                </fieldset>
+                  <fieldset>
+                    <label for='your-password'>
+                      Create a Password
+                      <input class='input-full' id ='your-password' type='password' required />
+                    </label>
+                    <p class='require'>Requirements: <span class='js-require-characters'>minimum 8 characters</span>, <span class="js-require-capital">at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
+                  </fieldset>
 
-                <button class='btn mtl' id='account-create'>Create</button>
+                  <fieldset>
+                    <label for='confirm-password'>
+                      Confirm Password
+                      <input class='input-full' id ='confirm-password' type='password' required />
+                    </label>
+                  </fieldset>
+
+                  <button class='btn mtl' id='account-create'>Create</button>
+
+
+
+                </form>
 
               </article>
 
@@ -160,20 +164,18 @@
 
       </section>
 
-    </form>
 
-
-    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyB2CY9Na7wTpLvP32UD_bW8Ya5x5cR5lgk",
-        authDomain: "meetup-event-planner-afec5.firebaseapp.com",
-        databaseURL: "https://meetup-event-planner-afec5.firebaseio.com",
-        storageBucket: "",
-      };
-      firebase.initializeApp(config);
-    </script>
+      <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCgC9QnNziwdadIqYtWVP4aPGQaHpeCae8",
+          authDomain: "udacity-project-one-9b293.firebaseapp.com",
+          databaseURL: "https://udacity-project-one-9b293.firebaseio.com",
+          storageBucket: "",
+        };
+        firebase.initializeApp(config);
+      </script>
 
     <script src='js/all.js'></script>
 
