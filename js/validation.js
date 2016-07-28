@@ -22,7 +22,7 @@ function validation() {
 
   // Focus on account password
   accountPassword.addEventListener('focus', function(event) {
-    clearFeedback();
+    clearInput();
   }, true);
 
   // Keyup on account password
@@ -87,9 +87,20 @@ function validation() {
   //   Clear Feedback
   // -------------------------------------
 
-  function clearFeedback() {
+  function clearInput() {
     accountPassword.classList.remove('is-valid');
     accountPassword.classList.remove('is-invalid');
+  };
+
+  function clearForm() {
+    // Get all elements that have validity classes
+    var hasValid = document.getElementsByClassName('is-valid');
+    var hasInvalid = document.getElementsByClassName('is-invalid');
+    // Remove validity classes
+    while (hasValid.length)
+      hasValid[0].classList.remove('is-valid');
+    while (hasInvalid.length)
+      hasInvalid[0].classList.remove('is-invalid');
   };
 
   // -------------------------------------
@@ -103,6 +114,7 @@ function validation() {
     checkPassword();
     firebaseCreate(firebaseEmail, firebasePassword);
     accountForm.reset();
+    clearForm();
   };
 
 };
