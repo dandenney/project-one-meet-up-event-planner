@@ -15,15 +15,17 @@ function validation() {
   var accountPassword = document.querySelector('#your-password');
   var accountCreate = document.querySelector('#account-create');
   var accountForm = document.querySelector('.js-form-account');
+  var hasValidation = document.querySelectorAll('.has-validation');
 
   // -------------------------------------
   //   Event Listeners
   // -------------------------------------
 
-  // Focus on account password
-  accountPassword.addEventListener('focus', function(event) {
-    clearInput();
-  }, true);
+  hasValidation.forEach(function(validationItem) {
+    validationItem.addEventListener('blur', function(event) {
+      this.classList.add('is-active');
+    }, true);
+  });
 
   // Keyup on account password
   accountPassword.addEventListener('keyup', function(event) {
@@ -84,18 +86,20 @@ function validation() {
   };
 
   // -------------------------------------
-  //   Clear Feedback
+  //   Visual Feedback
   // -------------------------------------
 
-  function clearInput() {
-    accountPassword.classList.remove('is-valid');
-    accountPassword.classList.remove('is-invalid');
-  };
+  // function activateInput() {
+  //   // Add active class for validation feedback
+  //   this.classList.add('is-active');
+  // };
 
   function clearForm() {
+
     // Get all elements that have validity classes
     var hasValid = document.getElementsByClassName('is-valid');
     var hasInvalid = document.getElementsByClassName('is-invalid');
+
     // Remove validity classes
     while (hasValid.length)
       hasValid[0].classList.remove('is-valid');
@@ -108,11 +112,20 @@ function validation() {
   // -------------------------------------
 
   function accountSubmit() {
+    // Prevent form submission
     event.preventDefault();
+
+    // Get values for Firebase
     var firebaseEmail = accountEmail.value;
     var firebasePassword = accountPassword.value;
+
+    // Check password requirements
     checkPassword();
+
+    // Create account in Firebase
     firebaseCreate(firebaseEmail, firebasePassword);
+
+    // Reset the form and clear feedback
     accountForm.reset();
     clearForm();
   };
