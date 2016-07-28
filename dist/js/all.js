@@ -1,35 +1,14 @@
 // Create an account in Firebase
-function firebaseCreate() {
-
-  var accountForm = document.querySelector('.js-form-account');
-
-  // -------------------------------------
-  //   Account Submit
-  // -------------------------------------
-
-  // function accountSubmit() {
-  //   event.preventDefault();
-
-
-    // var email = accountEmail.value;
-    // var password = accountPassword.value;
-    // console.log(email, password);
-    // firebaseCreate(email, password); // auth.js
-  // };
-
-
-
-
-
-  // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  //   // Handle Errors here.
-  //   var errorCode = error.code;
-  //   var errorMessage = error.message;
-  //   // ...
-  // });
-}
-
-firebaseCreate();
+function firebaseCreate(firebaseEmail, firebasePassword) {
+  var email = firebaseEmail;
+  var password = firebasePassword;
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+};
 
 // Sign in an account
 // firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -165,10 +144,8 @@ function validation() {
 
     // Check password and other inputs for validity
     if (firstPassword.length >= 8 && firstPassword.match(/[A-Z]/g) && firstPassword.match(/\d/g) && accountName.validity.valid && accountEmail.validity.valid) {
-      console.log('totes legit');
       return true;
     } else {
-      console.log('no love');
       return false;
     }
 
@@ -189,7 +166,11 @@ function validation() {
 
   function accountSubmit() {
     event.preventDefault();
+    var firebaseEmail = accountEmail.value;
+    var firebasePassword = accountPassword.value;
     checkPassword();
+    firebaseCreate(firebaseEmail, firebasePassword);
+    accountForm.reset();
   };
 
 };

@@ -76,10 +76,8 @@ function validation() {
 
     // Check password and other inputs for validity
     if (firstPassword.length >= 8 && firstPassword.match(/[A-Z]/g) && firstPassword.match(/\d/g) && accountName.validity.valid && accountEmail.validity.valid) {
-      console.log('totes legit');
       return true;
     } else {
-      console.log('no love');
       return false;
     }
 
@@ -100,7 +98,11 @@ function validation() {
 
   function accountSubmit() {
     event.preventDefault();
+    var firebaseEmail = accountEmail.value;
+    var firebasePassword = accountPassword.value;
     checkPassword();
+    firebaseCreate(firebaseEmail, firebasePassword);
+    accountForm.reset();
   };
 
 };
