@@ -16,6 +16,25 @@ function validation() {
   var accountForm = document.querySelector('.js-form-account');
 
   // -------------------------------------
+  //   Event Listeners
+  // -------------------------------------
+
+  // Focus on account password
+  accountPassword.addEventListener('focus', function(event) {
+    clearFeedback();
+  }, true);
+
+  // Keyup on account password
+  accountPassword.addEventListener('keyup', function(event) {
+    checkPassword();
+  }, true);
+
+  // Submit of account form
+  accountForm.addEventListener('submit', function(event) {
+    accountSubmit();
+  }, true);
+
+  // -------------------------------------
   //   Password Validation
   // -------------------------------------
 
@@ -75,25 +94,6 @@ function validation() {
     var password = accountPassword.value;
     firebaseCreate(); // auth.js
   };
-
-  // -------------------------------------
-  //   Event Listeners
-  // -------------------------------------
-
-  // Focus on account password
-  accountPassword.addEventListener('focus', function(event) {
-    clearFeedback();
-  }, true);
-
-  // Keyup on account password
-  accountPassword.addEventListener('keyup', function(event) {
-    checkPassword();
-  }, true);
-
-  // Submit of account form
-  accountForm.addEventListener('submit', function(event) {
-    accountSubmit();
-  }, true);
 
 };
 
