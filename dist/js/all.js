@@ -1,12 +1,35 @@
 // Create an account in Firebase
 function firebaseCreate() {
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-  });
+
+  var accountForm = document.querySelector('.js-form-account');
+
+  // -------------------------------------
+  //   Account Submit
+  // -------------------------------------
+
+  // function accountSubmit() {
+  //   event.preventDefault();
+
+
+    // var email = accountEmail.value;
+    // var password = accountPassword.value;
+    // console.log(email, password);
+    // firebaseCreate(email, password); // auth.js
+  // };
+
+
+
+
+
+  // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  //   // Handle Errors here.
+  //   var errorCode = error.code;
+  //   var errorMessage = error.message;
+  //   // ...
+  // });
 }
+
+firebaseCreate();
 
 // Sign in an account
 // firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -76,6 +99,7 @@ function validation() {
   // -------------------------------------
   //   Private Variables
   // -------------------------------------
+  var accountName = document.querySelector('#your-name');
   var accountEmail = document.querySelector('#your-email');
   var accountPassword = document.querySelector('#your-password');
   var accountCreate = document.querySelector('#account-create');
@@ -139,6 +163,15 @@ function validation() {
       numberMessage.classList.add('is-valid');
     }
 
+    // Check password and other inputs for validity
+    if (firstPassword.length >= 8 && firstPassword.match(/[A-Z]/g) && firstPassword.match(/\d/g) && accountName.validity.valid && accountEmail.validity.valid) {
+      console.log('totes legit');
+      return true;
+    } else {
+      console.log('no love');
+      return false;
+    }
+
   };
 
   // -------------------------------------
@@ -151,14 +184,12 @@ function validation() {
   };
 
   // -------------------------------------
-  //   Account Submit
+  //   Form Submission
   // -------------------------------------
 
   function accountSubmit() {
     event.preventDefault();
-    var email = accountEmail.value;
-    var password = accountPassword.value;
-    firebaseCreate(); // auth.js
+    checkPassword();
   };
 
 };
@@ -168,9 +199,3 @@ function validation() {
 // -------------------------------------
 
 validation();
-
-// if (firstPassword.length >= 8 && firstPassword.match(/[A-Z]/g) && firstPassword.match(/\d/g)) {
-//   console.log('valid');
-// } else {
-//   console.log('invalid');
-// }
