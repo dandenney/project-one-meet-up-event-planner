@@ -10,6 +10,15 @@ function firebaseCreate(firebaseEmail, firebasePassword) {
   });
 };
 
+// Watch for auth state changes
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    document.querySelector('body').classList.add('is-signedIn');
+  } else {
+    console.log("it's a ghost town up in here");
+  }
+});
+
 // Sign in an account
 // firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
 //   // Handle Errors here.

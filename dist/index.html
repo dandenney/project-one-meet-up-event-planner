@@ -7,7 +7,7 @@
     <title>Meet-Up Event Planner</title>
     <link rel='stylesheet' href='styles/app.css' media='screen' title='no title' charset='utf-8'>
   </head>
-  <body>
+  <body class='body'>
 
     <header>
       <h1 class='lh1 tac'>Meet-Up Event Planner</h1>
@@ -19,46 +19,49 @@
 
           <div class='g'>
 
-            <div class='g-b g-b--l--1of2'>
+            <div class='g-b g-b--center g-b--l--2of3'>
 
-              <article class='temp card'>
+              <form id='js-form-account'>
 
-                <form class='js-form-account'>
+                <div class='tac'>
+                  <h2 class='mbf'>Create an Account</h2>
+                  <p class='mtf'>With an account, you'll be able to join and create meetups.</p>
+                </div>
 
-                  <h2>Create an Account</h2>
+                <fieldset>
+                  <label for='your-name'>
+                    Your Name
+                    <input autofocus class='input-full has-validation' id ='your-name' placeholder='Dan Denney' required type='text' /></label>
+                </fieldset>
 
-                  <fieldset>
-                    <label for='your-name'>
-                      Your Name
-                      <input autofocus class='input-full has-validation' id ='your-name' placeholder='Dan Denney' required type='text' /></label>
-                  </fieldset>
+                <fieldset>
+                  <label for='your-email'>
+                    Your Email
+                    <input class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
+                  </label>
+                </fieldset>
 
-                  <fieldset>
-                    <label for='your-email'>
-                      Your Email
-                      <input class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
-                    </label>
-                  </fieldset>
+                <fieldset>
+                  <label for='your-password'>
+                    Create a Password
+                    <input class='input-full has-validation' id ='your-password' placeholder="••••••••" type='password' required />
+                  </label>
+                  <p class='require'>Requirements: <span class='js-require-characters'>minimum 8 characters</span>, <span class="js-require-capital">at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
+                </fieldset>
 
-                  <fieldset>
-                    <label for='your-password'>
-                      Create a Password
-                      <input class='input-full has-validation' id ='your-password' type='password' required />
-                    </label>
-                    <p class='require'>Requirements: <span class='js-require-characters'>minimum 8 characters</span>, <span class="js-require-capital">at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
-                  </fieldset>
+                <button class='btn db mhc mtm' id='account-create'>Create</button>
 
-                  <button class='btn mtl' id='account-create'>Create</button>
-
-                </form>
-
-              </article>
+              </form>
 
             </div>
 
-            <!-- <div class='g-b g-b--l--1of2'>
+          </div>
 
-              <article class='temp card'>
+          <div class='g '>
+
+            <div class='g-b g-b--center g-b--l--2of3'>
+
+              <form class='mtxl requires-signedIn' id='js-form-event'>
 
                 <h2>Event Information</h2>
 
@@ -112,9 +115,9 @@
                   </label>
                 </fieldset>
 
-              </article>
+              </form>
 
-            </div> -->
+            </div>
 
           </div>
 

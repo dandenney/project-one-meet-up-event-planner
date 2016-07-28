@@ -14,13 +14,14 @@ function validation() {
   var accountEmail = document.querySelector('#your-email');
   var accountPassword = document.querySelector('#your-password');
   var accountCreate = document.querySelector('#account-create');
-  var accountForm = document.querySelector('.js-form-account');
+  var accountForm = document.querySelector('#js-form-account');
   var hasValidation = document.querySelectorAll('.has-validation');
 
   // -------------------------------------
   //   Event Listeners
   // -------------------------------------
 
+  // Blur on inputs
   hasValidation.forEach(function(validationItem) {
     validationItem.addEventListener('blur', function(event) {
       this.classList.add('is-active');
@@ -89,22 +90,23 @@ function validation() {
   //   Visual Feedback
   // -------------------------------------
 
-  // function activateInput() {
-  //   // Add active class for validation feedback
-  //   this.classList.add('is-active');
-  // };
-
   function clearForm() {
 
     // Get all elements that have validity classes
     var hasValid = document.getElementsByClassName('is-valid');
     var hasInvalid = document.getElementsByClassName('is-invalid');
+    var hasActive = document.getElementsByClassName('is-active');
 
     // Remove validity classes
     while (hasValid.length)
       hasValid[0].classList.remove('is-valid');
     while (hasInvalid.length)
       hasInvalid[0].classList.remove('is-invalid');
+
+    // Remove active classes
+    while (hasActive.length)
+      hasActive[0].classList.remove('is-active');
+
   };
 
   // -------------------------------------
