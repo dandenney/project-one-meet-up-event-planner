@@ -11,165 +11,177 @@
 
     <header>
       <h1 class='lh1 tac'>Meetttup</h1>
+
+      <ul>
+
+        <li id='js-openCreateAccount'>Create an Account</li>
+        <li id='js-openEvents'>View Events</li>
+        <li id='js-openCreateEvent'>Create an Event</li>
+      </ul>
+
     </header>
 
-      <section class='row'>
+    <section class='row section is-showing' id="events">
 
-        <div class='cell cell--s well'>
+      <div class='cell well'>
 
-          <div class='g'>
+        <div class='g'>
 
-            <div class='g-b g-b--center g-b--l--2of3'>
+          <div class='g-b g-b--l--1of3'>
 
-              <form id='js-form-account'>
+            <article class='temp card event-item mtm m-mtf'>
 
-                <div class='tac'>
-                  <h2 class='mbf'>Create an Account</h2>
-                  <p class='mtf'>With an account, you'll be able to join and create meetups.</p>
-                </div>
+              <h5 class='h4' id='placeholder-name'>Nanodegree Alumni Bash</h5>
+              <ul>
+                <li>
+                  <address id='placeholder-location'></address>
+                </li>
+                <li id='placeholder-type'></li>
+                <li id='placeholder-dateTime'></li>
+                <li id='placeholder-host'></li>
+                <li id='placeholder-description'></li>
+              </ul>
 
-                <fieldset>
-                  <label for='your-name'>
-                    Your Name
-                    <input autofocus class='input-full has-validation' id ='your-name' placeholder='Dan Denney' required type='text' /></label>
-                </fieldset>
+              <p class='mbf mtm'>Guest List</p>
 
-                <fieldset>
-                  <label for='your-email'>
-                    Your Email
-                    <input class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
-                  </label>
-                </fieldset>
-
-                <fieldset>
-                  <label for='your-password'>
-                    Create a Password
-                    <input class='input-full has-validation' id ='your-password' placeholder="••••••••" type='password' required />
-                  </label>
-                  <p class='require'>Requirements: <span class='js-require-characters'>minimum 8 characters</span>, <span class="js-require-capital">at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
-                </fieldset>
-
-                <button class='btn db mhc mtm' id='account-create'>Create</button>
-
-              </form>
-
-            </div>
-
-          </div>
-
-          <div class='g '>
-
-            <div class='g-b g-b--center g-b--l--2of3'>
-
-              <form class='mtxl requires-signedIn' id='js-form-event'>
-
-                <h2>Event Information</h2>
-
-                <fieldset class='mts'>
-                  <label class='pseudo-label' for='event-name'>
-                    Event Name
-                    <input class='input-full' id ='event-name' type='text' required>
-                  </label>
-                </fieldset>
-
-                <fieldset>
-                  <label class='pseudo-label' for='event-location'>
-                    Location
-                    <input class='input-full' id ='event-location' type='text' required>
-                    </label>
-                </fieldset>
-
-                <fieldset>
-                  <label class='pseudo-label' for='event-type'>
-                    Type
-                    <input class='input-full' id ='event-type' list='event-types' type='text' required>
-                    <datalist id='event-types'>
-                      <option value='Presentation'>
-                      <option value='Meet and Greet'>
-                    </datalist>
-                  </label>
-                </fieldset>
-
-                <fieldset>
-                  <label class='pseudo-label' for='event-datetime'>
-                    Date and Time
-                    <input class='input-full' id ='event-datetime' type='datetime-local' required />
-                  </label>
-                </fieldset>
-
-                <fieldset>
-                  <label class='pseudo-label' for='event-host'>
-                    Host
-                    <input class='input-full' id ='event-host' list='event-hosts' type='text' required>
-                    <datalist id='event-hosts'>
-                      <option value='Member One'>
-                      <option value='Member Two'>
-                    </datalist>
-                  </label>
-                </fieldset>
-
-                <fieldset>
-                  <label class='pseudo-label' for='event-description'>
-                    Description
-                    <textarea class='input-full' id ='event-description' rows='4'></textarea>
-                  </label>
-                </fieldset>
-
-              </form>
-
-            </div>
+            </article>
 
           </div>
 
         </div>
 
-      </section>
+      </div>
 
-      <section class='row'>
+    </section>
 
-        <div class='cell well'>
 
-          <div class='g'>
+    <section class='row section' id="create-account">
 
-            <div class='g-b g-b--l--1of3'>
+      <div class='cell cell--s well'>
 
-              <article class='temp card event-item mtm m-mtf'>
+        <div class='g'>
 
-                <h5 class='h4' id='placeholder-name'>Nanodegree Alumni Bash</h5>
-                <ul>
-                  <li>
-                    <address id='placeholder-location'></address>
-                  </li>
-                  <li id='placeholder-type'></li>
-                  <li id='placeholder-dateTime'></li>
-                  <li id='placeholder-host'></li>
-                  <li id='placeholder-description'></li>
-                </ul>
+          <div class='g-b g-b--center g-b--l--2of3'>
 
-                <p class='mbf mtm'>Guest List</p>
+            <form id='js-form-account'>
 
-              </article>
+              <div class='tac'>
+                <h2 class='mbf'>Create an Account</h2>
+                <p class='mtf'>With an account, you'll be able to join and create meetups.</p>
+              </div>
 
-            </div>
+              <fieldset>
+                <label for='your-name'>
+                  Your Name
+                  <input autofocus class='input-full has-validation' id ='your-name' placeholder='Dan Denney' required type='text' /></label>
+              </fieldset>
+
+              <fieldset>
+                <label for='your-email'>
+                  Your Email
+                  <input class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <label for='your-password'>
+                  Create a Password
+                  <input class='input-full has-validation' id ='your-password' placeholder="••••••••" type='password' required />
+                </label>
+                <p class='require'>Requirements: <span class='js-require-characters'>At least 8 characters</span>, <span class="js-require-capital">at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
+              </fieldset>
+
+              <button class='btn db mhc mtm' id='account-create'>Create</button>
+
+            </form>
 
           </div>
 
         </div>
 
-      </section>
+      </div>
 
+    </section>
 
-      <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-      <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyCgC9QnNziwdadIqYtWVP4aPGQaHpeCae8",
-          authDomain: "udacity-project-one-9b293.firebaseapp.com",
-          databaseURL: "https://udacity-project-one-9b293.firebaseio.com",
-          storageBucket: "",
-        };
-        firebase.initializeApp(config);
-      </script>
+    <section class='row section' id='create-event'>
+
+      <div class='g '>
+
+        <div class='g-b g-b--center g-b--l--2of3'>
+
+          <form class='mtxl requires-signedIn' id='js-form-event'>
+
+            <h2>Event Information</h2>
+
+            <fieldset class='mts'>
+              <label class='pseudo-label' for='event-name'>
+                Event Name
+                <input class='input-full' id ='event-name' type='text' required>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <label class='pseudo-label' for='event-location'>
+                Location
+                <input class='input-full' id ='event-location' type='text' required>
+                </label>
+            </fieldset>
+
+            <fieldset>
+              <label class='pseudo-label' for='event-type'>
+                Type
+                <input class='input-full' id ='event-type' list='event-types' type='text' required>
+                <datalist id='event-types'>
+                  <option value='Presentation'>
+                  <option value='Meet and Greet'>
+                </datalist>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <label class='pseudo-label' for='event-datetime'>
+                Date and Time
+                <input class='input-full' id ='event-datetime' type='datetime-local' required />
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <label class='pseudo-label' for='event-host'>
+                Host
+                <input class='input-full' id ='event-host' list='event-hosts' type='text' required>
+                <datalist id='event-hosts'>
+                  <option value='Member One'>
+                  <option value='Member Two'>
+                </datalist>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <label class='pseudo-label' for='event-description'>
+                Description
+                <textarea class='input-full' id ='event-description' rows='4'></textarea>
+              </label>
+            </fieldset>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCgC9QnNziwdadIqYtWVP4aPGQaHpeCae8",
+        authDomain: "udacity-project-one-9b293.firebaseapp.com",
+        databaseURL: "https://udacity-project-one-9b293.firebaseio.com",
+        storageBucket: "",
+      };
+      firebase.initializeApp(config);
+    </script>
 
     <script src='js/all.js'></script>
 
