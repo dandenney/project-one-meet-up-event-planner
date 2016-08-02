@@ -64,7 +64,7 @@ function firebaseCreate(firebaseEmail, firebasePassword) {
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     document.querySelector('body').classList.add('is-signedIn');
-    user.sendEmailVerification();
+    // user.sendEmailVerification();
   } else {
     console.log("it's a ghost town up in here");
   }
