@@ -12,12 +12,13 @@
     <header>
       <h1 class='lh1 tac'>Meetttup</h1>
 
-      <ul>
+      <nav>
 
-        <li id='js-openCreateAccount'>Create an Account</li>
-        <li id='js-openEvents'>View Events</li>
-        <li id='js-openCreateEvent'>Create an Event</li>
-      </ul>
+        <a href="#create-account" id='js-openCreateAccount'>Create an Account</a>
+        <a href="#events" id='js-openEvents'>View Events</a>
+        <a href="#auth-account" id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
+        <a href="#create-event" id='js-openCreateEvent'>Create an Event</a>
+      </nav>
 
     </header>
 
@@ -53,7 +54,6 @@
       </div>
 
     </section>
-
 
     <section class='row section' id="create-account">
 
@@ -92,6 +92,47 @@
               </fieldset>
 
               <button class='btn db mhc mtm' id='account-create'>Create</button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class='row section' id="auth-account">
+
+      <div class='cell cell--s well'>
+
+        <div class='g'>
+
+          <div class='g-b g-b--center g-b--l--2of3'>
+
+            <form id='js-form-auth'>
+
+              <div class='tac'>
+                <h2 class='mbf'>Sign In</h2>
+                <p class='mtf'>When you're signed in, you'll be able to join and create meetups.</p>
+              </div>
+
+              <fieldset>
+                <label for='auth-email'>
+                  Email
+                  <input class='input-full' id ='auth-email' placeholder='email@email.com' type='email' required />
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <label for='auth-password'>
+                  Password
+                  <input class='input-full' id ='auth-password' placeholder="••••••••" type='password' required />
+                </label>
+              </fieldset>
+
+              <button class='btn db mhc mtm' id='account-signIn'>Sign In</button>
 
             </form>
 

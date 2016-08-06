@@ -5,45 +5,9 @@
 //
 // *************************************
 
-function changeSection() {
-
-  // Get all elements that have validity classes
-  var openCreateAccount = document.querySelector('#js-openCreateAccount');
-  var openEvents = document.querySelector('#js-openEvents');
-  var openCreateEvent = document.querySelector('#js-openCreateEvent');
-  var createAccount = document.querySelector('#create-account');
-  var events = document.querySelector('#events');
-  var createEvent = document.querySelector('#create-event');
-
-  // Remove showing class
-  function clearShowing() {
-    var isActive = document.querySelector('.is-showing');
-    isActive.classList.remove('is-showing');
-  };
-
-  // Add showing class to create account
-  openCreateAccount.addEventListener('click', function(event) {
-    clearShowing();
-    createAccount.classList.add('is-showing');
-  }, false);
-
-  // Add showing class to events
-  openEvents.addEventListener('click', function(event) {
-    clearShowing();
-    events.classList.add('is-showing');
-  }, false);
-
-  // Add showing class to events
-  openCreateEvent.addEventListener('click', function(event) {
-    clearShowing();
-    createEvent.classList.add('is-showing');
-  }, false);
-
-};
-
-changeSection();
-
-
+// -------------------------------------
+//   Firebase Create Account
+// -------------------------------------
 
 // Create an account in Firebase
 function firebaseCreate(firebaseEmail, firebasePassword) {
@@ -57,6 +21,7 @@ function firebaseCreate(firebaseEmail, firebasePassword) {
     var errorCode = error.code;
     var errorMessage = error.message;
     // ...
+    console.log(errorCode, errorMessage);
   });
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -65,26 +30,96 @@ function firebaseCreate(firebaseEmail, firebasePassword) {
 
 };
 
-// Watch for auth state changes
-// firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     document.querySelector('body').classList.add('is-signedIn');
-//   } else {
-//     console.log("it's a ghost town up in here");
-//   }
-// });
+// -------------------------------------
+//   Firebase Authorization
+// -------------------------------------
 
-// Sign in an account
-// firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//   // ...
-// });
+function firebaseAuth() {
 
-// Sign out an account
-// firebase.auth().signOut().then(function() {
-//   // Sign-out successful.
-// }, function(error) {
-//   // An error happened.
-// });
+  var signInOut = document.querySelector('#js-signInOutAccount');
+  var signInOutText = document.querySelector('#js-signInOutText');
+
+  // Check for a signed in user
+  firebase.auth().onAuthStateChanged(function(user) {
+
+    if (user) {
+      console.log(user.email + " is signed in");
+      signInOutText.innerHTML = 'Out';
+
+      // Keyup on account password
+      signInOut.addEventListener('click', function(event) {
+        firebaseSignOut();
+      }, true);
+
+    } else {
+      signInOutText.innerHTML = 'In';
+    }
+
+  });
+
+};
+
+// -------------------------------------
+//   Firebase Sign In
+// -------------------------------------
+
+function firebaseSignIn() {
+
+  // -------------------------------------
+  //   Private Variables
+  // -------------------------------------
+
+  var accountSignIn = document.querySelector('#account-signIn');
+
+  // -------------------------------------
+  //   Event Listeners
+  // -------------------------------------
+
+  accountSignIn.addEventListener('click', function(event) {
+
+    // -------------------------------------
+    //   Private Variables
+    // -------------------------------------
+
+    var signInEmailInput = document.querySelector('#auth-email');
+    var signInPasswordInput = document.querySelector('#auth-password');
+    var signInEmail = signInEmailInput.value;
+    var signInPassword = signInPasswordInput.value;
+    var authForm = document.querySelector('#js-form-auth');
+
+    firebase.auth().signInWithEmailAndPassword(signInEmail, signInPassword).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+      console.log(errorCode, errorMessage);
+    });
+
+    authForm.reset();
+    firebaseAuth();
+
+  });
+
+};
+
+// -------------------------------------
+//   Firebase Sign Out
+// -------------------------------------
+
+function firebaseSignOut() {
+
+  // Sign out an account
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }, function(error) {
+    // An error happened.
+  });
+
+};
+
+// -------------------------------------
+//   Initialize
+// -------------------------------------
+
+firebaseAuth();
+firebaseSignIn();
