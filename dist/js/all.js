@@ -12,10 +12,13 @@
 // Create an account in Firebase
 function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
 
-  // Create the account
+  // -------------------------------------
+  //   Private Variables
+  // -------------------------------------
   var name = firebaseName;
   var email = firebaseEmail;
   var password = firebasePassword;
+
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
     console.log(display);
@@ -53,7 +56,7 @@ function firebaseAuth() {
   firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {
-      console.log(profile.displayName + ' ' + user.email + " is signed in");
+      console.log(user.email + " is signed in");
       signInOutText.innerHTML = 'Out';
 
       // Keyup on account password
