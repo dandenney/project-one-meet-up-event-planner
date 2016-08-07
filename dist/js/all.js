@@ -178,6 +178,22 @@ function createPlaceholder () {
 
 createPlaceholder();
 
+function saveEvent(eventID, name) {
+  firebase.database().ref('events/' + eventID).set({
+    eventName: name
+  });
+}
+
+saveEvent('1', 'Nanodegee Alumni Bash');
+
+function retrieveEvents(eventId) {
+  firebase.database().ref('events/' + eventId + '/eventName').on('value', function(snapshot) {
+    console.log(snapshot.val());
+  });
+}
+
+retrieveEvents(1);
+
 // *************************************
 //
 //   Nav
