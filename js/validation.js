@@ -118,6 +118,7 @@ function validation() {
     event.preventDefault();
 
     // Get values for Firebase
+    var firebaseName = accountName.value;
     var firebaseEmail = accountEmail.value;
     var firebasePassword = accountPassword.value;
 
@@ -125,7 +126,7 @@ function validation() {
     checkPassword();
 
     // Create account in Firebase
-    firebaseCreate(firebaseEmail, firebasePassword);
+    firebaseCreate(firebaseName, firebaseEmail, firebasePassword);
 
     // Reset the form and clear feedback
     accountForm.reset();
