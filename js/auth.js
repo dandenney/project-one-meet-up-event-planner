@@ -41,6 +41,8 @@ function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
     });
   });
 
+  authFeedback();
+
 };
 
 // -------------------------------------
@@ -69,6 +71,8 @@ function firebaseAuth() {
     }
 
   });
+
+  authFeedback();
 
 };
 
@@ -128,6 +132,15 @@ function firebaseSignOut() {
     // An error happened.
   });
 
+};
+
+// -------------------------------------
+//   Auth Feedback
+// -------------------------------------
+
+function authFeedback() {
+  var appBody = document.querySelector('.body');
+  appBody.classList.add('is-signedIn');
 };
 
 // -------------------------------------

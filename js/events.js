@@ -39,20 +39,59 @@ function createPlaceholder () {
 
 createPlaceholder();
 
-function saveEvent(name) {
+// -------------------------------------
+//   Create Event
+// -------------------------------------
+
+function createEvent() {
+
+  // -------------------------------------
+  //   Private Variables
+  // -------------------------------------
+
+  var eventCreateForm = document.querySelector('#js-form-event');
+  var eventNameInput = document.querySelector('#event-name');
+  var eventTypeInput = document.querySelector('#event-type');
+  var eventCreateInput = document.querySelector('#event-create');
   var eventListRef = firebase.database().ref('events');
   var newListRef = eventListRef.push();
-  newListRef.set({
-    'eventName': 'This is the real way'
+
+  // -------------------------------------
+  //   Event Listeners
+  // -------------------------------------
+
+  eventCreateInput.addEventListener('click', function(e) {
+
+    // -------------------------------------
+    //   Private Variables
+    // -------------------------------------
+
+    var eventName = eventNameInput.value;
+    var eventType = eventTypeInput.value;
+
+    e.preventDefault();
+
+    // -------------------------------------
+    //   Set in Firebase
+    // -------------------------------------
+
+    newListRef.set({
+      'eventName': eventName,
+      'eventType': eventType
+    });
+
+    eventCreateForm.reset();
+
   });
+
 }
 
-saveEvent('Nanodegee Alumni Bash');
+createEvent();
 
-function retrieveEvents(eventId) {
-  firebase.database().ref('events/' + eventId + '/eventName').on('value', function(snapshot) {
-    console.log(snapshot.val());
-  });
-}
-
-retrieveEvents(1);
+// function retrieveEvents(eventId) {
+//   firebase.database().ref('events/' + eventId + '/eventName').on('value', function(snapshot) {
+//     console.log(snapshot.val());
+//   });
+// }
+//
+// retrieveEvents(1);
