@@ -39,13 +39,15 @@ function createPlaceholder () {
 
 createPlaceholder();
 
-function saveEvent(eventID, name) {
-  firebase.database().ref('events/' + eventID).set({
-    eventName: name
+function saveEvent(name) {
+  var eventListRef = firebase.database().ref('events');
+  var newListRef = eventListRef.push();
+  newListRef.set({
+    'eventName': 'This is the real way'
   });
 }
 
-saveEvent('1', 'Nanodegee Alumni Bash');
+saveEvent('Nanodegee Alumni Bash');
 
 function retrieveEvents(eventId) {
   firebase.database().ref('events/' + eventId + '/eventName').on('value', function(snapshot) {
