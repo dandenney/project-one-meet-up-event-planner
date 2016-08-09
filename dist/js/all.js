@@ -212,7 +212,15 @@ function createEvent() {
   //   Event Listeners
   // -------------------------------------
 
-  eventCreateInput.addEventListener('click', function(e) {
+  eventCreateInput.addEventListener('click', function() {
+    eventSubmit();
+  });
+
+  // -------------------------------------
+  //   Event Submit
+  // -------------------------------------
+
+  function eventSubmit() {
 
     // -------------------------------------
     //   Private Variables
@@ -220,8 +228,6 @@ function createEvent() {
 
     var eventName = eventNameInput.value;
     var eventType = eventTypeInput.value;
-
-    e.preventDefault();
 
     // -------------------------------------
     //   Set in Firebase
@@ -234,7 +240,7 @@ function createEvent() {
 
     eventCreateForm.reset();
 
-  });
+  }
 
 }
 
