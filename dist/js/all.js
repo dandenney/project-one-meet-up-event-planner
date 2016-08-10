@@ -158,7 +158,7 @@ firebaseSignIn();
 // *************************************
 
 // -------------------------------------
-//   Create Event
+//   Create an Event
 // -------------------------------------
 
 function createEvent() {
@@ -210,6 +210,10 @@ function createEvent() {
 
 }
 
+// -------------------------------------
+//   Retrieve Events
+// -------------------------------------
+
 function retrieveEvents() {
 
   // -------------------------------------
@@ -217,47 +221,38 @@ function retrieveEvents() {
   // -------------------------------------
 
   var events = firebase.database().ref('events').orderByKey();
+  var eventsContainer = document.querySelector('#all-events');
 
   // -------------------------------------
   //   Retrieve from Firebase
   // -------------------------------------
 
-  events.once('value', function(snapshot) {
+  events.on('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       var event = childSnapshot.val();
-      console.log(event);
+      console.log(event.eventName + " " + event.eventType);
+
+      eventsContainer.innerHTML +=
+        event.eventName +
+        event.eventType
+      ;
+
     });
   });
 
 }
 
-function createPlaceholder () {
+// -------------------------------------
+//   Output Events
+// -------------------------------------
 
-  // Add name
-  var placeholderName = document.querySelector('#placeholder-name');
-  placeholderName.innerHTML = eventPlaceholder.name;
-
-  // Add location
-  var placeholderLocation = document.querySelector('#placeholder-location');
-  placeholderLocation.innerHTML = eventPlaceholder.location;
-
-  // Add type
-  var placeholderType = document.querySelector('#placeholder-type');
-  placeholderType.innerHTML = eventPlaceholder.type;
-
-  // Add dateTime
-  var placeholderDateTime = document.querySelector('#placeholder-dateTime');
-  placeholderDateTime.innerHTML = eventPlaceholder.dateTime;
-
-  // Add host
-  var placeholderHost = document.querySelector('#placeholder-host');
-  placeholderHost.innerHTML = eventPlaceholder.host;
-
-  // Add description
-  var placeholderDescription = document.querySelector('#placeholder-description');
-  placeholderDescription.innerHTML = eventPlaceholder.description;
-
-}
+// function outputEvents () {
+//
+//   var eventContainer = document.querySelector('.js-event');
+//
+//   eventContainer.innerHTML = retrieveEvents();
+//
+// }
 
 // -------------------------------------
 //   Initializers
