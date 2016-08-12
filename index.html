@@ -28,11 +28,11 @@
 
         <h2>Events</h2>
 
-        <article id="all-events">
+        <div id="all-events">
 
 
 
-        </article>
+        </div>
 
       </div>
 
@@ -144,6 +144,17 @@
               </label>
             </fieldset>
 
+            <fieldset>
+              <label class='pseudo-label' for='event-host'>
+                Host
+                <input class='input-full' id ='event-host' list='event-hosts' type='text' required>
+                <datalist id='event-hosts'>
+                  <option value='Member One'>
+                  <option value='Member Two'>
+                </datalist>
+              </label>
+            </fieldset>
+
             <!-- <fieldset>
               <label class='pseudo-label' for='event-location'>
                 Location
@@ -162,30 +173,26 @@
               </label>
             </fieldset>
 
-            <!-- <fieldset>
-              <label class='pseudo-label' for='event-datetime'>
-                Date and Time
-                <input class='input-full' id ='event-datetime' type='datetime-local' required />
+            <fieldset>
+              <label class='pseudo-label' for='event-begin'>
+                Begins
+                <input class='input-full' id ='event-begin' type='datetime-local' required />
               </label>
             </fieldset>
 
             <fieldset>
-              <label class='pseudo-label' for='event-host'>
-                Host
-                <input class='input-full' id ='event-host' list='event-hosts' type='text' required>
-                <datalist id='event-hosts'>
-                  <option value='Member One'>
-                  <option value='Member Two'>
-                </datalist>
+              <label class='pseudo-label' for='event-end'>
+                Ends
+                <input class='input-full' id ='event-end' type='datetime-local' required />
               </label>
             </fieldset>
 
             <fieldset>
               <label class='pseudo-label' for='event-description'>
-                Description
+                Description <small>(Optional)</small>
                 <textarea class='input-full' id ='event-description' rows='4'></textarea>
               </label>
-            </fieldset> -->
+            </fieldset>
 
             <button class='btn db mhc mtm' id='event-create'>Create a Meetup</button>
 

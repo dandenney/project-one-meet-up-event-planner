@@ -169,7 +169,11 @@ function createEvent() {
 
   var eventCreateForm = document.querySelector('#js-form-event');
   var eventNameInput = document.querySelector('#event-name');
+  var eventHostInput = document.querySelector('#event-host');
   var eventTypeInput = document.querySelector('#event-type');
+  var eventBeginInput = document.querySelector('#event-begin');
+  var eventEndInput = document.querySelector('#event-end');
+  var eventDescriptionInput = document.querySelector('#event-description');
   var eventCreateInput = document.querySelector('#event-create');
   var eventListRef = firebase.database().ref('events');
   var newListRef = eventListRef.push();
@@ -193,7 +197,11 @@ function createEvent() {
     // -------------------------------------
 
     var eventName = eventNameInput.value;
+    var eventHost = eventHostInput.value;
     var eventType = eventTypeInput.value;
+    var eventBegin = eventBeginInput.value;
+    var eventEnd = eventEndInput.value;
+    var eventDescription = eventDescriptionInput.value;
 
     // -------------------------------------
     //   Set in Firebase
@@ -201,6 +209,10 @@ function createEvent() {
 
     newListRef.set({
       'eventName': eventName,
+      'eventHost': eventHost,
+      'eventBegin': eventBegin,
+      'eventEnd': eventEnd,
+      'eventDescription': eventDescription,
       'eventType': eventType
     });
 
@@ -220,22 +232,56 @@ function retrieveEvents() {
   //   Private Variables
   // -------------------------------------
 
-  var events = firebase.database().ref('events').orderByKey();
+  var eventsRef = firebase.database().ref('events').orderByKey();
   var eventsContainer = document.querySelector('#all-events');
 
   // -------------------------------------
   //   Retrieve from Firebase
   // -------------------------------------
 
-  events.on('value', function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-      var event = childSnapshot.val();
-      console.log(event.eventName + " " + event.eventType);
+  eventsRef.on('value', function(snap) {
+    snap.forEach(function(childSnap) {
 
-      eventsContainer.innerHTML +=
-        event.eventName +
-        event.eventType
-      ;
+      // Retrieve
+      var event = childSnap.val();
+
+      // This all should be in outputEvents();
+
+      // Event container
+      var eventContainer = document.createElement('article');
+      eventContainer.className = 'event';
+      // Event Name
+      var eventNameContainer = document.createElement('h3');
+      eventNameContainer.className = 'event-name';
+      var outputName = document.createTextNode(event.eventName);
+      // Event Type
+      var eventTypeContainer = document.createElement('p');
+      eventTypeContainer.className = 'event-type';
+      var outputType = document.createTextNode(event.eventType);
+      // Event Begin
+      var eventBeginContainer = document.createElement('p');
+      eventBeginContainer.className = 'event-begin';
+      var outputBegin = document.createTextNode(event.eventBegin);
+      // Event End
+      var eventEndContainer = document.createElement('p');
+      eventEndContainer.className = 'event-end';
+      var outputEnd = document.createTextNode(event.eventEnd);
+      // Event Description
+      var eventDescriptionContainer = document.createElement('p');
+      eventDescriptionContainer.className = 'event-description';
+      var outputDescription = document.createTextNode(event.eventDescription);
+
+      eventsContainer.appendChild(eventContainer);
+      eventContainer.appendChild(eventNameContainer);
+      eventContainer.appendChild(eventTypeContainer);
+      eventContainer.appendChild(eventBeginContainer);
+      eventContainer.appendChild(eventEndContainer);
+      eventContainer.appendChild(eventDescriptionContainer);
+      eventNameContainer.appendChild(outputName);
+      eventTypeContainer.appendChild(outputType);
+      eventBeginContainer.appendChild(outputBegin);
+      eventEndContainer.appendChild(outputEnd);
+      eventDescriptionContainer.appendChild(outputDescription);
 
     });
   });
@@ -248,9 +294,7 @@ function retrieveEvents() {
 
 // function outputEvents () {
 //
-//   var eventContainer = document.querySelector('.js-event');
-//
-//   eventContainer.innerHTML = retrieveEvents();
+//   // I want this to hold output methods
 //
 // }
 
