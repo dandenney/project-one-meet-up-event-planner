@@ -31,7 +31,8 @@
 //   Structures
 // -------------------------------------
 
-// @import 'structures/pseudo-placeholder'
+@import 'structures/event'
+@import 'structures/nav'
 
 // -------------------------------------
 //   Vendor
@@ -49,16 +50,6 @@
 //   Inbox
 // -------------------------------------
 
-// ...
-
-header
-  background: #f9f9f9
-  padding: 20px 0
-
-  h1
-    line-height: 1
-    margin: 0
-
 // Needs to be a structure, maybe?
 
 .requires-signedIn
@@ -67,15 +58,19 @@ header
   .is-signedIn &
     display: block
 
+.is-signedIn
+
+  .openCreateAccount
+    display: none
+
 // Needs to be a structure too, maybe?
 
 .section
   bottom: 0
   left: 0
-  opacity: 0
   position: absolute
   right: 0
-  top: 200px
+  top: 0
   transition: opacity 0.3s ease-in-out
   visibility: hidden
 

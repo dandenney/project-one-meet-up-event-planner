@@ -9,7 +9,7 @@
 //   @font-face
 // -------------------------------------
 
-@import 'https://fonts.googleapis.com/css?family=Hind+Guntur:400,600'
+@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700'
 
 // -------------------------------------
 //   Colors
@@ -17,7 +17,7 @@
 
 // ----- Palette ----- //
 
-$bigStone: #333333
+$bigStone: #123f5a
 $pigeonPost: #e1e1e1
 
 $deYork: #a4d7b5 // Green for success
@@ -25,11 +25,11 @@ $tabasco: #c25c5b // Red for failure
 
 // ----- Base ----- //
 
-$c-background-invert: #ffffff
-$c-background: #f5f5f5
+$c-background-invert: #f5fafd
+$c-background: #ffffff
 $c-border: $pigeonPost
 $c-highlight: mix(#fff, $bigStone, 60%)
-$c-subdue: lighten($pigeonPost, 20%)
+$c-subdue: #f5f5f5
 $c-text-invert: #fff
 $c-text: $bigStone
 
@@ -47,7 +47,7 @@ $c-text: $bigStone
 
 // ----- Borders & Box Shadow ----- //
 
-$b-borderRadius: 3px
+$b-borderRadius: 6px
 $b-borderStyle: solid
 $b-borderWidth: 1px
 $b-border: $b-borderWidth $b-borderStyle $c-border
@@ -55,8 +55,8 @@ $b-boxShadow: 0 2px 0 rgba($c-border, 0.5)
 
 // ----- Typography ----- //
 
-$b-fontFamily-heading: 'Hind Guntur', sans-serif
-$b-fontFamily: 'Hind Guntur', sans-serif
+$b-fontFamily-heading: 'Roboto Condensed', sans-serif
+$b-fontFamily: 'Roboto Condensed', sans-serif
 $b-fontSize: 16px
 $b-fontSize-xs: font-size(12px)
 $b-fontSize-s: font-size(14px)
@@ -73,6 +73,7 @@ $b-lineHeight: 1.5
 
 $b-maxWidth: em(1024px)
 $b-maxWidth-s: em(700px)
+$b-maxWidth-xs: em(400px)
 $b-space: em(20px)
 $b-space-xs: $b-space * 0.5
 $b-space-s: $b-space * 0.75

@@ -8,15 +8,38 @@
 *
   box-sizing: border-box
 
+html,
+body
+  height: 100%
+
 html
-  background-color: $c-background
+  background-color: $c-background-invert
   color: $c-text
   font-family: $b-fontFamily
   font-size: $b-fontSize
   line-height: $b-lineHeight
 
 body
+  align-items: stretch
+  display: flex
+  flex-direction: column
   font-size: 100%
+  justify-content: space-between
+
+main
+  flex-grow: 1
+  overflow-y: scroll
+  padding: $b-space-l 0
+  position: relative
+
+header
+  background: $c-background
+  border-bottom: $b-border
+
+footer
+  background: darken($c-background-invert, 5%)
+  position: relative
+  z-index: 3
 
 // -------------------------------------
 //   Block Content
@@ -38,7 +61,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5
   font-family: $b-fontFamily-heading
-  font-weight: 600
+  font-weight: 700
   line-height: 1.2
   margin-bottom: $b-space-xs
   margin-top: 0

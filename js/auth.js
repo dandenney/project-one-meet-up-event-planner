@@ -125,6 +125,9 @@ function firebaseSignIn() {
 
 function firebaseSignOut() {
 
+  var appBody = document.querySelector('.body');
+  appBody.classList.remove('is-signedIn');
+
   // Sign out an account
   firebase.auth().signOut().then(function() {
     // Sign-out successful.

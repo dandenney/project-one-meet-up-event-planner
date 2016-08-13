@@ -1,7 +1,7 @@
 // *************************************
 //
-//   Pseudo Placeholder
-//   -> Style and animation for using labels as placeholders
+//   Nav
+//   -> App navigation
 //
 // -------------------------------------
 //   Template (Haml)
@@ -12,11 +12,10 @@
 //
 // *************************************
 
-.pseudo-placeholder
-  position: relative
-
-  + .pseudo-placeholder
-    margin-top: $b-space-l
+.nav
+  +respond-to($g-m)
+    display: flex
+    justify-content: space-between
 
 // -------------------------------------
 //   Modifiers
@@ -28,24 +27,7 @@
 //   States
 // -------------------------------------
 
-.pseudo-input
-  border: 0
-  border-bottom: 1px solid $c-highlight
-  box-shadow: none
-  padding: 0 $b-space-xs 0
-  transition: border-width 0.1s linear
-
-  &:focus
-    border-bottom: 2px solid $c-highlight
-    outline: 0
-
-  &:focus,
-  &:valid
-
-    ~ .pseudo-label
-      color: $c-text
-      font-size: $b-fontSize-xs
-      transform: translateY(-150%)
+// .structure.is-state
 
 // -------------------------------------
 //   Context
@@ -57,12 +39,10 @@
 //   Scaffolding
 // -------------------------------------
 
-.pseudo-input
-  width: 100%
++respond-to($g-m)
 
-.pseudo-label
-  bottom: 3px
-  color: $c-subdue
-  left: $b-space-xs
-  position: absolute
-  transition: all 0.1s linear
+  .nav-brand
+    order: 1
+
+  .nav-events
+    order: 2
