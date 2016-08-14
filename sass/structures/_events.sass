@@ -12,13 +12,8 @@
 //
 // *************************************
 
-.event
-  background: $c-background
-  border: $b-border
-  padding: $b-space
-
-  + .event
-    margin-top: $b-space
+.events
+  display: flex
 
 // -------------------------------------
 //   Modifiers
@@ -42,4 +37,14 @@
 //   Scaffolding
 // -------------------------------------
 
-// .structure-scaffolding
+.event
+  background: $c-background
+  border: $b-border
+  padding: $b-space
+
+  + .event
+    margin-top: $b-space
+
+    +respond-to($g-m)
+
+      margin-top: 0
