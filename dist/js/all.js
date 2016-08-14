@@ -257,6 +257,10 @@ function retrieveEvents() {
       var eventNameContainer = document.createElement('h3');
       eventNameContainer.className = 'event-name';
       var outputName = document.createTextNode(event.eventName);
+      // Event Host
+      var eventHostContainer = document.createElement('p');
+      eventHostContainer.className = 'event-host';
+      var outputHost = document.createTextNode(event.eventHost);
       // Event Type
       var eventTypeContainer = document.createElement('p');
       eventTypeContainer.className = 'event-type';
@@ -276,11 +280,13 @@ function retrieveEvents() {
 
       eventsContainer.appendChild(eventContainer);
       eventContainer.appendChild(eventNameContainer);
+      eventContainer.appendChild(eventHostContainer);
       eventContainer.appendChild(eventTypeContainer);
       eventContainer.appendChild(eventBeginContainer);
       eventContainer.appendChild(eventEndContainer);
       eventContainer.appendChild(eventDescriptionContainer);
       eventNameContainer.appendChild(outputName);
+      eventHostContainer.appendChild(outputHost);
       eventTypeContainer.appendChild(outputType);
       eventBeginContainer.appendChild(outputBegin);
       eventEndContainer.appendChild(outputEnd);
