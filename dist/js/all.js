@@ -207,19 +207,35 @@ function createEvent() {
     var eventDescription = eventDescriptionInput.value;
 
     // -------------------------------------
-    //   Set in Firebase
+    //   Validate Event Inputs
     // -------------------------------------
 
-    newListRef.set({
-      'eventName': eventName,
-      'eventHost': eventHost,
-      'eventBegin': eventBegin,
-      'eventEnd': eventEnd,
-      'eventDescription': eventDescription,
-      'eventType': eventType
-    });
+    if (
 
-    eventCreateForm.reset();
+      eventNameInput.validity.valid &&
+      eventHostInput.validity.valid &&
+      eventTypeInput.validity.valid &&
+      eventBeginInput.validity.valid &&
+      eventEndInput.validity.valid
+
+    ) {
+
+      // -------------------------------------
+      //   Set in Firebase
+      // -------------------------------------
+      newListRef.set({
+        'eventName': eventName,
+        'eventHost': eventHost,
+        'eventType': eventType,
+        'eventBegin': eventBegin,
+        'eventEnd': eventEnd,
+        'eventDescription': eventDescription
+      });
+      eventCreateForm.reset();
+
+    } else {
+      alert('invalid');
+    }
 
   }
 
