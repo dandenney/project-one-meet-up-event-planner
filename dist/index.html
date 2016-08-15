@@ -9,11 +9,203 @@
   </head>
   <body class='body'>
 
-    <header class='pam'>
+    <header class='paxs plm prm'>
 
       <a class='nav-brand' href='/'>
-        <img alt='Meetttup' class='db mhc' src='/img/meetttup-brand.svg' />
+        <img alt='Meetttup' class='db mhc' src='/img/meetttup-brand.svg' width='150' />
       </a>
+
+    </header>
+
+    <main>
+
+      <section class='row section is-showing' id='events'>
+
+        <div class='cell well'>
+
+          <h2>Events</h2>
+
+          <div class='events' id='all-events'>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class='row section' id='create-account'>
+
+        <div class='cell cell--s well'>
+
+          <div class='g'>
+
+            <div class='g-b g-b--center g-b--l--2of3'>
+
+              <form class='form' id='js-form-account'>
+
+                <div class='tac'>
+                  <h2 class='mbf'>Create an Account</h2>
+                  <p class='mtf'>With an account, you'll be able to join and create meetups.</p>
+                </div>
+
+                <fieldset>
+                  <label for='your-name'>
+                    Your Name
+                    <input autofocus class='input-full has-validation' id='your-name' placeholder='Dan Denney' required type='text' /></label>
+                </fieldset>
+
+                <fieldset>
+                  <label for='your-email'>
+                    Your Email
+                    <input class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
+                  </label>
+                </fieldset>
+
+                <fieldset>
+                  <label for='your-password'>
+                    Create a Password
+                    <input class='input-full has-validation' id ='your-password' placeholder='••••••••' type='password' required />
+                  </label>
+                  <p class='require'>Requirements: <span class='js-require-characters'>At least 8 characters</span>, <span class='js-require-capital'>at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
+                </fieldset>
+
+                <button class='btn db mhc mtm' id='account-create'>Create</button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class='row section' id='auth-account'>
+
+        <div class='cell cell--s well'>
+
+          <div class='g'>
+
+            <div class='g-b g-b--center g-b--l--2of3'>
+
+              <form class='form' id='js-form-auth'>
+
+                <div class='tac'>
+                  <h2 class='mbf'>Sign In</h2>
+                  <p class='mtf'>When you're signed in, you'll be able to join and create meetups.</p>
+                </div>
+
+                <fieldset>
+                  <label for='auth-email'>
+                    Email
+                    <input class='input-full' id ='auth-email' placeholder='email@email.com' type='email' required />
+                  </label>
+                </fieldset>
+
+                <fieldset>
+                  <label for='auth-password'>
+                    Password
+                    <input class='input-full' id ='auth-password' placeholder='••••••••' type='password' required />
+                  </label>
+                </fieldset>
+
+                <button class='btn db mhc mtm' id='account-signIn'>Sign In</button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class='row section' id='create-event'>
+
+        <div class='cell cell--s well'>
+
+          <form class='form mtxl requires-signedIn' id='js-form-event'>
+
+            <h2>Event Information</h2>
+
+            <fieldset class='mts'>
+              <label for='event-name'>
+                Event Name
+                <input class='input-full has-validation' id ='event-name' type='text' required>
+              </label>
+            </fieldset>
+
+            <div class='g pts'>
+
+              <fieldset class='g-b g-b--m--1of2'>
+                <label for='event-host'>
+                  Host
+                  <input class='input-full has-validation' id ='event-host' list='event-hosts' type='text' required>
+                  <datalist id='event-hosts'>
+                    <option value='Member One'>
+                    <option value='Member Two'>
+                  </datalist>
+                </label>
+              </fieldset>
+
+              <!-- <fieldset>
+                <label for='event-location'>
+                  Location
+                  <input class='input-full' id ='event-location' type='text' required>
+                  </label>
+              </fieldset> -->
+
+              <fieldset class='g-b g-b--m--1of2'>
+                <label for='event-type'>
+                  Type
+                  <input class='input-full has-validation' id ='event-type' list='event-types' type='text' required>
+                  <datalist id='event-types'>
+                    <option value='Presentation'>
+                    <option value='Meet and Greet'>
+                  </datalist>
+                </label>
+              </fieldset>
+
+            </div>
+
+            <div class='g pts'>
+
+              <fieldset class='g-b g-b--m--1of2'>
+                <label for='event-begin'>
+                  Begins
+                  <input class='input-full has-validation' id ='event-begin' type='datetime-local' required />
+                </label>
+              </fieldset>
+
+              <fieldset class='g-b g-b--m--1of2'>
+                <label for='event-end'>
+                  Ends
+                  <input class='input-full has-validation' id ='event-end' type='datetime-local' required />
+                </label>
+              </fieldset>
+
+            </div>
+
+            <fieldset class='pts'>
+              <label for='event-description'>
+                Description <small>(Optional)</small>
+                <textarea class='input-full' id ='event-description' rows='4'></textarea>
+              </label>
+            </fieldset>
+
+            <button class='btn db mhc mtl' id='event-create'>Create a Meetup</button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer>
 
       <nav class='nav'>
 
@@ -23,207 +215,6 @@
         <a class='nav-item' href='#auth-account' id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
 
       </nav>
-
-    </header>
-
-      <main>
-
-        <section class='row section is-showing' id='events'>
-
-          <div class='cell well'>
-
-            <h2>Events</h2>
-
-            <div class='events' id='all-events'>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        <section class='row section' id='create-account'>
-
-          <div class='cell cell--s well'>
-
-            <div class='g'>
-
-              <div class='g-b g-b--center g-b--l--2of3'>
-
-                <form class='form' id='js-form-account'>
-
-                  <div class='tac'>
-                    <h2 class='mbf'>Create an Account</h2>
-                    <p class='mtf'>With an account, you'll be able to join and create meetups.</p>
-                  </div>
-
-                  <fieldset>
-                    <label for='your-name'>
-                      Your Name
-                      <input autofocus class='input-full has-validation' id='your-name' placeholder='Dan Denney' required type='text' /></label>
-                  </fieldset>
-
-                  <fieldset>
-                    <label for='your-email'>
-                      Your Email
-                      <input class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
-                    </label>
-                  </fieldset>
-
-                  <fieldset>
-                    <label for='your-password'>
-                      Create a Password
-                      <input class='input-full has-validation' id ='your-password' placeholder='••••••••' type='password' required />
-                    </label>
-                    <p class='require'>Requirements: <span class='js-require-characters'>At least 8 characters</span>, <span class='js-require-capital'>at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
-                  </fieldset>
-
-                  <button class='btn db mhc mtm' id='account-create'>Create</button>
-
-                </form>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        <section class='row section' id='auth-account'>
-
-          <div class='cell cell--s well'>
-
-            <div class='g'>
-
-              <div class='g-b g-b--center g-b--l--2of3'>
-
-                <form class='form' id='js-form-auth'>
-
-                  <div class='tac'>
-                    <h2 class='mbf'>Sign In</h2>
-                    <p class='mtf'>When you're signed in, you'll be able to join and create meetups.</p>
-                  </div>
-
-                  <fieldset>
-                    <label for='auth-email'>
-                      Email
-                      <input class='input-full' id ='auth-email' placeholder='email@email.com' type='email' required />
-                    </label>
-                  </fieldset>
-
-                  <fieldset>
-                    <label for='auth-password'>
-                      Password
-                      <input class='input-full' id ='auth-password' placeholder='••••••••' type='password' required />
-                    </label>
-                  </fieldset>
-
-                  <button class='btn db mhc mtm' id='account-signIn'>Sign In</button>
-
-                </form>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        <section class='row section' id='create-event'>
-
-          <div class='cell cell--s well'>
-
-            <form class='form mtxl requires-signedIn' id='js-form-event'>
-
-              <h2>Event Information</h2>
-
-              <fieldset class='mts'>
-                <label for='event-name'>
-                  Event Name
-                  <input class='input-full has-validation' id ='event-name' type='text' required>
-                </label>
-              </fieldset>
-
-              <div class='g pts'>
-
-                <fieldset class='g-b g-b--m--1of2'>
-                  <label for='event-host'>
-                    Host
-                    <input class='input-full has-validation' id ='event-host' list='event-hosts' type='text' required>
-                    <datalist id='event-hosts'>
-                      <option value='Member One'>
-                      <option value='Member Two'>
-                    </datalist>
-                  </label>
-                </fieldset>
-
-                <!-- <fieldset>
-                  <label for='event-location'>
-                    Location
-                    <input class='input-full' id ='event-location' type='text' required>
-                    </label>
-                </fieldset> -->
-
-                <fieldset class='g-b g-b--m--1of2'>
-                  <label for='event-type'>
-                    Type
-                    <input class='input-full has-validation' id ='event-type' list='event-types' type='text' required>
-                    <datalist id='event-types'>
-                      <option value='Presentation'>
-                      <option value='Meet and Greet'>
-                    </datalist>
-                  </label>
-                </fieldset>
-
-              </div>
-
-              <div class='g pts'>
-
-                <fieldset class='g-b g-b--m--1of2'>
-                  <label for='event-begin'>
-                    Begins
-                    <input class='input-full has-validation' id ='event-begin' type='datetime-local' required />
-                  </label>
-                </fieldset>
-
-                <fieldset class='g-b g-b--m--1of2'>
-                  <label for='event-end'>
-                    Ends
-                    <input class='input-full has-validation' id ='event-end' type='datetime-local' required />
-                  </label>
-                </fieldset>
-
-              </div>
-
-              <fieldset class='pts'>
-                <label for='event-description'>
-                  Description <small>(Optional)</small>
-                  <textarea class='input-full' id ='event-description' rows='4'></textarea>
-                </label>
-              </fieldset>
-
-              <button class='btn db mhc mtl' id='event-create'>Create a Meetup</button>
-
-            </form>
-
-          </div>
-
-        </section>
-
-      </main>
-
-    <footer>
-
-      Links
-
-      <!-- <nav>
-        <a href='#create-account' id='js-openCreateAccount'>Create an Account</a>
-        <a href='#events' id='js-openEvents'>View Events</a>
-        <a href='#auth-account' id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
-        <a href='#create-event' id='js-openCreateEvent'>Create an Event</a>
-      </nav> -->
 
     </footer>
 

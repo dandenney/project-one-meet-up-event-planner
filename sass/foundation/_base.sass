@@ -32,6 +32,9 @@ main
   padding: $b-space-l 0
   position: relative
 
+  +respond-to($g-m)
+    order: 1
+
 header
   background: $c-background
   border-bottom: $b-border
@@ -43,6 +46,7 @@ header
 
 footer
   background: darken($c-background-invert, 5%)
+  padding: $b-space-xs
   position: relative
   z-index: 3
 
@@ -93,14 +97,15 @@ h5, .h5
 // ----- Links ----- //
 
 a
-  border-bottom: $b-border
-  color: $c-highlight
+  border-bottom: 1px solid mix(#fff, $c-action, 60%)
+  color: $c-action
   text-decoration: none
+  transition: border-color 0.3s linear, color 0.3s linear
 
   &:hover,
   &:focus
-    border-bottom-color: $c-highlight
-    color: $c-subdue
+    border-bottom-color: mix(#000, $c-action, 30%)
+    color: mix(#000, $c-action, 30%)
 
 // ----- Images ----- //
 
