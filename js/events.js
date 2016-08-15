@@ -76,7 +76,8 @@ function createEvent() {
         'eventEnd': eventEnd,
         'eventDescription': eventDescription
       });
-      eventCreateForm.reset();
+
+      window.location = '/';
 
     } else {
       alert('invalid');
