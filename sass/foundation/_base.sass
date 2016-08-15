@@ -36,6 +36,11 @@ header
   background: $c-background
   border-bottom: $b-border
 
+  +respond-to($g-m)
+    align-items: center
+    display: flex
+    justify-content: center
+
 footer
   background: darken($c-background-invert, 5%)
   position: relative

@@ -9,25 +9,19 @@
   </head>
   <body class='body'>
 
-    <header>
+    <header class='pam'>
 
-      <nav>
+      <a class='nav-brand' href='/'>
+        <img alt='Meetttup' class='db mhc' src='/img/meetttup-brand.svg' />
+      </a>
 
-        <div class='row'>
-          <div class='cell well nav'>
-            <a class='nav-brand' href='/'>
-              <img alt='Meetttup' class='db mhc' src='/img/meetttup-brand.svg' />
-            </a>
-            <div class='nav-events'>
-              <a href='#events' id='js-openEvents'>View Events</a>
-              <a href='#create-event' id='js-openCreateEvent'>Create an Event</a>
-            </div>
-            <div class='nav-accounts'>
-              <a class='openCreateAccount' href='#create-account' id='js-openCreateAccount'>Create an Account</a>
-              <a href='#auth-account' id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
-            </div>
-          </div>
-        </div>
+      <nav class='nav'>
+
+        <a class='nav-item' href='#events' id='js-openEvents'>View Events</a>
+        <a class='nav-item' href='#create-event' id='js-openCreateEvent'>Create an Event</a>
+        <a class='nav-item openCreateAccount' href='#create-account' id='js-openCreateAccount'>Create an Account</a>
+        <a class='nav-item' href='#auth-account' id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
+
       </nav>
 
     </header>
@@ -66,7 +60,7 @@
                   <fieldset>
                     <label for='your-name'>
                       Your Name
-                      <input autofocus class='input-full has-validation' id ='your-name' placeholder='Dan Denney' required type='text' /></label>
+                      <input autofocus class='input-full has-validation' id='your-name' placeholder='Dan Denney' required type='text' /></label>
                   </fieldset>
 
                   <fieldset>
@@ -148,7 +142,7 @@
               <fieldset class='mts'>
                 <label for='event-name'>
                   Event Name
-                  <input class='input-full' id ='event-name' type='text' required>
+                  <input autofocus class='input-full has-validation' id ='event-name' type='text' required>
                 </label>
               </fieldset>
 
@@ -157,7 +151,7 @@
                 <fieldset class='g-b g-b--m--1of2'>
                   <label for='event-host'>
                     Host
-                    <input class='input-full' id ='event-host' list='event-hosts' type='text' required>
+                    <input class='input-full has-validation' id ='event-host' list='event-hosts' type='text' required>
                     <datalist id='event-hosts'>
                       <option value='Member One'>
                       <option value='Member Two'>
@@ -175,7 +169,7 @@
                 <fieldset class='g-b g-b--m--1of2'>
                   <label for='event-type'>
                     Type
-                    <input class='input-full' id ='event-type' list='event-types' type='text' required>
+                    <input class='input-full has-validation' id ='event-type' list='event-types' type='text' required>
                     <datalist id='event-types'>
                       <option value='Presentation'>
                       <option value='Meet and Greet'>
@@ -190,14 +184,14 @@
                 <fieldset class='g-b g-b--m--1of2'>
                   <label for='event-begin'>
                     Begins
-                    <input class='input-full' id ='event-begin' type='datetime-local' required />
+                    <input class='input-full has-validation' id ='event-begin' type='datetime-local' required />
                   </label>
                 </fieldset>
 
                 <fieldset class='g-b g-b--m--1of2'>
                   <label for='event-end'>
                     Ends
-                    <input class='input-full' id ='event-end' type='datetime-local' required />
+                    <input class='input-full has-validation' id ='event-end' type='datetime-local' required />
                   </label>
                 </fieldset>
 
