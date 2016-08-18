@@ -90,8 +90,6 @@ function createEvent() {
         'eventDescription': eventDescription
       });
 
-      window.location = '/';
-
     } else {
       alert('invalid');
     }
@@ -167,6 +165,9 @@ function retrieveEvents() {
       eventEndContainer.appendChild(outputEnd);
       eventDescriptionContainer.appendChild(outputDescription);
 
+      // Route to events
+      routeEvents();
+
     });
   });
 
@@ -181,6 +182,14 @@ function retrieveEvents() {
 //   // I want this to hold output methods
 //
 // }
+
+// -------------------------------------
+//   # Route Events
+// -------------------------------------
+
+function routeEvents () {
+  window.location = '/#events';
+}
 
 // -------------------------------------
 //   Initializers

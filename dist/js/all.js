@@ -35,7 +35,11 @@ function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
     user.updateProfile({
       displayName: name
     }).then(function() {
+
       console.log("displayName is " + user.displayName);
+      // Route to events
+      routeEvents();
+
     }, function(error) {
       console.log('Adding your account failed. Please try again.');
     });
@@ -64,6 +68,9 @@ function firebaseAuth() {
 
       // Add auth class to body
       authFeedback();
+
+      // Route to events
+      routeEvents();
 
       // Keyup on account password
       signInOut.addEventListener('click', function(event) {
@@ -248,8 +255,6 @@ function createEvent() {
         'eventDescription': eventDescription
       });
 
-      window.location = '/';
-
     } else {
       alert('invalid');
     }
@@ -325,6 +330,9 @@ function retrieveEvents() {
       eventEndContainer.appendChild(outputEnd);
       eventDescriptionContainer.appendChild(outputDescription);
 
+      // Route to events
+      routeEvents();
+
     });
   });
 
@@ -339,6 +347,14 @@ function retrieveEvents() {
 //   // I want this to hold output methods
 //
 // }
+
+// -------------------------------------
+//   # Route Events
+// -------------------------------------
+
+function routeEvents () {
+  window.location = '/#events';
+}
 
 // -------------------------------------
 //   Initializers
