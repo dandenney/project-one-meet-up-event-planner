@@ -1,19 +1,19 @@
 // *************************************
 //
-//   Authentication in Firebase
-//   -> Form handling and data get/send
+// ## Authentication in Firebase
+// -> Form handling and data get/send
 //
 // *************************************
 
 // -------------------------------------
-//   Firebase Create Account
+// ## Firebase Create Account
 // -------------------------------------
 
 // Create an account in Firebase
 function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
 
   // -------------------------------------
-  //   Private Variables
+  // ## Private Variables
   // -------------------------------------
   var name = firebaseName;
   var email = firebaseEmail;
@@ -37,16 +37,17 @@ function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
     }).then(function() {
       console.log("displayName is " + user.displayName);
     }, function(error) {
-      console.log(fucked);
+      console.log('Adding your account failed. Please try again.');
     });
   });
 
+  // Add auth class to body
   authFeedback();
 
 };
 
 // -------------------------------------
-//   Firebase Authorization
+// ## Firebase Authorization
 // -------------------------------------
 
 function firebaseAuth() {
@@ -61,6 +62,9 @@ function firebaseAuth() {
       console.log(user.email + " is signed in");
       signInOutText.innerHTML = 'Out';
 
+      // Add auth class to body
+      authFeedback();
+
       // Keyup on account password
       signInOut.addEventListener('click', function(event) {
         firebaseSignOut();
@@ -72,30 +76,28 @@ function firebaseAuth() {
 
   });
 
-  authFeedback();
-
 };
 
 // -------------------------------------
-//   Firebase Sign In
+// ## Firebase Sign In
 // -------------------------------------
 
 function firebaseSignIn() {
 
   // -------------------------------------
-  //   Private Variables
+  // ## Private Variables
   // -------------------------------------
 
   var accountSignIn = document.querySelector('#account-signIn');
 
   // -------------------------------------
-  //   Event Listeners
+  // ## Event Listeners
   // -------------------------------------
 
   accountSignIn.addEventListener('click', function(event) {
 
     // -------------------------------------
-    //   Private Variables
+    // ## Private Variables
     // -------------------------------------
 
     var signInEmailInput = document.querySelector('#auth-email');
@@ -120,7 +122,7 @@ function firebaseSignIn() {
 };
 
 // -------------------------------------
-//   Firebase Sign Out
+// ## Firebase Sign Out
 // -------------------------------------
 
 function firebaseSignOut() {
@@ -138,7 +140,8 @@ function firebaseSignOut() {
 };
 
 // -------------------------------------
-//   Auth Feedback
+// ## Auth Feedback
+// Add a class to the body for UI controls
 // -------------------------------------
 
 function authFeedback() {
@@ -147,7 +150,7 @@ function authFeedback() {
 };
 
 // -------------------------------------
-//   Initialize
+// ## Initialize
 // -------------------------------------
 
 firebaseAuth();
