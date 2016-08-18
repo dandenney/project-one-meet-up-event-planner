@@ -189,6 +189,19 @@ function createEvent() {
     eventSubmit();
   });
 
+  eventBeginInput.addEventListener('blur', function() {
+    populateEnds()
+  });
+
+  // -------------------------------------
+  //   Populate Ends
+  // -------------------------------------
+
+  function populateEnds() {
+    var beginVal = eventBeginInput.value;
+    eventEndInput.value = beginVal;
+  }
+
   // -------------------------------------
   //   Event Submit
   // -------------------------------------
