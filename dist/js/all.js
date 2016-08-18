@@ -410,7 +410,7 @@ function changeSection() {
 //   Initialize
 // -------------------------------------
 
-changeSection();
+// changeSection();
 
 // *************************************
 //
