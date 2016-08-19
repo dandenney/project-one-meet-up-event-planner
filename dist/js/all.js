@@ -290,7 +290,7 @@ function retrieveEvents() {
 
       // Event container
       var eventContainer = document.createElement('article');
-      eventContainer.className = 'event';
+      eventContainer.className = 'card event';
       // Event Name
       var eventNameContainer = document.createElement('h3');
       eventNameContainer.className = 'event-name';

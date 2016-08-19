@@ -16,7 +16,7 @@
   display: flex
   flex-wrap: wrap
 
-  +respond-to($g-l)
+  +respond-to($g-m)
     justify-content: space-between
 
 // -------------------------------------
@@ -42,10 +42,7 @@
 // -------------------------------------
 
 .event
-  background: $c-background
-  border: $b-border
-  border-radius: $b-borderRadius
-  padding: $b-space
+  flex-basis: 100%
 
   + .event
     margin-top: $b-space
@@ -53,6 +50,9 @@
     +respond-to($g-m)
       margin-top: 0
 
+  +respond-to($g-m)
+    flex-basis: 45%
+    margin-bottom: 40px
+
   +respond-to($g-l)
     flex-basis: 30%
-    margin-bottom: 40px
