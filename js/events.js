@@ -121,6 +121,10 @@ function retrieveEvents() {
       // Retrieve
       var event = childSnap.val();
 
+      // Format Datetimes
+      var momentBegin = moment(event.eventBegin).format('LLLL');
+      var momentEnd = moment(event.eventEnd).format('LLLL');
+
       // This all should be in outputEvents();
 
       // Event container
@@ -141,11 +145,11 @@ function retrieveEvents() {
       // Event Begin
       var eventBeginContainer = document.createElement('p');
       eventBeginContainer.className = 'event-begin';
-      var outputBegin = document.createTextNode(event.eventBegin);
+      var outputBegin = document.createTextNode(momentBegin);
       // Event End
       var eventEndContainer = document.createElement('p');
       eventEndContainer.className = 'event-end';
-      var outputEnd = document.createTextNode(event.eventEnd);
+      var outputEnd = document.createTextNode(momentEnd);
       // Event Description
       var eventDescriptionContainer = document.createElement('p');
       eventDescriptionContainer.className = 'event-description';
