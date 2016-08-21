@@ -263,6 +263,8 @@ function createEvent() {
 
 }
 
+console.log('boom');
+
 // -------------------------------------
 //   Retrieve Events
 // -------------------------------------
@@ -286,53 +288,64 @@ function retrieveEvents() {
       // Retrieve
       var event = childSnap.val();
 
-      // Format Datetimes
-      var momentBegin = moment(event.eventBegin).format('LLLL');
-      var momentEnd = moment(event.eventEnd).format('LLLL');
+      // TODO: I'd like to move this out and execute it in here
+      function outputEvents(momentEnd) {
 
-      // This all should be in outputEvents();
+        // Format Datetimes
+        var momentBegin = moment(event.eventBegin).format('lll');
 
-      // Event container
-      var eventContainer = document.createElement('article');
-      eventContainer.className = 'card event';
-      // Event Name
-      var eventNameContainer = document.createElement('h3');
-      eventNameContainer.className = 'event-name';
-      var outputName = document.createTextNode(event.eventName);
-      // Event Host
-      var eventHostContainer = document.createElement('p');
-      eventHostContainer.className = 'event-host';
-      var outputHost = document.createTextNode(event.eventHost);
-      // Event Type
-      var eventTypeContainer = document.createElement('p');
-      eventTypeContainer.className = 'event-type';
-      var outputType = document.createTextNode(event.eventType);
-      // Event Begin
-      var eventBeginContainer = document.createElement('p');
-      eventBeginContainer.className = 'event-begin';
-      var outputBegin = document.createTextNode(momentBegin);
-      // Event End
-      var eventEndContainer = document.createElement('p');
-      eventEndContainer.className = 'event-end';
-      var outputEnd = document.createTextNode(momentEnd);
-      // Event Description
-      var eventDescriptionContainer = document.createElement('p');
-      eventDescriptionContainer.className = 'event-description';
-      var outputDescription = document.createTextNode(event.eventDescription);
+        // Create date objects from datetime values
+        var eventBeginDay = new Date(event.eventBegin);
+        var eventEndDay = new Date(event.eventEnd);
 
-      eventsContainer.appendChild(eventContainer);
-      eventContainer.appendChild(eventNameContainer);
-      eventContainer.appendChild(eventHostContainer);
-      eventContainer.appendChild(eventTypeContainer);
-      eventContainer.appendChild(eventBeginContainer);
-      eventContainer.appendChild(eventEndContainer);
-      eventContainer.appendChild(eventDescriptionContainer);
-      eventNameContainer.appendChild(outputName);
-      eventHostContainer.appendChild(outputHost);
-      eventTypeContainer.appendChild(outputType);
-      eventBeginContainer.appendChild(outputBegin);
-      eventEndContainer.appendChild(outputEnd);
-      eventDescriptionContainer.appendChild(outputDescription);
+        // Output hours if same day, whole date if not
+        if ( eventBeginDay.getDay() === eventEndDay.getDay() ) {
+          var momentEnd =  moment(event.eventEnd).format('LT');
+        } else {
+          var momentEnd = moment(event.eventEnd).format('lll');
+        }
+
+        // Event container
+        var eventContainer = document.createElement('article');
+        eventContainer.className = 'card event';
+        // Event Name
+        var eventNameContainer = document.createElement('h3');
+        eventNameContainer.className = 'event-name';
+        var outputName = document.createTextNode(event.eventName);
+        // Event Host
+        var eventHostContainer = document.createElement('p');
+        eventHostContainer.className = 'event-host';
+        var outputHost = document.createTextNode(event.eventHost);
+        // Event Type
+        var eventTypeContainer = document.createElement('p');
+        eventTypeContainer.className = 'event-type';
+        var outputType = document.createTextNode(event.eventType);
+        // Event Range
+        var eventRangeContainer = document.createElement('p');
+        eventRangeContainer.className = 'event-range';
+        // Event Description
+        var eventDescriptionContainer = document.createElement('p');
+        eventDescriptionContainer.className = 'event-description';
+        var outputDescription = document.createTextNode(event.eventDescription);
+
+        eventsContainer.appendChild(eventContainer);
+        eventContainer.appendChild(eventNameContainer);
+        eventContainer.appendChild(eventHostContainer);
+        eventContainer.appendChild(eventTypeContainer);
+        eventContainer.appendChild(eventRangeContainer);
+        // eventContainer.appendChild(eventEndContainer);
+        eventContainer.appendChild(eventDescriptionContainer);
+        eventNameContainer.appendChild(outputName);
+        eventHostContainer.appendChild(outputHost);
+        eventTypeContainer.appendChild(outputType);
+        eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
+        // eventEndContainer.appendChild(outputEnd);
+        eventDescriptionContainer.appendChild(outputDescription);
+
+      }
+
+      // Output events
+      outputEvents();
 
       // Route to events
       routeEvents();
