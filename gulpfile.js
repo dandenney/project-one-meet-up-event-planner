@@ -32,6 +32,7 @@ gulp.task('dist', [
 gulp.task('scripts', function() {
 	gulp.src('js/**/*.js')
 		.pipe(concat('all.js'))
+		.pipe(uglify())
 		.pipe(gulp.dest('dist/js'));
 });
 
