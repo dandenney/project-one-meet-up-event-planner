@@ -174,6 +174,7 @@ function retrieveEvents() {
         eventAttendeesContainer.className = 'event-attendee';
         var outputAttendee = document.createTextNode(event.eventAttendee);
 
+        // Create all DOM elements for events
         eventsContainer.appendChild(eventContainer);
         eventContainer.appendChild(eventNameContainer);
         eventContainer.appendChild(eventHostContainer);
@@ -182,12 +183,14 @@ function retrieveEvents() {
         eventContainer.appendChild(eventDescriptionContainer);
         eventContainer.appendChild(eventAttendeesContainer);
         eventAttendeesContainer.appendChild(eventAttendeeContainer);
+
+        // Output event values as text nodes
         eventNameContainer.appendChild(outputName);
         eventHostContainer.appendChild(outputHost);
         eventTypeContainer.appendChild(outputType);
         eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
         eventDescriptionContainer.appendChild(outputDescription);
-        eventAttendeeContainer.appendChild(outputAttendee);
+        eventAttendeeContainer.appendChild(outputAttendeegp);
 
       }
 
