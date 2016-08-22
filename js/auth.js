@@ -30,6 +30,9 @@ function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
     console.log(errorCode, errorMessage);
   });
 
+  console.clear();
+  console.log("It gets this far");
+
   firebase.auth().onAuthStateChanged(function(user) {
     user.sendEmailVerification();
     user.updateProfile({
@@ -63,7 +66,7 @@ function firebaseAuth() {
   firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {
-      console.log(user.email + " is signed in");
+      console.log(user.displayName + " is signed in");
       signInOutText.innerHTML = 'Out';
 
       // Add auth class to body

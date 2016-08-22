@@ -64,6 +64,12 @@ function createEvent() {
     var eventEnd = eventEndInput.value;
     var eventDescription = eventDescriptionInput.value;
 
+    var user = firebase.auth().currentUser;
+    console.log(user);
+
+    var eventInitialAttendee = user.displayName;
+    console.log(eventInitialAttendee);
+
     // -------------------------------------
     //   Validate Event Inputs
     // -------------------------------------
@@ -87,7 +93,8 @@ function createEvent() {
         'eventType': eventType,
         'eventBegin': eventBegin,
         'eventEnd': eventEnd,
-        'eventDescription': eventDescription
+        'eventDescription': eventDescription,
+        'eventAttendee': eventInitialAttendee
       });
 
     } else {
@@ -97,8 +104,6 @@ function createEvent() {
   }
 
 }
-
-console.log('boom');
 
 // -------------------------------------
 //   Retrieve Events
@@ -162,20 +167,27 @@ function retrieveEvents() {
         var eventDescriptionContainer = document.createElement('p');
         eventDescriptionContainer.className = 'event-description';
         var outputDescription = document.createTextNode(event.eventDescription);
+        // Event Attendees
+        var eventAttendeesContainer = document.createElement('ul');
+        var eventAttendeeContainer = document.createElement('li');
+        eventAttendeesContainer.className = 'event-attendees';
+        eventAttendeesContainer.className = 'event-attendee';
+        var outputAttendee = document.createTextNode(event.eventAttendee);
 
         eventsContainer.appendChild(eventContainer);
         eventContainer.appendChild(eventNameContainer);
         eventContainer.appendChild(eventHostContainer);
         eventContainer.appendChild(eventTypeContainer);
         eventContainer.appendChild(eventRangeContainer);
-        // eventContainer.appendChild(eventEndContainer);
         eventContainer.appendChild(eventDescriptionContainer);
+        eventContainer.appendChild(eventAttendeesContainer);
+        eventAttendeesContainer.appendChild(eventAttendeeContainer);
         eventNameContainer.appendChild(outputName);
         eventHostContainer.appendChild(outputHost);
         eventTypeContainer.appendChild(outputType);
         eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
-        // eventEndContainer.appendChild(outputEnd);
         eventDescriptionContainer.appendChild(outputDescription);
+        eventAttendeeContainer.appendChild(outputAttendee);
 
       }
 
