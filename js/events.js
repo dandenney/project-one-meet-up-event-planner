@@ -63,12 +63,8 @@ function createEvent() {
     var eventBegin = eventBeginInput.value;
     var eventEnd = eventEndInput.value;
     var eventDescription = eventDescriptionInput.value;
-
     var user = firebase.auth().currentUser;
-    console.log(user);
-
     var eventInitialAttendee = user.displayName;
-    console.log(eventInitialAttendee);
 
     // -------------------------------------
     //   Validate Event Inputs
@@ -94,7 +90,7 @@ function createEvent() {
         'eventBegin': eventBegin,
         'eventEnd': eventEnd,
         'eventDescription': eventDescription,
-        'eventAttendee': eventInitialAttendee
+        'eventAttendees': { eventAttendee: eventInitialAttendee }
       });
 
     } else {
@@ -190,7 +186,7 @@ function retrieveEvents() {
         eventTypeContainer.appendChild(outputType);
         eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
         eventDescriptionContainer.appendChild(outputDescription);
-        eventAttendeeContainer.appendChild(outputAttendeegp);
+        eventAttendeeContainer.appendChild(outputAttendee);
 
       }
 
