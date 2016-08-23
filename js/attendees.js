@@ -2,6 +2,7 @@
 //
 //   Attendees
 //   -> Adding/removing attendees from meetups
+//   Attend button is created in outputEvents()
 //
 // *************************************
 
@@ -17,6 +18,20 @@ function addAttendee() {
     'id': 2,
     'name': 'Leroy Jenkins'
   });
+}
+
+// -------------------------------------
+//   Add an Attend Button
+// -------------------------------------
+
+function addAttendButton() {
+
+  // -------------------------------------
+  //   Private Variables
+  // -------------------------------------
+
+
+
 }
 
 // -------------------------------------

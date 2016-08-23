@@ -181,10 +181,15 @@ function outputEvents(childSnap) {
   var outputDescription = document.createTextNode(event.eventDescription);
   // Event Attendees
   var eventAttendeesContainer = document.createElement('ul');
-  var eventAttendeeContainer = document.createElement('li');
   eventAttendeesContainer.className = 'event-attendees';
-  eventAttendeesContainer.className = 'event-attendee';
+  var eventAttendeeContainer = document.createElement('li');
+  eventAttendeeContainer.className = 'event-attendee';
   var outputAttendee = document.createTextNode(event.eventAttendees.eventAttendee.name);
+  // Attend Button
+  var attendButton = document.createElement('button');
+  attendButton.className = 'btn btn-attend';
+  attendButton.innerHTML = 'Attend';
+  attendButton.dataset.key = childSnap.key;
 
   // Create all DOM elements for events
   eventsContainer.appendChild(eventContainer);
@@ -195,6 +200,7 @@ function outputEvents(childSnap) {
   eventContainer.appendChild(eventDescriptionContainer);
   eventContainer.appendChild(eventAttendeesContainer);
   eventAttendeesContainer.appendChild(eventAttendeeContainer);
+  eventContainer.appendChild(attendButton);
 
   // Output event values as text nodes
   eventNameContainer.appendChild(outputName);
