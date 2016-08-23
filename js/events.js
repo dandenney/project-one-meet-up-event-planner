@@ -64,7 +64,8 @@ function createEvent() {
     var eventEnd = eventEndInput.value;
     var eventDescription = eventDescriptionInput.value;
     var user = firebase.auth().currentUser;
-    var eventInitialAttendee = user.displayName;
+    var eventInitialAttendeeName = user.displayName;
+    var eventInitialAttendeeId = user.uid;
 
     // -------------------------------------
     //   Validate Event Inputs
@@ -90,7 +91,7 @@ function createEvent() {
         'eventBegin': eventBegin,
         'eventEnd': eventEnd,
         'eventDescription': eventDescription,
-        'eventAttendees': { eventAttendee: eventInitialAttendee }
+        'eventAttendees': { 'eventAttendee' : { 'id' : eventInitialAttendeeId, 'name' : eventInitialAttendeeName } }
       });
 
     } else {
