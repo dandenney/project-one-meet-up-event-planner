@@ -6,18 +6,21 @@
 // *************************************
 
 // -------------------------------------
-//   Add creator as the initial attendee
+//   Manually add an attendee
 // -------------------------------------
 
-// function initialAttendee() {
-//
-//   console.clear();
-//   console.log("🍻");
-//
-// };
+function addAttendee() {
+  var attendeesRef = firebase.database().ref('events/-KPtY3wfRtxtd3GJCcQy/eventAttendees');
+  var addAttendeeRef = attendeesRef.push();
+
+  addAttendeeRef.set({
+    'id': 2,
+    'name': 'Leroy Jenkins'
+  });
+}
 
 // -------------------------------------
 //   Initialize
 // -------------------------------------
 
-// initialAttendee();
+// addAttendee();

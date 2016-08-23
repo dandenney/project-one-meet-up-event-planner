@@ -138,8 +138,6 @@ function retrieveEvents() {
 
 function outputEvents(childSnap) {
 
-
-
   // Define events from Firebase
   var event = childSnap.val();
 
