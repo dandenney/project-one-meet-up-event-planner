@@ -138,11 +138,10 @@ function retrieveEvents() {
 
 function outputEvents(childSnap) {
 
+
+
   // Define events from Firebase
   var event = childSnap.val();
-
-  // Define events container
-  var eventsContainer = document.querySelector('#all-events');
 
   // Format Datetimes
   var momentBegin = moment(event.eventBegin).format('lll');
@@ -158,6 +157,8 @@ function outputEvents(childSnap) {
     var momentEnd = moment(event.eventEnd).format('lll');
   }
 
+  // Events container
+  var eventsContainer = document.querySelector('#all-events');
   // Event container
   var eventContainer = document.createElement('article');
   eventContainer.className = 'card event';
@@ -185,7 +186,7 @@ function outputEvents(childSnap) {
   var eventAttendeeContainer = document.createElement('li');
   eventAttendeesContainer.className = 'event-attendees';
   eventAttendeesContainer.className = 'event-attendee';
-  var outputAttendee = document.createTextNode(event.eventAttendee);
+  var outputAttendee = document.createTextNode(event.eventAttendees.eventAttendee.name);
 
   // Create all DOM elements for events
   eventsContainer.appendChild(eventContainer);
