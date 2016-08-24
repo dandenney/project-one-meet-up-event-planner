@@ -124,6 +124,9 @@ function retrieveEvents() {
       // Output events
       outputEvents(childSnap);
 
+      // Add attend buttons
+      addAttendee();
+
       // Route to events
       routeEvents();
 
