@@ -2,7 +2,7 @@
 //
 //   Attendees
 //   -> Adding/removing attendees from meetups
-//   Attend button is created in outputEvents()
+//   -> Attend button is created in outputEvents()
 //
 // *************************************
 
@@ -11,8 +11,7 @@ function addAttendee() {
   // -------------------------------------
   //   Private Variables
   // -------------------------------------
-  // var attendeesRef = firebase.database().ref('events/-KPtY3wfRtxtd3GJCcQy/eventAttendees');
-  // var addAttendeeRef = attendeesRef.push();
+
   var addAttendeeButtons = document.querySelectorAll('.btn-attend');
 
   // -------------------------------------
@@ -24,17 +23,48 @@ function addAttendee() {
     addAttendeeButton.addEventListener('click', function(event) {
 
       var attendId = this.getAttribute('data-key');
+      var currentUser = getCurrentUser();
 
-      console.clear();
-      console.log('I want to attend event:' + ' ' + attendId);
+      // Adds current user to attendees list in Firebase
+      addCurrentUser(currentUser, attendId);
+
     }, true);
   });
 
-  // addAttendeeRef.set({
-  //   'id': 2,
-  //   'name': 'Leroy Jenkins'
-  // });
+  // -------------------------------------
+  //   Get Current User
+  // -------------------------------------
 
+  function getCurrentUser() {
+
+    // -------------------------------------
+    //   Private Variables
+    // -------------------------------------
+
+    // TODO: Refactor, these are duplicated from events
+    var user = firebase.auth().currentUser;
+    var eventAttendeeName = user.displayName;
+    var eventAttendeeID = user.uid;
+    return [ eventAttendeeName, eventAttendeeID];
+
+  }
+
+  function addCurrentUser(currentUser, attendId) {
+
+    // -------------------------------------
+    //   Private Variables
+    // -------------------------------------
+
+    var attendeesRef = firebase.database().ref('events/' + attendId + '/eventAttendees');
+    var addAttendeeRef = attendeesRef.push();
+
+    // Add name to attendees list in Firebase
+    addAttendeeRef.set({
+      'name': currentUser[0],
+      'uid': currentUser[1]
+    });
+
+  }
 
 }
 
