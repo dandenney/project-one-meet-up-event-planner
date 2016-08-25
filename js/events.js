@@ -197,6 +197,10 @@ function outputEvents(childSnap) {
   // Event Range
   var eventRangeContainer = document.createElement('p');
   eventRangeContainer.className = 'event-range';
+  // Event Location
+  var eventLocationContainer = document.createElement('p');
+  eventLocationContainer.className = 'event-location';
+  var outputType = document.createTextNode(event.eventLocationName + ', ' + event.eventStreet + ', ' + event.eventCity + ', ' + event.eventState + ' ' + event.eventZip);
   // Event Description
   var eventDescriptionContainer = document.createElement('p');
   eventDescriptionContainer.className = 'event-description';
@@ -219,6 +223,7 @@ function outputEvents(childSnap) {
   eventContainer.appendChild(eventHostContainer);
   eventContainer.appendChild(eventTypeContainer);
   eventContainer.appendChild(eventRangeContainer);
+  eventContainer.appendChild(eventLocationContainer);
   eventContainer.appendChild(eventDescriptionContainer);
   eventContainer.appendChild(eventAttendeesContainer);
   eventAttendeesContainer.appendChild(eventAttendeeContainer);
@@ -229,6 +234,7 @@ function outputEvents(childSnap) {
   eventHostContainer.appendChild(outputHost);
   eventTypeContainer.appendChild(outputType);
   eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
+  eventLocationContainer.appendChild(outputType);
   eventDescriptionContainer.appendChild(outputDescription);
   eventAttendeeContainer.appendChild(outputAttendee);
 
