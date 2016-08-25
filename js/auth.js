@@ -73,7 +73,7 @@ function firebaseAuth() {
       authFeedback();
 
       // Route to events
-      routeEvents();
+      // routeEvents();
 
       // Keyup on account password
       signInOut.addEventListener('click', function(event) {

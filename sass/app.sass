@@ -82,3 +82,12 @@
 
   &:target ~ .section
     display: none
+
+.repaints
+  transition: opacity 1s ease-in-out
+  visibility: visible
+  opacity: 1
+
+.is-repainting
+  opacity: 0
+  visibility: hidden

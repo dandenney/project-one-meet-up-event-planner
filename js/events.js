@@ -31,6 +31,10 @@ function createEvent() {
   var eventListRef = firebase.database().ref('events');
   var newListRef = eventListRef.push();
 
+  // Events container
+  var eventsContainer = document.querySelector('#all-events');
+  eventsContainer.classList.add('is-repainting');
+
   // -------------------------------------
   //   Event Listeners
   // -------------------------------------
@@ -117,6 +121,8 @@ function createEvent() {
       alert('invalid');
     }
 
+    routeEvents();
+
   }
 
 }
@@ -145,9 +151,6 @@ function retrieveEvents() {
 
       // Add attend buttons
       addAttendee();
-
-      // Route to events
-      routeEvents();
 
     });
   });
@@ -179,6 +182,7 @@ function outputEvents(childSnap) {
 
   // Events container
   var eventsContainer = document.querySelector('#all-events');
+  eventsContainer.classList.add('is-repainting');
   // Event container
   var eventContainer = document.createElement('article');
   eventContainer.className = 'card event';
@@ -238,6 +242,9 @@ function outputEvents(childSnap) {
   eventDescriptionContainer.appendChild(outputDescription);
   eventAttendeeContainer.appendChild(outputAttendee);
 
+
+  eventsContainer.classList.remove('is-repainting');
+
 }
 
 // -------------------------------------
@@ -245,7 +252,11 @@ function outputEvents(childSnap) {
 // -------------------------------------
 
 function routeEvents () {
-  window.location = '/#events';
+  function boom() {
+    window.location = '/';
+  }
+  var eventsRoute = boom();
+  window.setTimeout(boom, 500);
 }
 
 // -------------------------------------
