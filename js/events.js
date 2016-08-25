@@ -21,6 +21,11 @@ function createEvent() {
   var eventTypeInput = document.querySelector('#event-type');
   var eventBeginInput = document.querySelector('#event-begin');
   var eventEndInput = document.querySelector('#event-end');
+  var eventLocationNameInput = document.querySelector('#event-locationName');
+  var eventStreetInput = document.querySelector('#event-street');
+  var eventCityInput = document.querySelector('#event-city');
+  var eventStateInput = document.querySelector('#event-state');
+  var eventZipInput = document.querySelector('#event-zip');
   var eventDescriptionInput = document.querySelector('#event-description');
   var eventCreateInput = document.querySelector('#event-create');
   var eventListRef = firebase.database().ref('events');
@@ -62,6 +67,11 @@ function createEvent() {
     var eventType = eventTypeInput.value;
     var eventBegin = eventBeginInput.value;
     var eventEnd = eventEndInput.value;
+    var eventLocationName = eventLocationNameInput.value;
+    var eventStreet = eventStreetInput.value;
+    var eventCity = eventCityInput.value;
+    var eventState = eventStateInput.value;
+    var eventZip = eventZipInput.value;
     var eventDescription = eventDescriptionInput.value;
     var user = firebase.auth().currentUser;
     var eventInitialAttendeeName = user.displayName;
@@ -77,7 +87,11 @@ function createEvent() {
       eventHostInput.validity.valid &&
       eventTypeInput.validity.valid &&
       eventBeginInput.validity.valid &&
-      eventEndInput.validity.valid
+      eventEndInput.validity.valid &&
+      eventStreetInput.validity.valid &&
+      eventCityInput.validity.valid &&
+      eventStateInput.validity.valid &&
+      eventZipInput.validity.valid
 
     ) {
 
@@ -90,6 +104,11 @@ function createEvent() {
         'eventType': eventType,
         'eventBegin': eventBegin,
         'eventEnd': eventEnd,
+        'eventLocationName': eventLocationName,
+        'eventStreet': eventStreet,
+        'eventCity': eventCity,
+        'eventState': eventState,
+        'eventZip': eventZip,
         'eventDescription': eventDescription,
         'eventAttendees': { 'eventAttendee' : { 'id' : eventInitialAttendeeId, 'name' : eventInitialAttendeeName } }
       });
