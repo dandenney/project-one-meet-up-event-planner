@@ -241,8 +241,6 @@ function outputEvents(childSnap) {
   eventLocationContainer.appendChild(outputType);
   eventDescriptionContainer.appendChild(outputDescription);
   eventAttendeeContainer.appendChild(outputAttendee);
-
-
   eventsContainer.classList.remove('is-repainting');
 
 }
