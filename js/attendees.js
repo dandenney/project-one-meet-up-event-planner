@@ -45,7 +45,7 @@ function addAttendee() {
     var user = firebase.auth().currentUser;
     var eventAttendeeName = user.displayName;
     var eventAttendeeID = user.uid;
-    return [ eventAttendeeName, eventAttendeeID];
+    return [ eventAttendeeName, eventAttendeeID ];
 
   }
 

@@ -117,11 +117,11 @@ function createEvent() {
         'eventAttendees': { 'eventAttendee' : { 'id' : eventInitialAttendeeId, 'name' : eventInitialAttendeeName } }
       });
 
+      routeEvents();
+
     } else {
       alert('invalid');
     }
-
-    routeEvents();
 
   }
 
@@ -245,16 +245,36 @@ function outputEvents(childSnap) {
 
 }
 
-// -------------------------------------
-//   # Route Events
-// -------------------------------------
+function retrieveEventsNew() {
+
+  // -------------------------------------
+  //   Private Variables
+  // -------------------------------------
+
+  var eventsRef = firebase.database().ref('events').orderByKey();
+
+  eventsRef.on('child_added', function(snap) {
+
+    var event = snap.val();
+    var eventsContainer = document.querySelector('#all-events');
+
+    // Create, append and add classes to an article for each event
+    var eventContainer = document.createElement('article');
+    eventsContainer.appendChild(eventContainer);
+    eventContainer.className = 'card event';
+
+    // Create, append and add classes to an h3 for each event name
+    var eventNameContainer = document.createElement('h3');
+    eventContainer.appendChild(eventNameContainer);
+    eventNameContainer.className = 'event-name';
+    eventNameContainer.innerHTML = event.eventName;
+
+  });
+
+}
 
 function routeEvents () {
-  function boom() {
-    window.location = '/';
-  }
-  var eventsRoute = boom();
-  window.setTimeout(boom, 500);
+  window.location = '/#events';
 }
 
 // -------------------------------------
@@ -262,4 +282,4 @@ function routeEvents () {
 // -------------------------------------
 
 createEvent();
-retrieveEvents();
+retrieveEventsNew();
