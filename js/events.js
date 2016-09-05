@@ -258,6 +258,20 @@ function retrieveEventsNew() {
     var event = snap.val();
     var eventsContainer = document.querySelector('#all-events');
 
+    // Format Datetimes
+    var momentBegin = moment(event.eventBegin).format('lll');
+
+    // Create date objects from datetime values
+    var eventBeginDay = new Date(event.eventBegin);
+    var eventEndDay = new Date(event.eventEnd);
+
+    // Output hours if same day, whole date if not
+    if ( eventBeginDay.getDay() === eventEndDay.getDay() ) {
+      var momentEnd =  moment(event.eventEnd).format('LT');
+    } else {
+      var momentEnd = moment(event.eventEnd).format('lll');
+    }
+
     // Create, append and add classes to an article for each event
     var eventContainer = document.createElement('article');
     eventsContainer.appendChild(eventContainer);
@@ -268,6 +282,26 @@ function retrieveEventsNew() {
     eventContainer.appendChild(eventNameContainer);
     eventNameContainer.className = 'event-name';
     eventNameContainer.innerHTML = event.eventName;
+
+    if (event.eventDescription != '') {
+      // Create, append and add classes to an p for each event name
+      var eventDescriptionContainer = document.createElement('p');
+      eventContainer.appendChild(eventDescriptionContainer);
+      eventDescriptionContainer.classDescription = 'event-description';
+      eventDescriptionContainer.innerHTML = event.eventDescription;
+    }
+
+    // Create, append and add classes to a p for each event range
+    var eventRangeContainer = document.createElement('p');
+    eventContainer.appendChild(eventRangeContainer);
+    eventRangeContainer.classRange = 'event-range';
+    eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
+
+    // Create, append and add classes to a p for each event range
+    var eventTypeContainer = document.createElement('p');
+    eventContainer.appendChild(eventTypeContainer);
+    eventTypeContainer.classType = 'event-type';
+    eventTypeContainer.innerHTML = event.eventType;
 
   });
 
