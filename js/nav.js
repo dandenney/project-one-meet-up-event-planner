@@ -9,17 +9,30 @@
 //   Focus on first input
 // -------------------------------------
 
-var authLink = document.querySelector('#js-signInOutAccount');
-
 function focusFirst() {
 
   // -------------------------------------
   //   Private Variables
   // -------------------------------------
 
-  var authFocus = document.querySelector('#auth-email');
-  console.log('this runs');
-  authFocus.focus();
+  var createEventTrigger = document.querySelector('#nav-createAccount');
+  var authAccountTrigger = document.querySelector('#nav-auth');
+
+  // -------------------------------------
+  //   Event Listeners
+  // -------------------------------------
+
+  createEventTrigger.addEventListener('click', function() {
+    window.setTimeout(function () {
+      document.querySelector('#event-name').focus();
+    }, 0);
+  });
+
+  authAccountTrigger.addEventListener('click', function() {
+    window.setTimeout(function () {
+      document.querySelector('#auth-email').focus();
+    }, 0);
+  });
 
 }
 
