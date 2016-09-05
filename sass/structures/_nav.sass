@@ -13,11 +13,9 @@
 // *************************************
 
 .nav
+  background: darken($c-background-invert, 5%)
+  padding: $b-space-xs
   text-align: center
-
-  +respond-to($g-m)
-    display: flex
-    justify-content: center
 
 // -------------------------------------
 //   Modifiers
@@ -51,10 +49,10 @@
     width: 150px
 
 .nav-item
-  margin: $b-space 0 0 0
+  display: inline-block
 
-  +respond-to($g-m)
-    margin: 0 0 0 $b-space
+  + .nav-item
+    margin-left: $b-space
 
 .nav-createAccount
   .is-signedIn &
@@ -64,4 +62,4 @@
   display: none
 
   .is-signedIn &
-    display: block
+    display: inline-block

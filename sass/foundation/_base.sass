@@ -20,47 +20,17 @@ html
   line-height: $b-lineHeight
 
 body
-  display: flex
-  flex-direction: column
   font-size: 100%
-  justify-content: space-between
-
-  +respond-to($g-m)
-    align-content: flex-start
-    flex-direction: row
-    flex-wrap: wrap
 
 main
-  flex-grow: 1
-  overflow-y: scroll
-  padding: $b-space-l 0
   position: relative
 
   +respond-to($g-m)
-    align-self: stretch
-    flex: 1 0 100%
-    order: 2
+    padding: $b-space 0
 
 header
   background: $c-background
   border-bottom: $b-border
-  flex-shrink: 0
-
-  +respond-to($g-m)
-    flex: 1 0 100%
-    order: 1
-
-footer
-  background: darken($c-background-invert, 5%)
-  flex-shrink: 0
-  padding: $b-space-xs
-  position: relative
-  z-index: 3
-
-  +respond-to($g-m)
-    flex: 1 0 100%
-    order: 1
-
 
 // -------------------------------------
 //   Block Content

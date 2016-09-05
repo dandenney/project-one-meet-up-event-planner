@@ -17,6 +17,15 @@
 
     </header>
 
+    <nav class='nav'>
+
+      <a class='nav-item' id='nav-events' href='#events'>View Events</a>
+      <a class='nav-item nav-createEvent' id='nav-createAccount' href='#create-event'>Create an Event</a>
+      <a class='nav-item nav-createAccount' id='nav-createAccount' href='#create-account' >Create an Account</a>
+      <a class='nav-item' href='#auth-account' id='nav-auth' id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
+
+    </nav>
+
     <main>
 
       <section class='row section' id='create-account'>
@@ -37,26 +46,26 @@
                 <fieldset>
                   <label for='your-name'>
                     Your Name
-                    <input autofocus class='input-full has-validation' id='your-name' placeholder='Dan Denney' required type='text' /></label>
+                    <input autofill autofocus class='input-full has-validation' id='your-name' placeholder='Dan Denney' required type='text' /></label>
                 </fieldset>
 
                 <fieldset>
                   <label for='your-title'>
                     Your Job Title (optional)
-                    <input class='input-full has-validation' id='your-title' placeholder='Senior Web Developer' type='text' /></label>
+                    <input autofill class='input-full has-validation' id='your-title' placeholder='Senior Web Developer' type='text' /></label>
                 </fieldset>
 
                 <fieldset>
                   <label for='your-email'>
                     Your Email
-                    <input class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
+                    <input autofill class='input-full has-validation' id ='your-email' placeholder='email@email.com' type='email' required />
                   </label>
                 </fieldset>
 
                 <fieldset>
                   <label for='your-password'>
                     Create a Password
-                    <input class='input-full has-validation' id ='your-password' placeholder='••••••••' type='password' required />
+                    <input autofill class='input-full has-validation' id ='your-password' placeholder='••••••••' type='password' required />
                   </label>
                   <p class='require'>Requirements: <span class='js-require-characters'>At least 8 characters</span>, <span class='js-require-capital'>at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
                 </fieldset>
@@ -178,7 +187,7 @@
             <fieldset class='pts'>
               <label for='event-locationName'>
                 Location Name (optional)
-                <input class='input-full' id ='event-locationName' placeholder='Udacity Project Graduation Room 3D' type='text'>
+                <input autofill class='input-full' id ='event-locationName' placeholder='Udacity Project Graduation Room 3D' type='text'>
               </label>
             </fieldset>
 
@@ -186,7 +195,7 @@
 
               <label for='event-street'>
                 Street
-                <input class='input-full has-validation' id ='event-street' placeholder='123 Easy Street' type='text' required>
+                <input autofill class='input-full has-validation' id ='event-street' placeholder='123 Easy Street' type='text' required>
               </label>
 
             </fieldset>
@@ -197,7 +206,7 @@
 
                 <label for='event-city'>
                   City
-                  <input class='input-full has-validation' id ='event-city' placeholder='Mountain View' type='text' required>
+                  <input autofill class='input-full has-validation' id ='event-city' placeholder='Mountain View' type='text' required>
                 </label>
 
               </fieldset>
@@ -207,7 +216,7 @@
                 <label for='event-state'>
                   State
 
-                  <select class='input-full has-validation' id ='event-state' type='text' required>
+                  <select autofill class='input-full has-validation' id ='event-state' type='text' required>
                     <option value="">Please Choose</option>
                   	<option value="AL">Alabama</option>
                   	<option value="AK">Alaska</option>
@@ -270,7 +279,7 @@
 
                 <label for='event-zip'>
                   Zip Code
-                  <input class='input-full has-validation' id ='event-zip' placeholder='94040' type='text' required>
+                  <input autofill class='input-full has-validation' id ='event-zip' placeholder='94040' type='text' required>
                 </label>
 
               </fieldset>
@@ -308,19 +317,6 @@
       </section>
 
     </main>
-
-    <footer>
-
-      <nav class='nav'>
-
-        <a class='nav-item' id='nav-events' href='#events'>View Events</a>
-        <a class='nav-item nav-createEvent' id='nav-createAccount' href='#create-event'>Create an Event</a>
-        <a class='nav-item nav-createAccount' id='nav-createAccount' href='#create-account' >Create an Account</a>
-        <a class='nav-item' href='#auth-account' id='nav-auth' id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
-
-      </nav>
-
-    </footer>
 
     <script src='https://www.gstatic.com/firebasejs/3.2.1/firebase.js'></script>
     <script>
