@@ -10,12 +10,13 @@
 // -------------------------------------
 
 // Create an account in Firebase
-function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
+function firebaseCreate(firebaseName, firebaseTitle, firebaseEmail, firebasePassword) {
 
   // -------------------------------------
   // ## Private Variables
   // -------------------------------------
   var name = firebaseName;
+  var title = firebaseTitle;
   var email = firebaseEmail;
   var password = firebasePassword;
 
@@ -30,22 +31,23 @@ function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
     console.log(errorCode, errorMessage);
   });
 
-  console.clear();
-  console.log("It gets this far");
-
   firebase.auth().onAuthStateChanged(function(user) {
-    user.sendEmailVerification();
-    user.updateProfile({
-      displayName: name
-    }).then(function() {
 
-      console.log("displayName is " + user.displayName);
-      // Route to events
-      routeEvents();
+    // -------------------------------------
+    //  Private Variables
+    // -------------------------------------
 
-    }, function(error) {
-      console.log('Adding your account failed. Please try again.');
+    var usersRef = firebase.database().ref('users/' + user.uid);
+
+    // -------------------------------------
+    //   Create in Firebase
+    // -------------------------------------
+    usersRef.set({
+      'userName': name,
+      'userTitle': title
     });
+
+    user.sendEmailVerification();
   });
 
   // Add auth class to body
@@ -59,14 +61,13 @@ function firebaseCreate(firebaseName, firebaseEmail, firebasePassword) {
 
 function firebaseAuth() {
 
-  var signInOut = document.querySelector('#js-signInOutAccount');
+  var signInOut = document.querySelector('#nav-auth');
   var signInOutText = document.querySelector('#js-signInOutText');
 
   // Check for a signed in user
   firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {
-      console.log(user.displayName + " is signed in");
       signInOutText.innerHTML = 'Out';
 
       // Add auth class to body
@@ -141,9 +142,9 @@ function firebaseSignOut() {
 
   // Sign out an account
   firebase.auth().signOut().then(function() {
-    // Sign-out successful.
+    console.log('Sign-out successful.');
   }, function(error) {
-    // An error happened.
+    console.log('An error happened.');
   });
 
 };

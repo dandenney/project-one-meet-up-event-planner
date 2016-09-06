@@ -11,6 +11,7 @@ function validation() {
   //   Private Variables
   // -------------------------------------
   var accountName = document.querySelector('#your-name');
+  var accountTitle = document.querySelector('#your-title');
   var accountEmail = document.querySelector('#your-email');
   var accountPassword = document.querySelector('#your-password');
   var accountCreate = document.querySelector('#account-create');
@@ -119,6 +120,7 @@ function validation() {
 
     // Get values for Firebase
     var firebaseName = accountName.value;
+    var firebaseTitle = accountTitle.value;
     var firebaseEmail = accountEmail.value;
     var firebasePassword = accountPassword.value;
 
@@ -126,7 +128,7 @@ function validation() {
     checkPassword();
 
     // Create account in Firebase
-    firebaseCreate(firebaseName, firebaseEmail, firebasePassword);
+    firebaseCreate(firebaseName, firebaseTitle, firebaseEmail, firebasePassword);
 
     // Reset the form and clear feedback
     accountForm.reset();
