@@ -5,6 +5,8 @@
 //
 // *************************************
 
+var authedUser;
+
 // -------------------------------------
 // ## Firebase Create Account
 // -------------------------------------
@@ -68,6 +70,8 @@ function firebaseAuth() {
   firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {
+      var authedUser = user.uid;
+
       signInOutText.innerHTML = 'Out';
 
       // Add auth class to body
@@ -80,6 +84,9 @@ function firebaseAuth() {
       signInOut.addEventListener('click', function(event) {
         firebaseSignOut();
       }, true);
+
+      // Return user ID to global
+      return authedUser;
 
     } else {
       signInOutText.innerHTML = 'In';
