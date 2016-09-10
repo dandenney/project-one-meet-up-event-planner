@@ -107,6 +107,9 @@ function firebaseSignIn() {
 
   accountSignIn.addEventListener('click', function(event) {
 
+    // If the page refreshes, it interrupts Firebase
+    event.preventDefault();
+
     // -------------------------------------
     // ## Private Variables
     // -------------------------------------
@@ -116,6 +119,7 @@ function firebaseSignIn() {
     var signInEmail = signInEmailInput.value;
     var signInPassword = signInPasswordInput.value;
     var authForm = document.querySelector('#js-form-auth');
+    var elAuthMessage = document.querySelector('#feedback-auth');
 
     firebase.auth().signInWithEmailAndPassword(signInEmail, signInPassword).catch(function(error) {
       // Handle Errors here.
@@ -123,6 +127,11 @@ function firebaseSignIn() {
       var errorMessage = error.message;
       // ...
       console.log(errorCode, errorMessage);
+
+      elAuthMessage.innerHTML = error.message;
+      elAuthMessage.classList.add('is-failing');
+      elAuthMessage.classList.add('is-visible');
+
     });
 
     firebaseAuth();
