@@ -32,6 +32,7 @@
 // -------------------------------------
 
 @import 'structures/events'
+@import 'structures/feedback'
 @import 'structures/nav'
 
 // -------------------------------------
@@ -97,37 +98,3 @@
     opacity: 0
   to
     opacity: 1
-
-// Needs to be in a structure
-.has-feedback
-  overflow: hidden
-  position: relative
-
-.feedback
-  border-radius: $b-borderRadius $b-borderRadius 0 0
-  box-shadow: 0 2px 3px rgba(#000, 0.2)
-  display: none
-  left: 0
-  opacity: 0
-  padding: $b-space-s
-  position: absolute
-  right: 0
-  transition: opacity 0.3s ease-in-out
-  top: 0
-  visibility: hidden
-
-  &.is-failing
-    background: $c-failure
-    color: #ffffff
-
-  &.is-visible
-    animation: fadeIn 0.3s ease-in-out forwards
-    display: block
-    opacity: 1
-    visibility: visible
-
-.auth-message
-  min-height: 21px
-
-  &.negative
-    color: $c-failure
