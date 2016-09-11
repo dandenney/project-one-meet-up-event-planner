@@ -22,54 +22,32 @@ function addAttendee() {
   addAttendeeButtons.forEach(function(addAttendeeButton) {
     addAttendeeButton.addEventListener('click', function(event) {
 
+      // -------------------------------------
+      //   Private Variables
+      // -------------------------------------
+
       var attendId = this.getAttribute('data-key');
-      var currentUser = getCurrentUser();
 
       // Adds current user to attendees list in Firebase
-      addCurrentUser(currentUser, attendId);
+      addCurrentUser(attendId);
 
     }, true);
   });
 
-  // -------------------------------------
-  //   Get Current User
-  // -------------------------------------
-
-  function getCurrentUser() {
+  function addCurrentUser(attendId) {
 
     // -------------------------------------
     //   Private Variables
     // -------------------------------------
 
-    // TODO: Refactor, these are duplicated from events
-    var user = firebase.auth().currentUser;
-    var eventAttendeeName = user.displayName;
-    var eventAttendeeID = user.uid;
-    return [ eventAttendeeName, eventAttendeeID ];
-
-  }
-
-  function addCurrentUser(currentUser, attendId) {
-
-    // -------------------------------------
-    //   Private Variables
-    // -------------------------------------
-
-    var attendeesRef = firebase.database().ref('events/' + attendId + '/eventAttendees');
-    var addAttendeeRef = attendeesRef.push();
+    var attendeesRef = firebase.database().ref('events/' + attendId + '/eventAttendees/' + currentUserId);
 
     // Add name to attendees list in Firebase
-    addAttendeeRef.set({
-      'name': currentUser[0],
-      'uid': currentUser[1]
+    attendeesRef.set({
+      'name'  : currentUserName,
+      'title' : currentUserTitle
     });
 
   }
 
 }
-
-// -------------------------------------
-//   Initialize
-// -------------------------------------
-
-// addAttendee();

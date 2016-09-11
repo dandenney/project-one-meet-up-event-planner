@@ -113,7 +113,7 @@ function createEvent() {
         'eventDescription': eventDescription,
         'eventAttendees': {
           'eventAttendee' : {
-            'id'      : currentUserId, 
+            'id'      : currentUserId,
             'name'    : currentUserName,
             'title'   : currentUserTitle }
           }
@@ -311,6 +311,9 @@ function retrieveEventsNew() {
     attendButton.className = 'btn btn-attend';
     attendButton.innerHTML = 'Attend';
     attendButton.dataset.key = snap.key;
+
+    // Add attend buttons
+    addAttendee();
 
   });
 
