@@ -15,7 +15,7 @@ function validation() {
   var accountEmail = document.querySelector('#your-email');
   var accountPassword = document.querySelector('#your-password');
   var accountCreate = document.querySelector('#account-create');
-  var accountForm = document.querySelector('#js-form-account');
+  var accountForm = document.querySelector('#form-account');
   var hasValidation = document.querySelectorAll('.has-validation');
 
   // -------------------------------------
@@ -47,9 +47,9 @@ function validation() {
 
     // Private Variables
     var firstPassword = accountPassword.value;
-    var characterMessage = document.querySelector('.js-require-characters');
-    var capitalMessage = document.querySelector('.js-require-capital');
-    var numberMessage = document.querySelector('.js-require-number');
+    var characterMessage = document.querySelector('.require-characters');
+    var capitalMessage = document.querySelector('.require-capital');
+    var numberMessage = document.querySelector('.require-number');
 
     // Apply validity classes for length
     if (firstPassword.length < 8) {

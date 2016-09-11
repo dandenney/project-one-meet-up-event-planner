@@ -22,7 +22,7 @@
       <a class='nav-item' id='nav-events' href='#events'>View Events</a>
       <a class='nav-item nav-createEvent' id='nav-createAccount' href='#create-event'>Create an Event</a>
       <a class='nav-item nav-createAccount' id='nav-createAccount' href='#create-account' >Create an Account</a>
-      <a class='nav-item' href='#auth-account' id='nav-auth' id='js-signInOutAccount'>Sign <span id='js-signInOutText'>In</span></a>
+      <a class='nav-item' href='#auth-account' id='nav-auth' id='signInOutAccount'>Sign <span id='signInOutText'>In</span></a>
 
     </nav>
 
@@ -36,7 +36,7 @@
 
             <div class='g-b g-b--center g-b--l--2of3'>
 
-              <form class='card form' id='js-form-account'>
+              <form class='card form' id='form-account'>
 
                 <div class='tac'>
                   <h2 class='mbf'>Create an Account</h2>
@@ -67,7 +67,7 @@
                     Create a Password
                     <input autofill class='input-full has-validation' id ='your-password' placeholder='••••••••' type='password' required />
                   </label>
-                  <p class='require'>Requirements: <span class='js-require-characters'>At least 8 characters</span>, <span class='js-require-capital'>at least 1 capital letter</span>, <span class='js-require-number'>at least 1 number</span>.</p>
+                  <p class='require'>Requirements: <span class='require-characters'>At least 8 characters</span>, <span class='require-capital'>at least 1 capital letter</span>, <span class='require-number'>at least 1 number</span>.</p>
                 </fieldset>
 
                 <button class='btn db mhc mtm' id='account-create'>Create</button>
@@ -90,7 +90,7 @@
 
             <div class='g-b g-b--center g-b--l--2of3'>
 
-              <form class='card form' id='js-form-auth'>
+              <form class='card form' id='form-auth'>
 
                 <div class='tac'>
                   <h2 class='mbf'>Sign In</h2>
@@ -128,7 +128,7 @@
 
         <div class='cell cell--s well'>
 
-          <form class='card form mtxl requires-signedIn' id='js-form-event'>
+          <form class='card form mtxl requires-signedIn' id='form-event'>
 
             <h3>What is the event?</h3>
 

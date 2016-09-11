@@ -95,7 +95,7 @@ function firebaseSignIn() {
     var signInPasswordInput = document.querySelector('#auth-password');
     var signInEmail = signInEmailInput.value;
     var signInPassword = signInPasswordInput.value;
-    var authForm = document.querySelector('#js-form-auth');
+    var authForm = document.querySelector('#form-auth');
     var elAuthMessage = document.querySelector('#feedback-auth');
 
     firebase.auth().signInWithEmailAndPassword(signInEmail, signInPassword).catch(function(error) {
@@ -126,7 +126,10 @@ function firebaseSignOut() {
 
   // Sign out an account
   firebase.auth().signOut().then(function() {
-    console.log('Sign-out successful.');
+
+    var signInOutText = document.querySelector('#signInOutText');
+    signInOutText.innerHTML = 'In';
+
   }, function(error) {
     console.log('Sign-out failed');
   });
@@ -145,7 +148,7 @@ function firebaseSignOut() {
 
 function authFeedback(user) {
 
-  var signInOutText = document.querySelector('#js-signInOutText');
+  var signInOutText = document.querySelector('#signInOutText');
   var appBody = document.querySelector('.body');
 
   if (user) {
@@ -155,10 +158,6 @@ function authFeedback(user) {
 
     // Change copy for signing out
     signInOutText.innerHTML = 'Out';
-
-  } else {
-
-    signInOutText.innerHTML = 'In';
 
   }
 

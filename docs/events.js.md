@@ -18,7 +18,7 @@ Private Variables
 -------------------------------------
 
 ```js
-  var eventCreateForm = document.querySelector('#js-form-event');
+  var eventCreateForm = document.querySelector('#form-event');
   var eventNameInput = document.querySelector('#event-name');
   var eventHostInput = document.querySelector('#event-host');
   var eventTypeInput = document.querySelector('#event-type');
