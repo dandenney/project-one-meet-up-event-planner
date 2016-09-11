@@ -115,24 +115,38 @@ function validation() {
   // -------------------------------------
 
   function accountSubmit() {
+
+    // -------------------------------------
+    //   Private Variables
+    // -------------------------------------
+
+    var passwordValidation = checkPassword();
+
     // Prevent form submission
     event.preventDefault();
 
-    // Get values for Firebase
-    var firebaseName = accountName.value;
-    var firebaseTitle = accountTitle.value;
-    var firebaseEmail = accountEmail.value;
-    var firebasePassword = accountPassword.value;
+    if (passwordValidation === true) {
 
-    // Check password requirements
-    checkPassword();
+      // Get values for Firebase
+      var firebaseEmail = accountEmail.value;
+      var firebasePassword = accountPassword.value;
 
-    // Create account in Firebase
-    firebaseCreate(firebaseName, firebaseTitle, firebaseEmail, firebasePassword);
+      // Update current user
+      currentUserName = accountName.value;
+      currentUserTitle = accountTitle.value;
 
-    // Reset the form and clear feedback
-    accountForm.reset();
-    clearForm();
+      // Check password requirements
+      checkPassword();
+
+      // Create account in Firebase
+      firebaseCreate(firebaseEmail, firebasePassword);
+
+      // Reset the form and clear feedback
+      accountForm.reset();
+      clearForm();
+
+    }
+
   };
 
 };

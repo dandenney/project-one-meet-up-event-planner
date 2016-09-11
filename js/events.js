@@ -131,119 +131,119 @@ function createEvent() {
 //   Retrieve Events
 // -------------------------------------
 
-function retrieveEvents() {
-
-  // -------------------------------------
-  //   Private Variables
-  // -------------------------------------
-
-  var eventsRef = firebase.database().ref('events').orderByKey();
-
-  // -------------------------------------
-  //   Retrieve from Firebase
-  // -------------------------------------
-
-  eventsRef.on('value', function(snap) {
-    snap.forEach(function(childSnap) {
-
-      // Output events
-      outputEvents(childSnap);
-
-      // Add attend buttons
-      addAttendee();
-
-    });
-  });
-
-}
+// function retrieveEvents() {
+//
+//   // -------------------------------------
+//   //   Private Variables
+//   // -------------------------------------
+//
+//   var eventsRef = firebase.database().ref('events').orderByKey();
+//
+//   // -------------------------------------
+//   //   Retrieve from Firebase
+//   // -------------------------------------
+//
+//   eventsRef.on('value', function(snap) {
+//     snap.forEach(function(childSnap) {
+//
+//       // Output events
+//       outputEvents(childSnap);
+//
+//       // Add attend buttons
+//       addAttendee();
+//
+//     });
+//   });
+//
+// }
 
 // -------------------------------------
 //   Output Events
 // -------------------------------------
 
-function outputEvents(childSnap) {
-
-  // Define events from Firebase
-  var event = childSnap.val();
-
-  // Format Datetimes
-  var momentBegin = moment(event.eventBegin).format('lll');
-
-  // Create date objects from datetime values
-  var eventBeginDay = new Date(event.eventBegin);
-  var eventEndDay = new Date(event.eventEnd);
-
-  // Output hours if same day, whole date if not
-  if ( eventBeginDay.getDay() === eventEndDay.getDay() ) {
-    var momentEnd =  moment(event.eventEnd).format('LT');
-  } else {
-    var momentEnd = moment(event.eventEnd).format('lll');
-  }
-
-  // Events container
-  var eventsContainer = document.querySelector('#all-events');
-  eventsContainer.classList.add('is-repainting');
-  // Event container
-  var eventContainer = document.createElement('article');
-  eventContainer.className = 'card event';
-  // Event Name
-  var eventNameContainer = document.createElement('h3');
-  eventNameContainer.className = 'event-name';
-  var outputName = document.createTextNode(event.eventName);
-  // Event Host
-  var eventHostContainer = document.createElement('p');
-  eventHostContainer.className = 'event-host';
-  var outputHost = document.createTextNode(event.eventHost);
-  // Event Type
-  var eventTypeContainer = document.createElement('p');
-  eventTypeContainer.className = 'event-type';
-  var outputType = document.createTextNode(event.eventType);
-  // Event Range
-  var eventRangeContainer = document.createElement('p');
-  eventRangeContainer.className = 'event-range';
-  // Event Location
-  var eventLocationContainer = document.createElement('p');
-  eventLocationContainer.className = 'event-location';
-  var outputType = document.createTextNode(event.eventLocationName + ', ' + event.eventStreet + ', ' + event.eventCity + ', ' + event.eventState + ' ' + event.eventZip);
-  // Event Description
-  var eventDescriptionContainer = document.createElement('p');
-  eventDescriptionContainer.className = 'event-description';
-  var outputDescription = document.createTextNode(event.eventDescription);
-  // Event Attendees
-  var eventAttendeesContainer = document.createElement('ul');
-  eventAttendeesContainer.className = 'event-attendees';
-  var eventAttendeeContainer = document.createElement('li');
-  eventAttendeeContainer.className = 'event-attendee';
-  var outputAttendee = document.createTextNode(event.eventAttendees.eventAttendee.name);
-  // Attend Button
-  var attendButton = document.createElement('button');
-  attendButton.className = 'btn btn-attend';
-  attendButton.innerHTML = 'Attend';
-  attendButton.dataset.key = childSnap.key;
-
-  // Create all DOM elements for events
-  eventsContainer.appendChild(eventContainer);
-  eventContainer.appendChild(eventNameContainer);
-  eventContainer.appendChild(eventHostContainer);
-  eventContainer.appendChild(eventTypeContainer);
-  eventContainer.appendChild(eventRangeContainer);
-  eventContainer.appendChild(eventLocationContainer);
-  eventContainer.appendChild(eventDescriptionContainer);
-  eventContainer.appendChild(eventAttendeesContainer);
-  eventAttendeesContainer.appendChild(eventAttendeeContainer);
-  eventContainer.appendChild(attendButton);
-
-  // Output event values as text nodes
-  eventNameContainer.appendChild(outputName);
-  eventHostContainer.appendChild(outputHost);
-  eventTypeContainer.appendChild(outputType);
-  eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
-  eventLocationContainer.appendChild(outputType);
-  eventDescriptionContainer.appendChild(outputDescription);
-  eventAttendeeContainer.appendChild(outputAttendee);
-  eventsContainer.classList.remove('is-repainting');
-
-}
+// function outputEvents(childSnap) {
+//
+//   // Define events from Firebase
+//   var event = childSnap.val();
+//
+//   // Format Datetimes
+//   var momentBegin = moment(event.eventBegin).format('lll');
+//
+//   // Create date objects from datetime values
+//   var eventBeginDay = new Date(event.eventBegin);
+//   var eventEndDay = new Date(event.eventEnd);
+//
+//   // Output hours if same day, whole date if not
+//   if ( eventBeginDay.getDay() === eventEndDay.getDay() ) {
+//     var momentEnd =  moment(event.eventEnd).format('LT');
+//   } else {
+//     var momentEnd = moment(event.eventEnd).format('lll');
+//   }
+//
+//   // Events container
+//   var eventsContainer = document.querySelector('#all-events');
+//   eventsContainer.classList.add('is-repainting');
+//   // Event container
+//   var eventContainer = document.createElement('article');
+//   eventContainer.className = 'card event';
+//   // Event Name
+//   var eventNameContainer = document.createElement('h3');
+//   eventNameContainer.className = 'event-name';
+//   var outputName = document.createTextNode(event.eventName);
+//   // Event Host
+//   var eventHostContainer = document.createElement('p');
+//   eventHostContainer.className = 'event-host';
+//   var outputHost = document.createTextNode(event.eventHost);
+//   // Event Type
+//   var eventTypeContainer = document.createElement('p');
+//   eventTypeContainer.className = 'event-type';
+//   var outputType = document.createTextNode(event.eventType);
+//   // Event Range
+//   var eventRangeContainer = document.createElement('p');
+//   eventRangeContainer.className = 'event-range';
+//   // Event Location
+//   var eventLocationContainer = document.createElement('p');
+//   eventLocationContainer.className = 'event-location';
+//   var outputType = document.createTextNode(event.eventLocationName + ', ' + event.eventStreet + ', ' + event.eventCity + ', ' + event.eventState + ' ' + event.eventZip);
+//   // Event Description
+//   var eventDescriptionContainer = document.createElement('p');
+//   eventDescriptionContainer.className = 'event-description';
+//   var outputDescription = document.createTextNode(event.eventDescription);
+//   // Event Attendees
+//   var eventAttendeesContainer = document.createElement('ul');
+//   eventAttendeesContainer.className = 'event-attendees';
+//   var eventAttendeeContainer = document.createElement('li');
+//   eventAttendeeContainer.className = 'event-attendee';
+//   var outputAttendee = document.createTextNode(event.eventAttendees.eventAttendee.name);
+//   // Attend Button
+//   var attendButton = document.createElement('button');
+//   attendButton.className = 'btn btn-attend';
+//   attendButton.innerHTML = 'Attend';
+//   attendButton.dataset.key = childSnap.key;
+//
+//   // Create all DOM elements for events
+//   eventsContainer.appendChild(eventContainer);
+//   eventContainer.appendChild(eventNameContainer);
+//   eventContainer.appendChild(eventHostContainer);
+//   eventContainer.appendChild(eventTypeContainer);
+//   eventContainer.appendChild(eventRangeContainer);
+//   eventContainer.appendChild(eventLocationContainer);
+//   eventContainer.appendChild(eventDescriptionContainer);
+//   eventContainer.appendChild(eventAttendeesContainer);
+//   eventAttendeesContainer.appendChild(eventAttendeeContainer);
+//   eventContainer.appendChild(attendButton);
+//
+//   // Output event values as text nodes
+//   eventNameContainer.appendChild(outputName);
+//   eventHostContainer.appendChild(outputHost);
+//   eventTypeContainer.appendChild(outputType);
+//   eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
+//   eventLocationContainer.appendChild(outputType);
+//   eventDescriptionContainer.appendChild(outputDescription);
+//   eventAttendeeContainer.appendChild(outputAttendee);
+//   eventsContainer.classList.remove('is-repainting');
+//
+// }
 
 function retrieveEventsNew() {
 
@@ -302,6 +302,13 @@ function retrieveEventsNew() {
     eventContainer.appendChild(eventTypeContainer);
     eventTypeContainer.classType = 'event-type';
     eventTypeContainer.innerHTML = event.eventType;
+
+    // Attend Button
+    var attendButton = document.createElement('button');
+    eventContainer.appendChild(attendButton);
+    attendButton.className = 'btn btn-attend';
+    attendButton.innerHTML = 'Attend';
+    attendButton.dataset.key = snap.key;
 
   });
 

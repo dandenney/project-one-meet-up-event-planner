@@ -1,115 +1,85 @@
 // *************************************
 //
-// ## Authentication in Firebase
-// -> Form handling and data get/send
+//   Component Name
+//   -> Firebase is initialized before all.js
+//   -> Firebase tasks are initialized here
 //
 // *************************************
 
-var authedUser;
-
 // -------------------------------------
-// ## Firebase Create Account
+//  Firebase Create Account
 // -------------------------------------
 
 // Create an account in Firebase
-function firebaseCreate(firebaseName, firebaseTitle, firebaseEmail, firebasePassword) {
+function firebaseCreate(firebaseEmail, firebasePassword) {
 
-  // -------------------------------------
-  // ## Private Variables
-  // -------------------------------------
-  var name = firebaseName;
-  var title = firebaseTitle;
-  var email = firebaseEmail;
-  var password = firebasePassword;
-
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-
-    console.log(display);
+  firebase.auth().createUserWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function(error) {
 
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     // ...
-    console.log(errorCode, errorMessage);
-  });
+    alert(error.message);
 
-  firebase.auth().onAuthStateChanged(function(user) {
-
-    // -------------------------------------
-    //  Private Variables
-    // -------------------------------------
-
-    var usersRef = firebase.database().ref('users/' + user.uid);
-
-    // -------------------------------------
-    //   Create in Firebase
-    // -------------------------------------
-    usersRef.set({
-      'userName': name,
-      'userTitle': title
-    });
-
-    user.sendEmailVerification();
   });
 
   // Add auth class to body
   authFeedback();
 
+  // Update global for new user
+  isNewUser = true;
+
 };
 
 // -------------------------------------
-// ## Firebase Authorization
+//  Firebase Current User
 // -------------------------------------
 
-function firebaseAuth() {
+firebase.auth().onAuthStateChanged(function(user) {
 
   var signInOut = document.querySelector('#nav-auth');
-  var signInOutText = document.querySelector('#js-signInOutText');
 
-  // Check for a signed in user
-  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
 
-    if (user) {
-      var authedUser = user.uid;
+    // Update current user ID
+    currentUserId = user.uid;
 
-      signInOutText.innerHTML = 'Out';
+    // Update the UI
+    authFeedback(user);
 
-      // Add auth class to body
-      authFeedback();
-
-      // Route to events
-      routeEvents();
-
-      // Keyup on account password
-      signInOut.addEventListener('click', function(event) {
-        firebaseSignOut();
-      }, true);
-
-      // Return user ID to global
-      return authedUser;
-
-    } else {
-      signInOutText.innerHTML = 'In';
+    // If its a new user, add to users database
+    if (isNewUser = true) {
+      createUser();
     }
 
-  });
+    // Route to events
+    routeEvents();
 
-};
+    // Keyup on account password
+    signInOut.addEventListener('click', function(event) {
+      firebaseSignOut();
+    }, true);
+
+  } else {
+
+  }
+
+});
 
 // -------------------------------------
-// ## Firebase Sign In
+//  Firebase Sign In
 // -------------------------------------
 
 function firebaseSignIn() {
 
   // -------------------------------------
-  // ## Private Variables
+  //  Private Variables
   // -------------------------------------
 
   var accountSignIn = document.querySelector('#account-signIn');
 
   // -------------------------------------
-  // ## Event Listeners
+  //  Event Listeners
   // -------------------------------------
 
   accountSignIn.addEventListener('click', function(event) {
@@ -118,7 +88,7 @@ function firebaseSignIn() {
     event.preventDefault();
 
     // -------------------------------------
-    // ## Private Variables
+    //  Private Variables
     // -------------------------------------
 
     var signInEmailInput = document.querySelector('#auth-email');
@@ -141,14 +111,12 @@ function firebaseSignIn() {
 
     });
 
-    firebaseAuth();
-
   });
 
 };
 
 // -------------------------------------
-// ## Firebase Sign Out
+//  Firebase Sign Out
 // -------------------------------------
 
 function firebaseSignOut() {
@@ -160,24 +128,44 @@ function firebaseSignOut() {
   firebase.auth().signOut().then(function() {
     console.log('Sign-out successful.');
   }, function(error) {
-    console.log('An error happened.');
+    console.log('Sign-out failed');
   });
+
+  currentUserId     = '';
+  currentUserName   = '';
+  currentUserTitle  = '';
+  isNewUser         = false;
 
 };
 
 // -------------------------------------
-// ## Auth Feedback
+//  Auth Feedback
 // Add a class to the body for UI controls
 // -------------------------------------
 
-function authFeedback() {
+function authFeedback(user) {
+
+  var signInOutText = document.querySelector('#js-signInOutText');
   var appBody = document.querySelector('.body');
-  appBody.classList.add('is-signedIn');
+
+  if (user) {
+
+    // A body class is used for feedback on elements
+    appBody.classList.add('is-signedIn');
+
+    // Change copy for signing out
+    signInOutText.innerHTML = 'Out';
+
+  } else {
+
+    signInOutText.innerHTML = 'In';
+
+  }
+
 };
 
 // -------------------------------------
-// ## Initialize
+//   Initializers
 // -------------------------------------
 
-firebaseAuth();
 firebaseSignIn();
