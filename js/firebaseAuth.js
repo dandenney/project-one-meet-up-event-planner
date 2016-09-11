@@ -13,6 +13,7 @@
 // Create an account in Firebase
 function firebaseCreate(firebaseEmail, firebasePassword) {
 
+  // Firebase's event watcher for creating an account
   firebase.auth().createUserWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function(error) {
 
     // Handle Errors here.
@@ -35,6 +36,7 @@ function firebaseCreate(firebaseEmail, firebasePassword) {
 //  Firebase Current User
 // -------------------------------------
 
+// Firebase's event watcher for auth changes
 firebase.auth().onAuthStateChanged(function(user) {
 
   var signInOut = document.querySelector('#nav-auth');
@@ -49,7 +51,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     // If its a new user, add to users database
     if (isNewUser = true) {
+
       createUser();
+
     }
 
     // Route to events
@@ -59,8 +63,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     signInOut.addEventListener('click', function(event) {
       firebaseSignOut();
     }, true);
-
-  } else {
 
   }
 
@@ -98,6 +100,7 @@ function firebaseSignIn() {
     var authForm = document.querySelector('#form-auth');
     var elAuthMessage = document.querySelector('#feedback-auth');
 
+    // Firebase's event watcher for signing in
     firebase.auth().signInWithEmailAndPassword(signInEmail, signInPassword).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -131,7 +134,9 @@ function firebaseSignOut() {
     signInOutText.innerHTML = 'In';
 
   }, function(error) {
+
     console.log('Sign-out failed');
+
   });
 
   currentUserId     = '';
