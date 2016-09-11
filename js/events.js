@@ -77,9 +77,6 @@ function createEvent() {
     var eventState = eventStateInput.value;
     var eventZip = eventZipInput.value;
     var eventDescription = eventDescriptionInput.value;
-    var user = firebase.auth().currentUser;
-    var eventInitialAttendeeName = user.displayName;
-    var eventInitialAttendeeId = user.uid;
 
     // -------------------------------------
     //   Validate Event Inputs
@@ -114,7 +111,12 @@ function createEvent() {
         'eventState': eventState,
         'eventZip': eventZip,
         'eventDescription': eventDescription,
-        'eventAttendees': { 'eventAttendee' : { 'id' : eventInitialAttendeeId, 'name' : eventInitialAttendeeName } }
+        'eventAttendees': {
+          'eventAttendee' : {
+            'id'      : currentUserId, 
+            'name'    : currentUserName,
+            'title'   : currentUserTitle }
+          }
       });
 
       routeEvents();

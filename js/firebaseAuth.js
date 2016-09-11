@@ -50,9 +50,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     authFeedback(user);
 
     // If its a new user, add to users database
-    if (isNewUser = true) {
-
+    if (isNewUser === true) {
       createUser();
+
+    } else {
+      
+      lookupUser();
 
     }
 
@@ -113,6 +116,9 @@ function firebaseSignIn() {
       elAuthMessage.classList.add('is-visible');
 
     });
+
+    // A user that signs in isn't new
+    isNewUser = false;
 
   });
 

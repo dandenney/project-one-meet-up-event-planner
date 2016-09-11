@@ -28,3 +28,17 @@ function createUser() {
   });
 
 }
+
+function lookupUser() {
+
+  // Create an entry with the user's uid
+  var userRef = firebase.database().ref('users/' + currentUserId);
+
+  userRef.on('value', function(snap) {
+
+    currentUserName = snap.val().userName;
+    currentUserTitle = snap.val().userTitle;
+
+  });
+
+}
