@@ -110,13 +110,7 @@ function createEvent() {
         'eventCity': eventCity,
         'eventState': eventState,
         'eventZip': eventZip,
-        'eventDescription': eventDescription,
-        'eventAttendees': {
-          'eventAttendee' : {
-            'id'      : currentUserId,
-            'name'    : currentUserName,
-            'title'   : currentUserTitle }
-          }
+        'eventDescription': eventDescription
       });
 
       routeEvents();
