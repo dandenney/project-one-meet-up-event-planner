@@ -305,15 +305,33 @@ function retrieveEventsNew() {
     eventTypeContainer.classType = 'event-type';
     eventTypeContainer.innerHTML = event.eventType;
 
-    // Attend Button
-    var attendButton = document.createElement('button');
-    eventContainer.appendChild(attendButton);
-    attendButton.className = 'btn btn-attend';
-    attendButton.innerHTML = 'Attend';
-    attendButton.dataset.key = snap.key;
+    // Use Firebase's exists() to check for
+    var allAttendeesRef = firebase.database().ref('events/' + snap.key + '/eventAttendees/');
 
-    // Add attend buttons
-    addAttendee();
+    allAttendeesRef.on('value', function(snap) {
+
+      // -------------------------------------
+      //   Private Variables
+      // -------------------------------------
+      var isAttending = snap.child(currentUserId).exists();
+
+      console.log(isAttending);
+
+      if (isAttending === false) {
+
+        // Attend Button
+        var attendButton = document.createElement('button');
+        eventContainer.appendChild(attendButton);
+        attendButton.className = 'btn btn-attend';
+        attendButton.innerHTML = 'Attend';
+        attendButton.dataset.key = snap.key;
+
+        // Add attend buttons
+        addAttendee();
+
+      }
+
+    });
 
   });
 
