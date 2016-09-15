@@ -42,6 +42,8 @@ function addAttendee() {
 
     var attendeesRef = firebase.database().ref('events/' + attendId + '/eventAttendees/' + currentUserId);
 
+    console.log(attendeesRef);
+
     // Add name to attendees list in Firebase
     attendeesRef.set({
       'name'  : currentUserName,

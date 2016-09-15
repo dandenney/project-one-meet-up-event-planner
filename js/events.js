@@ -302,30 +302,15 @@ function retrieveEventsNew() {
     // Use Firebase's exists() to check for
     var allAttendeesRef = firebase.database().ref('events/' + snap.key + '/eventAttendees/');
 
-    allAttendeesRef.on('value', function(snap) {
+    // Attend Button
+    var attendButton = document.createElement('button');
+    eventContainer.appendChild(attendButton);
+    attendButton.className = 'btn btn-attend';
+    attendButton.innerHTML = 'Attend';
+    attendButton.dataset.key = snap.key;
 
-      // -------------------------------------
-      //   Private Variables
-      // -------------------------------------
-      var isAttending = snap.child(currentUserId).exists();
-
-      console.log(isAttending);
-
-      if (isAttending === false) {
-
-        // Attend Button
-        var attendButton = document.createElement('button');
-        eventContainer.appendChild(attendButton);
-        attendButton.className = 'btn btn-attend';
-        attendButton.innerHTML = 'Attend';
-        attendButton.dataset.key = snap.key;
-
-        // Add attend buttons
-        addAttendee();
-
-      }
-
-    });
+    // Add attend buttons
+    addAttendee();
 
   });
 
