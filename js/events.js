@@ -39,8 +39,14 @@ function createEvent() {
   //   Event Listeners
   // -------------------------------------
 
-  eventCreateInput.addEventListener('click', function() {
+  eventCreateInput.addEventListener('click', function(event) {
+
+    // Don't submit the form
+    event.preventDefault();
+
+    // Send data to Firebase
     eventSubmit();
+
   });
 
   eventBeginInput.addEventListener('blur', function() {
@@ -118,6 +124,9 @@ function createEvent() {
     } else {
       alert('invalid');
     }
+
+    eventCreateForm.reset();
+    clearForm();
 
   }
 

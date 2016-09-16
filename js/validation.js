@@ -88,29 +88,6 @@ function validation() {
   };
 
   // -------------------------------------
-  //   Visual Feedback
-  // -------------------------------------
-
-  function clearForm() {
-
-    // Get all elements that have validity classes
-    var hasValid = document.getElementsByClassName('is-valid');
-    var hasInvalid = document.getElementsByClassName('is-invalid');
-    var hasActive = document.getElementsByClassName('is-active');
-
-    // Remove validity classes
-    while (hasValid.length)
-      hasValid[0].classList.remove('is-valid');
-    while (hasInvalid.length)
-      hasInvalid[0].classList.remove('is-invalid');
-
-    // Remove active classes
-    while (hasActive.length)
-      hasActive[0].classList.remove('is-active');
-
-  };
-
-  // -------------------------------------
   //   Form Submission
   // -------------------------------------
 
@@ -148,6 +125,29 @@ function validation() {
     }
 
   };
+
+};
+
+// -------------------------------------
+//   Visual Feedback
+// -------------------------------------
+
+function clearForm() {
+
+  // Get all elements that have validity classes
+  var hasValid = document.getElementsByClassName('is-valid');
+  var hasInvalid = document.getElementsByClassName('is-invalid');
+  var hasActive = document.getElementsByClassName('is-active');
+
+  // Remove validity classes
+  while (hasValid.length)
+    hasValid[0].classList.remove('is-valid');
+  while (hasInvalid.length)
+    hasInvalid[0].classList.remove('is-invalid');
+
+  // Remove active classes
+  while (hasActive.length)
+    hasActive[0].classList.remove('is-active');
 
 };
 
