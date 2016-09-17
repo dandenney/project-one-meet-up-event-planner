@@ -50,6 +50,33 @@ function addAttendee() {
       'title' : currentUserTitle
     });
 
+    // Use Firebase's exists() to check for
+    var allAttendeesRef = firebase.database().ref('events/' + attendId + '/eventAttendees/');
+
+    // Use Firebase's event listener
+    allAttendeesRef.on('value', function(buttonSnap) {
+
+      // -------------------------------------
+      //   Private Variables
+      // -------------------------------------
+      var isAttending = buttonSnap.child(currentUserId).exists();
+      var attendingButtons = document.querySelectorAll('[data-key="' + attendId + '"]');
+
+      console.log(attendingButtons);
+
+      // Show attend button if the person isn't attending
+      if (isAttending === true) {
+
+        attendingButtons.forEach(function(attendingButton) {
+
+          attendingButton.classList.add('is-hidden');
+
+        });
+
+      }
+
+    });
+
   }
 
 }

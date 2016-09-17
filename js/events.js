@@ -311,6 +311,7 @@ function retrieveEventsNew() {
     // Use Firebase's exists() to check for
     var allAttendeesRef = firebase.database().ref('events/' + snap.key + '/eventAttendees/');
 
+<<<<<<< c56df047233ac5710174e8caea94bd77faf494d4
     // Attend Button
     var attendButton = document.createElement('button');
     eventContainer.appendChild(attendButton);
@@ -320,6 +321,32 @@ function retrieveEventsNew() {
 
     // Add attend buttons
     addAttendee();
+=======
+    // Use Firebase's event listener
+    allAttendeesRef.on('value', function(buttonSnap) {
+      
+      // -------------------------------------
+      //   Private Variables
+      // -------------------------------------
+      var isAttending = buttonSnap.child(currentUserId).exists();
+
+      // Show attend button if the person isn't attending
+      if (isAttending === false) {
+
+        // Attend Button
+        var attendButton = document.createElement('button');
+        eventContainer.appendChild(attendButton);
+        attendButton.className = 'btn btn-attend';
+        attendButton.innerHTML = 'Attend';
+        attendButton.dataset.key = snap.key;
+
+        // Add attend buttons
+        addAttendee();
+
+      }
+
+    });
+>>>>>>> feat: Remove attend button when a person is attending
 
   });
 
