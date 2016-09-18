@@ -41,6 +41,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   var signInOut = document.querySelector('#nav-auth');
 
+  // Match attendees to buttons
+  attendeeLookup();
+
   if (user) {
 
     // Update current user ID
@@ -58,14 +61,6 @@ firebase.auth().onAuthStateChanged(function(user) {
       lookupUser();
 
     }
-
-    // Match attendees to buttons
-    attendeeLookup();
-
-    // Clear events and retrieve again for attending buttons
-    var eventsContainer = document.querySelector('#all-events');
-    eventsContainer.innerHTML = '';
-    retrieveEventsNew();
 
     // Route to events
     routeEvents();

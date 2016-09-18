@@ -86,7 +86,12 @@ function addAttendee() {
 
 function attendeeLookup () {
 
-  console.clear();
-  console.log(currentUserId);
+  var boom = document.querySelectorAll('.btn-attend');
+
+  console.log(boom);
+
+  boom.forEach(function(boo) {
+    console.log('hi');
+  });
 
 }
