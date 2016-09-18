@@ -54,10 +54,18 @@ firebase.auth().onAuthStateChanged(function(user) {
       createUser();
 
     } else {
-      
+
       lookupUser();
 
     }
+
+    // Match attendees to buttons
+    attendeeLookup();
+
+    // Clear events and retrieve again for attending buttons
+    var eventsContainer = document.querySelector('#all-events');
+    eventsContainer.innerHTML = '';
+    retrieveEventsNew();
 
     // Route to events
     routeEvents();
@@ -145,6 +153,7 @@ function firebaseSignOut() {
 
   });
 
+  // Clear current user values
   currentUserId     = '';
   currentUserName   = '';
   currentUserTitle  = '';

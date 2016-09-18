@@ -42,13 +42,18 @@ function addAttendee() {
 
     var attendeesRef = firebase.database().ref('events/' + attendId + '/eventAttendees/' + currentUserId);
 
-    console.log(attendeesRef);
+    var attendingRef = firebase.database().ref('users/' + currentUserId + '/' + attendId)
 
     // Add name to attendees list in Firebase
     attendeesRef.set({
       'name'  : currentUserName,
       'title' : currentUserTitle
     });
+
+    // Add event ID to user in Firebase
+    attendingRef.set({
+      'attending' : attendId
+    })
 
     // Use Firebase's exists() to check for
     var allAttendeesRef = firebase.database().ref('events/' + attendId + '/eventAttendees/');
@@ -61,8 +66,6 @@ function addAttendee() {
       // -------------------------------------
       var isAttending = buttonSnap.child(currentUserId).exists();
       var attendingButtons = document.querySelectorAll('[data-key="' + attendId + '"]');
-
-      console.log(attendingButtons);
 
       // Show attend button if the person isn't attending
       if (isAttending === true) {
@@ -78,5 +81,12 @@ function addAttendee() {
     });
 
   }
+
+}
+
+function attendeeLookup () {
+
+  console.clear();
+  console.log(currentUserId);
 
 }

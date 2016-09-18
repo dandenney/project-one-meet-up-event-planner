@@ -252,6 +252,8 @@ function createEvent() {
 
 function retrieveEventsNew() {
 
+  console.log('retrieved events');
+
   // -------------------------------------
   //   Private Variables
   // -------------------------------------
@@ -311,30 +313,35 @@ function retrieveEventsNew() {
     // Use Firebase's exists() to check for
     var allAttendeesRef = firebase.database().ref('events/' + snap.key + '/eventAttendees/');
 
-    // Use Firebase's event listener
-    allAttendeesRef.on('value', function(buttonSnap) {
+    // Check for a current user
+    if (currentUserId !== "") {
 
-      // -------------------------------------
-      //   Private Variables
-      // -------------------------------------
-      var isAttending = buttonSnap.child(currentUserId).exists();
+      // Use Firebase's event listener
+      allAttendeesRef.on('value', function(buttonSnap) {
 
-      // Show attend button if the person isn't attending
-      if (isAttending === false) {
+        // -------------------------------------
+        //   Private Variables
+        // -------------------------------------
+        var isAttending = buttonSnap.child(currentUserId).exists();
 
-        // Attend Button
-        var attendButton = document.createElement('button');
-        eventContainer.appendChild(attendButton);
-        attendButton.className = 'btn btn-attend';
-        attendButton.innerHTML = 'Attend';
-        attendButton.dataset.key = snap.key;
+        // Show attend button if the person isn't attending
+        if (isAttending === false) {
 
-        // Add attend buttons
-        addAttendee();
+          // Attend Button
+          var attendButton = document.createElement('button');
+          eventContainer.appendChild(attendButton);
+          attendButton.className = 'btn btn-attend';
+          attendButton.innerHTML = 'Attend';
+          attendButton.dataset.key = snap.key;
 
-      }
+          // Add attend buttons
+          addAttendee();
 
-    });
+        }
+
+      });
+
+    }
 
   });
 
