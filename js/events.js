@@ -251,9 +251,7 @@ function createEvent() {
 // }
 
 function retrieveEventsNew() {
-
-  console.log('retrieved events');
-
+  
   // -------------------------------------
   //   Private Variables
   // -------------------------------------
