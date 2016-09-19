@@ -41,8 +41,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   var signInOut = document.querySelector('#nav-auth');
 
-  // Match attendees to buttons
-  attendeeLookup();
+  // Add attendees to events
+  addAttendee();
 
   if (user) {
 
@@ -61,6 +61,9 @@ firebase.auth().onAuthStateChanged(function(user) {
       lookupUser();
 
     }
+
+    // Show attend buttons where needed
+    // attendingFeedback();
 
     // Route to events
     routeEvents();
