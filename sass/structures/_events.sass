@@ -67,12 +67,14 @@
   + .event-location
     margin-top: 0
 
+.event-attendee,
 .event-location,
 .event-range,
 .event-type
   padding-left: ($b-space * 1.25)
   position: relative
 
+.event-attendee::before,
 .event-location::before,
 .event-range::before,
 .event-type::before
@@ -88,3 +90,14 @@
 
 .event-type::before
   content: url('/img/icn-type.svg')
+
+.event-attendees
+  list-style: none
+  margin: $b-space 0 0 0
+  padding: 0
+
+.event-attendee
+  margin: 0
+
+  &::before
+    content: url('/img/icn-person.svg')

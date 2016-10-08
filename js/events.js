@@ -195,6 +195,7 @@ function retrieveEventsNew() {
     var eventLocationContainer = document.createElement('p');
     eventContainer.appendChild(eventLocationContainer);
     eventLocationContainer.className = 'event-location';
+
     // Check for an event location name
     if (event.eventLocationName != '') {
       eventLocationContainer.innerHTML = event.eventLocationName + '<br />' + event.eventStreet + '<br />' + event.eventCity + ', ' + event.eventState + ' ' + event.eventZip;
@@ -211,6 +212,17 @@ function retrieveEventsNew() {
     attendButton.className = 'btn btn-attend';
     attendButton.innerHTML = 'Attend';
     attendButton.dataset.key = snap.key;
+
+
+    // Create, append and add classes to a p for each attendee
+    var eventAllAttendeesContainer = document.createElement('ul');
+    eventContainer.appendChild(eventAllAttendeesContainer);
+    eventAllAttendeesContainer.className = 'event-attendees';
+
+    allAttendeesRef.on('child_added', function(attendeeAllSnap) {
+      var attendee = attendeeAllSnap.val();
+      eventAllAttendeesContainer.innerHTML += "<li class='event-attendee'>" + attendee.name + "</li>";
+    });
 
   });
 
