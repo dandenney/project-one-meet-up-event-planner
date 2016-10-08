@@ -43,6 +43,7 @@
 
 .event
   flex-basis: 100%
+  transition: flex-basis 0.25s ease-out
 
   + .event
     margin-top: $b-space
@@ -55,7 +56,7 @@
     margin-bottom: 40px
 
   +respond-to($g-l)
-    flex-basis: 47.5%
+    flex-basis: 30%
 
 .event-range,
 .event-type
@@ -101,3 +102,6 @@
 
   &::before
     content: url('/img/icn-person.svg')
+
+  + .event-attendee
+    margin-top: $b-space-xs
