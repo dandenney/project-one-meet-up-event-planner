@@ -288,25 +288,37 @@ function retrieveEventsNew() {
     eventNameContainer.className = 'event-name';
     eventNameContainer.innerHTML = event.eventName;
 
+    // Check for an event description
     if (event.eventDescription != '') {
       // Create, append and add classes to an p for each event name
       var eventDescriptionContainer = document.createElement('p');
       eventContainer.appendChild(eventDescriptionContainer);
-      eventDescriptionContainer.classDescription = 'event-description';
+      eventDescriptionContainer.className = 'event-description';
       eventDescriptionContainer.innerHTML = event.eventDescription;
     }
 
     // Create, append and add classes to a p for each event range
     var eventRangeContainer = document.createElement('p');
     eventContainer.appendChild(eventRangeContainer);
-    eventRangeContainer.classRange = 'event-range';
+    eventRangeContainer.className = 'event-range';
     eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
 
     // Create, append and add classes to a p for each event range
     var eventTypeContainer = document.createElement('p');
     eventContainer.appendChild(eventTypeContainer);
-    eventTypeContainer.classType = 'event-type';
+    eventTypeContainer.className = 'event-type';
     eventTypeContainer.innerHTML = event.eventType;
+
+    // Create, append and add classes to a p for each event location
+    var eventLocationContainer = document.createElement('p');
+    eventContainer.appendChild(eventLocationContainer);
+    eventLocationContainer.className = 'event-location';
+    // Check for an event location name
+    if (event.eventLocationName != '') {
+      eventLocationContainer.innerHTML = event.eventLocationName + '<br />' + event.eventStreet + '<br />' + event.eventCity + ', ' + event.eventState + ' ' + event.eventZip;
+    } else {
+      eventLocationContainer.innerHTML = event.eventStreet + '<br />' + event.eventCity + ', ' + event.eventState + ' ' + event.eventZip;
+    }
 
     // Use Firebase's exists() to check for
     var allAttendeesRef = firebase.database().ref('events/' + snap.key + '/eventAttendees/');

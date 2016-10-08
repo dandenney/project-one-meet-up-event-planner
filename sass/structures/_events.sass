@@ -56,3 +56,35 @@
 
   +respond-to($g-l)
     flex-basis: 47.5%
+
+.event-range,
+.event-type
+  margin: 0 0 $b-space-xs 0
+
+.event-locationName
+  margin-bottom: 0
+
+  + .event-location
+    margin-top: 0
+
+.event-location,
+.event-range,
+.event-type
+  padding-left: ($b-space * 1.25)
+  position: relative
+
+.event-location::before,
+.event-range::before,
+.event-type::before
+  left: 0
+  position: absolute
+  top: 2px
+
+.event-location::before
+  content: url('/img/icn-location.svg')
+
+.event-range::before
+  content: url('/img/icn-date.svg')
+
+.event-type::before
+  content: url('/img/icn-type.svg')
