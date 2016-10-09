@@ -33,7 +33,6 @@ function createEvent() {
 
   // Events container
   var eventsContainer = document.querySelector('#all-events');
-  eventsContainer.classList.add('is-repainting');
 
   // -------------------------------------
   //   Event Listeners
