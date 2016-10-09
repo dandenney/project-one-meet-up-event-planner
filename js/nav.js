@@ -17,6 +17,7 @@ function focusFirst() {
 
   var createEventTrigger = document.querySelector('#nav-createAccount');
   var authAccountTrigger = document.querySelector('#nav-auth');
+  var forgotPasswordTrigger = document.querySelector('#nav-forgot');
 
   // -------------------------------------
   //   Event Listeners
@@ -31,6 +32,12 @@ function focusFirst() {
   authAccountTrigger.addEventListener('click', function() {
     window.setTimeout(function () {
       document.querySelector('#auth-email').focus();
+    }, 0);
+  });
+
+  forgotPasswordTrigger.addEventListener('click', function() {
+    window.setTimeout(function () {
+      document.querySelector('#forgot-email').focus();
     }, 0);
   });
 

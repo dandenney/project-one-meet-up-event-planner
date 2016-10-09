@@ -180,8 +180,38 @@ function authFeedback(user) {
 
 };
 
+function resetPassword() {
+
+  // -------------------------------------
+  //  Private Variables
+  // -------------------------------------
+
+  var forgotPasswordSubmit = document.querySelector('#account-forgot');
+  var emailAddressInput = document.querySelector('#forgot-email');
+
+  // -------------------------------------
+  //  Event Listeners
+  // -------------------------------------
+
+  forgotPasswordSubmit.addEventListener('click', function(event) {
+
+    // If the page refreshes, it interrupts Firebase
+    event.preventDefault();
+    var emailAddress = emailAddressInput.value;
+
+    firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+      window.location = '/#auth-account';
+    }, function(error) {
+      console.log('sending failed');
+    });
+
+  });
+
+}
+
 // -------------------------------------
 //   Initializers
 // -------------------------------------
 
 firebaseSignIn();
+resetPassword();
