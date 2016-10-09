@@ -163,9 +163,14 @@ function retrieveEventsNew() {
     eventsContainer.appendChild(eventContainer);
     eventContainer.className = 'card event';
 
+    // Create, append and add classes to an article for each event
+    var eventMetaContainer = document.createElement('section');
+    eventContainer.appendChild(eventMetaContainer);
+    eventMetaContainer.className = 'event-meta';
+
     // Create, append and add classes to an h3 for each event name
     var eventNameContainer = document.createElement('h3');
-    eventContainer.appendChild(eventNameContainer);
+    eventMetaContainer.appendChild(eventNameContainer);
     eventNameContainer.className = 'event-name';
     eventNameContainer.innerHTML = event.eventName;
 
@@ -173,26 +178,26 @@ function retrieveEventsNew() {
     if (event.eventDescription != '') {
       // Create, append and add classes to an p for each event name
       var eventDescriptionContainer = document.createElement('p');
-      eventContainer.appendChild(eventDescriptionContainer);
+      eventMetaContainer.appendChild(eventDescriptionContainer);
       eventDescriptionContainer.className = 'event-description';
       eventDescriptionContainer.innerHTML = event.eventDescription;
     }
 
     // Create, append and add classes to a p for each event range
     var eventRangeContainer = document.createElement('p');
-    eventContainer.appendChild(eventRangeContainer);
+    eventMetaContainer.appendChild(eventRangeContainer);
     eventRangeContainer.className = 'event-range';
     eventRangeContainer.innerHTML = momentBegin + ' to ' + momentEnd;
 
     // Create, append and add classes to a p for each event range
     var eventTypeContainer = document.createElement('p');
-    eventContainer.appendChild(eventTypeContainer);
+    eventMetaContainer.appendChild(eventTypeContainer);
     eventTypeContainer.className = 'event-type';
     eventTypeContainer.innerHTML = event.eventType;
 
     // Create, append and add classes to a p for each event location
     var eventLocationContainer = document.createElement('p');
-    eventContainer.appendChild(eventLocationContainer);
+    eventMetaContainer.appendChild(eventLocationContainer);
     eventLocationContainer.className = 'event-location';
 
     // Check for an event location name
@@ -205,23 +210,27 @@ function retrieveEventsNew() {
     // Use Firebase's exists() to check for
     var allAttendeesRef = firebase.database().ref('events/' + snap.key + '/eventAttendees/');
 
-    // Attend Button
-    var attendButton = document.createElement('button');
-    eventContainer.appendChild(attendButton);
-    attendButton.className = 'btn btn-attend';
-    attendButton.innerHTML = 'Attend';
-    attendButton.dataset.key = snap.key;
-
+    // Create, append and add classes to an article for each event
+    var eventAttendanceContainer = document.createElement('section');
+    eventContainer.appendChild(eventAttendanceContainer);
+    eventAttendanceContainer.className = 'event-attendance';
 
     // Create, append and add classes to a p for each attendee
     var eventAllAttendeesContainer = document.createElement('ul');
-    eventContainer.appendChild(eventAllAttendeesContainer);
+    eventAttendanceContainer.appendChild(eventAllAttendeesContainer);
     eventAllAttendeesContainer.className = 'event-attendees';
 
     allAttendeesRef.on('child_added', function(attendeeAllSnap) {
       var attendee = attendeeAllSnap.val();
       eventAllAttendeesContainer.innerHTML += "<li class='event-attendee'>" + attendee.name + "</li>";
     });
+
+    // Attend Button
+    var attendButton = document.createElement('button');
+    eventAttendanceContainer.appendChild(attendButton);
+    attendButton.className = 'btn btn-attend';
+    attendButton.innerHTML = 'Attend';
+    attendButton.dataset.key = snap.key;
 
   });
 
