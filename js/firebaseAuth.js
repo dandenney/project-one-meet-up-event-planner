@@ -54,16 +54,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     // If its a new user, add to users database
     if (isNewUser === true) {
+
       createUser();
 
     } else {
 
       lookupUser();
+      attendingFeedback();
 
     }
-
-    // Show attend buttons where needed
-    // attendingFeedback();
 
     // Route to events
     routeEvents();
