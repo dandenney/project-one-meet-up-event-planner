@@ -89,31 +89,22 @@ function attendingFeedback () {
   var attendingRef = firebase.database().ref('users/' + currentUserId + '/attending/');
 
   // -------------------------------------
-  //   Private Variables
-  // -------------------------------------
-
-  // -------------------------------------
   //   Event Listeners
   // -------------------------------------
 
   // Use Firebase's event listener
   attendingRef.on('value', function(attendingButtonSnap) {
 
-    // Use Firebase's event listener
-    attendingRef.on('value', function(attendingButtonSnap) {
+    var addAttendeeButtons = document.querySelectorAll('.btn-attend');
 
-      var addAttendeeButtons = document.querySelectorAll('.btn-attend');
+    addAttendeeButtons.forEach(function(boom) {
 
-      addAttendeeButtons.forEach(function(boom) {
+      var eventId = boom.getAttribute('data-key');
+      var isAttending = attendingButtonSnap.child(eventId).exists();
 
-        var eventId = boom.getAttribute('data-key');
-        var isAttending = attendingButtonSnap.child(eventId).exists();
-
-        if (isAttending === true) {
-          boom.classList.add('is-hidden');
-        }
-
-      });
+      if (isAttending === true) {
+        boom.classList.add('is-hidden');
+      }
 
     });
 
