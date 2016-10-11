@@ -131,7 +131,7 @@ function createEvent() {
 
 }
 
-function retrieveEventsNew() {
+function retrieveEvents() {
 
   // -------------------------------------
   //   Private Variables
@@ -245,4 +245,4 @@ function routeEvents () {
 // -------------------------------------
 
 createEvent();
-retrieveEventsNew();
+retrieveEvents();

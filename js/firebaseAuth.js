@@ -144,7 +144,9 @@ function firebaseSignOut() {
     var signInOutText = document.querySelector('#signInOutText');
     signInOutText.innerHTML = 'In';
 
-    console.log('Sign out succeded');
+    // Sledgehammer solution
+    // Sign out/in overwrites the most recent event
+    // Forcing a page refresh clears the session
     setTimeout(function(){
       window.location.reload();
     },100);
@@ -152,7 +154,6 @@ function firebaseSignOut() {
   }, function(error) {
 
     console.log('Sign out failed');
-
 
   });
 
