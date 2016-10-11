@@ -144,9 +144,15 @@ function firebaseSignOut() {
     var signInOutText = document.querySelector('#signInOutText');
     signInOutText.innerHTML = 'In';
 
+    console.log('Sign out succeded');
+    setTimeout(function(){
+      window.location.reload();
+    },100);
+
   }, function(error) {
 
-    console.log('Sign-out failed');
+    console.log('Sign out failed');
+
 
   });
 
