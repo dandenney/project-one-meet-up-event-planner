@@ -232,6 +232,9 @@ function retrieveEvents() {
     attendButton.innerHTML = 'Attend';
     attendButton.dataset.key = snap.key;
 
+    // Add attend button functionality to the loop
+    addAttendee();
+
   });
 
 }
