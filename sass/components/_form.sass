@@ -43,11 +43,14 @@
 
 fieldset
   border: 0
+  margin-top: $b-space
   padding: 0
 
-  + fieldset,
   + fieldset.g-b
     margin-top: $b-space
+
+    +respond-to($g-m)
+      margin-top: 0
 
 label
  color: mix(#fff, $bigStone, 20%)
