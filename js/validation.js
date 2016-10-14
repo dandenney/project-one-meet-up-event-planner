@@ -129,6 +129,64 @@ function validation() {
 };
 
 // -------------------------------------
+//   Check Datetimes
+// -------------------------------------
+
+function validationDateTime() {
+
+  // Private Variables
+  var startInput = document.querySelector('#event-begin');
+  var endInput = document.querySelector('#event-end');
+
+  // Event listeners
+  endInput.addEventListener('change', function() {
+
+    compareTimes();
+
+  });
+
+  // Event listeners
+  endInput.addEventListener('blur', function() {
+
+    compareTimes();
+
+  });
+
+  // Compare times
+  function compareTimes() {
+
+    var startDateTime = new Date(startInput.value);
+    var endDateTime = new Date(endInput.value);
+
+    if (endDateTime > startDateTime) {
+
+      isAfter = true;
+      endInput.classList.remove('is-invalid');
+      endInput.classList.add('is-valid');
+      retrieveValidation(isAfter);
+
+    } else {
+
+      isAfter = false;
+      endInput.classList.remove('is-valid');
+      endInput.classList.add('is-invalid');
+      retrieveValidation(isAfter);
+
+    }
+
+  };
+
+}
+
+function retrieveValidation(isAfter) {
+
+  return isAfter;
+
+}
+
+
+
+// -------------------------------------
 //   Visual Feedback
 // -------------------------------------
 
@@ -156,3 +214,4 @@ function clearForm() {
 // -------------------------------------
 
 validation();
+validationDateTime();

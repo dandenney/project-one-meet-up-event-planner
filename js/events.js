@@ -82,7 +82,8 @@ function createEvent() {
     var eventState = eventStateInput.value;
     var eventZip = eventZipInput.value;
     var eventDescription = eventDescriptionInput.value;
-
+    var eventEndAfter = retrieveValidation(isAfter);
+    
     // -------------------------------------
     //   Validate Event Inputs
     // -------------------------------------
@@ -97,7 +98,8 @@ function createEvent() {
       eventStreetInput.validity.valid &&
       eventCityInput.validity.valid &&
       eventStateInput.validity.valid &&
-      eventZipInput.validity.valid
+      eventZipInput.validity.valid &&
+      eventEndAfter === true
 
     ) {
 
@@ -118,14 +120,14 @@ function createEvent() {
         'eventDescription': eventDescription
       });
 
+      eventCreateForm.reset();
+      clearForm();
+
       routeEvents();
 
     } else {
       alert('invalid');
     }
-
-    eventCreateForm.reset();
-    clearForm();
 
   }
 
