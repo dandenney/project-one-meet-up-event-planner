@@ -3,8 +3,8 @@ A meet-up event planner app as project one of [Udacity's Senior Web Developer Na
 
 ## Setup
 
-- Clone the repo
+Clone the repo
 ```
-npm install
-gulp
+$ npm install
+$ gulp
 ```
