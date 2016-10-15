@@ -210,18 +210,20 @@
 
             <div class='g pts'>
 
-              <fieldset class='g-b g-b--m--1of2'>
+              <fieldset class='g-b g-b--m--1of2 por'>
                 <label for='event-begin'>
                   Begins
                   <input class='input-full has-validation' id ='event-begin' type='datetime-local' required />
                 </label>
+                <p id='require-future' class='require require--absolute is-hidden'>Please make the event begin in the future.</p>
               </fieldset>
 
-              <fieldset class='g-b g-b--m--1of2'>
+              <fieldset class='g-b g-b--m--1of2 por'>
                 <label for='event-end'>
                   Ends
                   <input class='input-full has-validation' id ='event-end' type='datetime-local' required />
                 </label>
+                <p id='require-after' class='require require--absolute is-hidden'>Please make the event end after it begins.</p>
               </fieldset>
 
             </div>

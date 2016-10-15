@@ -24,7 +24,7 @@ function validation() {
 
   // Blur on inputs
   hasValidation.forEach(function(validationItem) {
-    validationItem.addEventListener('input', function(event) {
+    validationItem.addEventListener('blur', function(event) {
       this.classList.add('is-active');
     }, true);
   });
@@ -229,17 +229,71 @@ function validationDateTime() {
 
   });
 
+  // Event listeners
+  endInput.addEventListener('blur', function() {
+
+    compareTimes();
+
+  });
+
+
+  startInput.addEventListener('input', function() {
+
+    compareStartTime();
+
+  });
+
+  startInput.addEventListener('blur', function() {
+
+    compareStartTime();
+
+  });
+
+  // Compare start date to today's datetimes
+  function compareStartTime() {
+
+    // Private Variables
+    // Current time is accurate but future dates subtract 4 hours
+    // This substracts 4 hours from the present time to make the comparison accurate
+    var present = new Date( (new Date) * 1 - 1000 * 7200 * 2 );
+    var startDateTime = new Date(startInput.value);
+    var requireFuture = document.querySelector('#require-future');
+
+    if (startDateTime > present) {
+
+      isInTheFuture = true;
+      startInput.classList.remove('is-invalid');
+      startInput.classList.add('is-valid');
+      requireFuture.classList.add('is-hidden');
+      retrieveFuture(isInTheFuture);
+
+    } else {
+
+      isInTheFuture = false;
+      startInput.classList.remove('is-valid');
+      startInput.classList.add('is-invalid');
+      requireFuture.classList.remove('is-hidden');
+      retrieveFuture(isInTheFuture);
+
+    }
+
+  }
+
   // Compare times
   function compareTimes() {
 
+    // Private Variables
     var startDateTime = new Date(startInput.value);
     var endDateTime = new Date(endInput.value);
+    var requireAfter = document.querySelector('#require-after');
 
+    // Conditional check for date comparison
     if (endDateTime > startDateTime) {
 
       isAfter = true;
       endInput.classList.remove('is-invalid');
       endInput.classList.add('is-valid');
+      requireAfter.classList.add('is-hidden');
       retrieveValidation(isAfter);
 
     } else {
@@ -247,6 +301,7 @@ function validationDateTime() {
       isAfter = false;
       endInput.classList.remove('is-valid');
       endInput.classList.add('is-invalid');
+      requireAfter.classList.remove('is-hidden');
       retrieveValidation(isAfter);
 
     }
@@ -258,6 +313,12 @@ function validationDateTime() {
 function retrieveValidation(isAfter) {
 
   return isAfter;
+
+}
+
+function retrieveFuture(isInTheFuture) {
+
+  return isInTheFuture;
 
 }
 

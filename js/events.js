@@ -83,6 +83,7 @@ function createEvent() {
     var eventZip = eventZipInput.value;
     var eventDescription = eventDescriptionInput.value;
     var eventEndAfter = retrieveValidation(isAfter);
+    var eventFuture = retrieveFuture(isInTheFuture);
 
     // -------------------------------------
     //   Validate Event Inputs
@@ -99,7 +100,9 @@ function createEvent() {
       eventCityInput.validity.valid &&
       eventStateInput.validity.valid &&
       eventZipInput.validity.valid &&
-      eventEndAfter === true
+      eventEndAfter === true &&
+      eventFuture === true
+
 
     ) {
 
