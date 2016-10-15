@@ -83,7 +83,7 @@ function createEvent() {
     var eventZip = eventZipInput.value;
     var eventDescription = eventDescriptionInput.value;
     var eventEndAfter = retrieveValidation(isAfter);
-    
+
     // -------------------------------------
     //   Validate Event Inputs
     // -------------------------------------
@@ -122,11 +122,8 @@ function createEvent() {
 
       eventCreateForm.reset();
       clearForm();
-
       routeEvents();
 
-    } else {
-      alert('invalid');
     }
 
   }

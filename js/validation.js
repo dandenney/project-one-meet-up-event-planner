@@ -24,13 +24,13 @@ function validation() {
 
   // Blur on inputs
   hasValidation.forEach(function(validationItem) {
-    validationItem.addEventListener('blur', function(event) {
+    validationItem.addEventListener('input', function(event) {
       this.classList.add('is-active');
     }, true);
   });
 
   // Keyup on account password
-  accountPassword.addEventListener('keyup', function(event) {
+  accountPassword.addEventListener('input', function(event) {
     checkPassword();
   }, true);
 
@@ -139,14 +139,7 @@ function validationDateTime() {
   var endInput = document.querySelector('#event-end');
 
   // Event listeners
-  endInput.addEventListener('change', function() {
-
-    compareTimes();
-
-  });
-
-  // Event listeners
-  endInput.addEventListener('blur', function() {
+  endInput.addEventListener('input', function() {
 
     compareTimes();
 
