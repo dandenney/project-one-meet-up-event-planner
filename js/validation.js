@@ -35,8 +35,11 @@ function validation() {
   }, true);
 
   // Submit of account form
-  accountForm.addEventListener('submit', function(event) {
+  accountCreate.addEventListener('click', function(event) {
+
+    event.preventDefault();
     accountSubmit();
+
   }, true);
 
   // -------------------------------------
@@ -62,6 +65,7 @@ function validation() {
 
     // Apply validity classes for required capital letter
     if (!firstPassword.match(/[A-Z]/g)) {
+      console.log('test');
       capitalMessage.classList.remove('is-valid');
       capitalMessage.classList.add('is-invalid');
     } else {
@@ -98,11 +102,12 @@ function validation() {
     // -------------------------------------
 
     var passwordValidation = checkPassword();
+    var emailValidation = retrieveValidation(emailIsValid);
 
-    // Prevent form submission
-    event.preventDefault();
+    console.clear();
+    console.log(passwordValidation + ' ' + emailValidation);
 
-    if (passwordValidation === true) {
+    if (passwordValidation === true && emailValidation === true) {
 
       // Get values for Firebase
       var firebaseEmail = accountEmail.value;
@@ -127,6 +132,85 @@ function validation() {
   };
 
 };
+
+// -------------------------------------
+//   Validate Email
+// -------------------------------------
+
+function validationEmail() {
+
+  // Private variables
+  var emailCreateInput = document.querySelector('#your-email');
+  var emailRequireInput = document.querySelector('#require-email');
+
+  // Event Listeners
+  emailCreateInput.addEventListener('blur', function() {
+
+    // Private variables
+    var emailCreate = emailCreateInput.value;
+    var invalid = !emailCreate.match(/[@]\w+\.+\w/g);
+    var missingSymbol = !emailCreate.match(/[@]/g);
+    var missingPart = !emailCreate.match(/[@]\w/g);
+    var missingPeriod = !emailCreate.match(/[@]\w+\./g);
+    var missingTLD = !emailCreate.match(/[@]\w+\.+\w/g);
+
+    if (invalid) {
+
+      emailRequireInput.classList.remove('is-hidden');
+      emailCreateInput.classList.remove('is-valid');
+      emailCreateInput.classList.add('is-invalid');
+      var missing = [];
+      var fixes = missing.join();
+
+      if (missingSymbol) {
+
+        missing.push(' include an @ in the email address');
+
+      }
+
+      if (missingPart) {
+
+        missing.push(' enter a part following the @');
+
+      }
+
+      if (missingPeriod) {
+
+        missing.push(' include a . after the @');
+
+      }
+
+      if (missingTLD) {
+
+        missing.push(' include a part after . after the @');
+
+      }
+
+      emailRequireInput.innerHTML = 'Please:' + missing + ', (example: email@email.com)';
+      emailIsValid = false;
+
+    } else {
+
+      missing = [];
+      emailRequireInput.classList.add('is-hidden');
+      emailCreateInput.classList.remove('is-invalid');
+      emailCreateInput.classList.remove('is-valid');
+      emailIsValid = true;
+
+    }
+
+    retrieveEmailValidity(emailIsValid);
+
+  });
+
+}
+
+function retrieveEmailValidity(emailIsValid) {
+
+  console.log(emailIsValid);
+  return emailIsValid;
+
+}
 
 // -------------------------------------
 //   Check Datetimes
@@ -207,4 +291,5 @@ function clearForm() {
 // -------------------------------------
 
 validation();
+validationEmail();
 validationDateTime();
