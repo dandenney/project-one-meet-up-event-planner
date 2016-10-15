@@ -113,8 +113,6 @@ function firebaseSignIn() {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // ...
-      console.log(errorCode, errorMessage);
 
       elAuthMessage.innerHTML = error.message;
       elAuthMessage.classList.add('is-failing');
@@ -152,8 +150,6 @@ function firebaseSignOut() {
     },100);
 
   }, function(error) {
-
-    console.log('Sign out failed');
 
   });
 
@@ -209,7 +205,7 @@ function resetPassword() {
     firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
       window.location = '/#auth-account';
     }, function(error) {
-      console.log('sending failed');
+      
     });
 
   });
