@@ -8,10 +8,10 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 gulp.task('default', ['copy-html', 'copy-images', 'styles', 'scripts'], function() {
-	gulp.watch('sass/**/*.sass', ['styles']);
-	gulp.watch('js/**/*.js', ['scripts']);
-	gulp.watch('*.html', ['copy-html']);
-	gulp.watch('*.html').on('change', browserSync.reload);
+	gulp.watch('src/sass/**/*.sass', ['styles']);
+	gulp.watch('src/js/**/*.js', ['scripts']);
+	gulp.watch('src/*.html', ['copy-html']);
+	gulp.watch('src/*.html').on('change', browserSync.reload);
 
 	browserSync.init({
 		server: './dist'
@@ -27,31 +27,31 @@ gulp.task('dist', [
 ]);
 
 gulp.task('scripts', function() {
-	gulp.src('js/**/*.js')
+	gulp.src('src/js/**/*.js')
 		.pipe(concat('all.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('scripts-dist', function() {
-	gulp.src('js/**/*.js')
+	gulp.src('src/js/**/*.js')
 		.pipe(concat('all.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('copy-html', function() {
-	gulp.src('*.html')
+	gulp.src('src/*.html')
 		.pipe(gulp.dest('./dist'));
 });
 
 gulp.task('copy-images', function() {
-	gulp.src('img/*')
+	gulp.src('src/img/*')
 		.pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('styles', function() {
-	gulp.src('sass/**/*.sass')
+	gulp.src('src/sass/**/*.sass')
 		.pipe(sass({
 			outputStyle: 'compressed'
 		}).on('error', sass.logError))
