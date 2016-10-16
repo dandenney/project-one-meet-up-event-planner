@@ -1,0 +1,57 @@
+// *************************************
+//
+//   Button
+//   -> Buttons
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .btn
+//   / ...
+//
+// *************************************
+
+.btn
+  background: linear-gradient( to bottom, #4ea1d8, #2980b9)
+  border: 1px solid #4197da
+  border-radius: $b-borderRadius
+  box-shadow: 0 -1px 1px rgba(#f5f5f5, 0.7), 0 2px 2px 0 rgba(#d5d5d5, 0.8)
+  color: $c-text-invert
+  font-family: $b-fontFamily
+  font-size: $b-fontSize
+  padding: $b-space-xs $b-space-l
+  position: relative
+  text-shadow: 0 -1px 0 mix(#000, #4197da, 10%)
+  text-transform: uppercase
+
+  &:active,
+  &:focus,
+  &:hover
+    background: linear-gradient( to bottom, mix(#000, #4ea1d8, 10%), mix(#000, #2980b9, 10%))
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+.btn-attend
+  display: none
+  background: linear-gradient( to bottom, #f5fafd, #e0eff9)
+  border: 1px solid mix(#fff, #e0eff9, 50%)
+  border-radius: $b-borderRadius
+  box-shadow: none
+  color: #2684bd
+  margin: $b-space auto 0
+  text-shadow: 0 -1px 0 #e0eff9
+  text-transform: uppercase
+
+  &:active,
+  &:focus,
+  &:hover
+    background: linear-gradient( to bottom, mix(#fff, #f5fafd, 40%), mix(#fff, #e0eff9, 40%))
+
+  .is-signedIn &
+    display: block
+
+    &.is-hidden
+      display: none

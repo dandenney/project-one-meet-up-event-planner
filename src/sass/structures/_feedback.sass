@@ -1,0 +1,49 @@
+// *************************************
+//
+//   Feedback
+//   -> Containers for displaying UI feedback
+//
+// -------------------------------------
+//   Template
+// -------------------------------------
+//
+// <p id='feedback-[ID]' class='feedback is-hidden'></p>
+//
+// *************************************
+
+.feedback
+  border-radius: $b-borderRadius $b-borderRadius 0 0
+  box-shadow: 0 2px 3px rgba(#000, 0.2)
+  display: none
+  left: 0
+  opacity: 0
+  padding: $b-space-s
+  position: absolute
+  right: 0
+  transition: opacity 0.3s ease-in-out
+  top: 0
+  visibility: hidden
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+.feedback
+
+  &.is-failing
+    background: $c-failure
+    color: #ffffff
+
+  &.is-visible
+    animation: fadeIn 0.3s ease-in-out forwards
+    display: block
+    opacity: 1
+    visibility: visible
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+
+.has-feedback
+  overflow: hidden
+  position: relative

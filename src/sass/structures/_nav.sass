@@ -1,0 +1,65 @@
+// *************************************
+//
+//   Nav
+//   -> App navigation
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .structure[.structure--modifier](.is-state)(.has-context)
+//   .structure-scaffolding
+//
+// *************************************
+
+.nav
+  background: darken($c-background-invert, 5%)
+  padding: $b-space-xs
+  text-align: center
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// .structure--modifier
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+// .structure.is-state
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+
+// .has-structure
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+.nav-brand
+  border: 0
+  display: block
+  margin: 0 auto
+  width: 120px
+
+  +respond-to($g-m)
+    width: 150px
+
+.nav-item
+  display: inline-block
+
+  + .nav-item
+    margin-left: $b-space
+
+.nav-createAccount
+  .is-signedIn &
+    display: none
+
+.nav-createEvent
+  display: none
+
+  .is-signedIn &
+    display: inline-block

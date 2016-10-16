@@ -1,0 +1,96 @@
+// *************************************
+//
+//   Base
+//   -> Tag-level settings
+//
+// *************************************
+
+*
+  box-sizing: border-box
+
+html,
+body
+  height: 100%
+
+html
+  background-color: $c-background-invert
+  color: $c-text
+  font-family: $b-fontFamily
+  font-size: $b-fontSize
+  line-height: $b-lineHeight
+
+body
+  font-size: 100%
+
+main
+  position: relative
+
+  +respond-to($g-m)
+    padding: $b-space 0
+
+header
+  background: $c-background
+  border-bottom: $b-border
+
+// -------------------------------------
+//   Block Content
+// -------------------------------------
+
+ul, p
+  margin-bottom: $b-space
+  margin-top: 0
+
+li
+  margin-bottom: $b-space-s
+  margin-top: 0
+
+// ----- Headings ----- //
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5
+  font-family: $b-fontFamily-heading
+  font-weight: 700
+  line-height: 1.2
+  margin-bottom: $b-space-xs
+  margin-top: 0
+
+h1, .h1
+  font-size: $b-fontSize-h1
+
+h2, .h2
+  font-size: $b-fontSize-h2
+
+h3, .h3
+  font-size: $b-fontSize-h3
+
+h4, .h4
+  font-size: $b-fontSize-h4
+
+h5, .h5
+  font-size: $b-fontSize-h5
+
+// -------------------------------------
+//   Inline Content
+// -------------------------------------
+
+// ----- Links ----- //
+
+a
+  border-bottom: 1px solid mix(#fff, $c-action, 60%)
+  color: $c-action
+  text-decoration: none
+  transition: border-color 0.3s linear, color 0.3s linear
+
+  &:hover,
+  &:focus
+    border-bottom-color: mix(#000, $c-action, 30%)
+    color: mix(#000, $c-action, 30%)
+
+// ----- Images ----- //
+
+img
+  height: auto
+  max-width: 100%
