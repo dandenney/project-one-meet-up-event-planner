@@ -30,13 +30,16 @@ function validation() {
   });
 
   // Keyup on account password
-  accountPassword.addEventListener('keyup', function(event) {
+  accountPassword.addEventListener('input', function(event) {
     checkPassword();
   }, true);
 
   // Submit of account form
-  accountForm.addEventListener('submit', function(event) {
+  accountCreate.addEventListener('click', function(event) {
+
+    event.preventDefault();
     accountSubmit();
+
   }, true);
 
   // -------------------------------------
@@ -62,6 +65,7 @@ function validation() {
 
     // Apply validity classes for required capital letter
     if (!firstPassword.match(/[A-Z]/g)) {
+      console.log('test');
       capitalMessage.classList.remove('is-valid');
       capitalMessage.classList.add('is-invalid');
     } else {
@@ -98,11 +102,12 @@ function validation() {
     // -------------------------------------
 
     var passwordValidation = checkPassword();
+    var emailValidation = retrieveValidation(emailIsValid);
 
-    // Prevent form submission
-    event.preventDefault();
+    console.clear();
+    console.log(passwordValidation + ' ' + emailValidation);
 
-    if (passwordValidation === true) {
+    if (passwordValidation === true && emailValidation === true) {
 
       // Get values for Firebase
       var firebaseEmail = accountEmail.value;
@@ -129,6 +134,85 @@ function validation() {
 };
 
 // -------------------------------------
+//   Validate Email
+// -------------------------------------
+
+function validationEmail() {
+
+  // Private variables
+  var emailCreateInput = document.querySelector('#your-email');
+  var emailRequireInput = document.querySelector('#require-email');
+
+  // Event Listeners
+  emailCreateInput.addEventListener('blur', function() {
+
+    // Private variables
+    var emailCreate = emailCreateInput.value;
+    var invalid = !emailCreate.match(/[@]\w+\.+\w/g);
+    var missingSymbol = !emailCreate.match(/[@]/g);
+    var missingPart = !emailCreate.match(/[@]\w/g);
+    var missingPeriod = !emailCreate.match(/[@]\w+\./g);
+    var missingTLD = !emailCreate.match(/[@]\w+\.+\w/g);
+
+    if (invalid) {
+
+      emailRequireInput.classList.remove('is-hidden');
+      emailCreateInput.classList.remove('is-valid');
+      emailCreateInput.classList.add('is-invalid');
+      var missing = [];
+      var fixes = missing.join();
+
+      if (missingSymbol) {
+
+        missing.push(' include an @ in the email address');
+
+      }
+
+      if (missingPart) {
+
+        missing.push(' enter a part following the @');
+
+      }
+
+      if (missingPeriod) {
+
+        missing.push(' include a . after the @');
+
+      }
+
+      if (missingTLD) {
+
+        missing.push(' include a part after . after the @');
+
+      }
+
+      emailRequireInput.innerHTML = 'Please:' + missing + ', (example: email@email.com)';
+      emailIsValid = false;
+
+    } else {
+
+      missing = [];
+      emailRequireInput.classList.add('is-hidden');
+      emailCreateInput.classList.remove('is-invalid');
+      emailCreateInput.classList.remove('is-valid');
+      emailIsValid = true;
+
+    }
+
+    retrieveEmailValidity(emailIsValid);
+
+  });
+
+}
+
+function retrieveEmailValidity(emailIsValid) {
+
+  console.log(emailIsValid);
+  return emailIsValid;
+
+}
+
+// -------------------------------------
 //   Check Datetimes
 // -------------------------------------
 
@@ -139,7 +223,7 @@ function validationDateTime() {
   var endInput = document.querySelector('#event-end');
 
   // Event listeners
-  endInput.addEventListener('change', function() {
+  endInput.addEventListener('input', function() {
 
     compareTimes();
 
@@ -152,17 +236,64 @@ function validationDateTime() {
 
   });
 
+
+  startInput.addEventListener('input', function() {
+
+    compareStartTime();
+
+  });
+
+  startInput.addEventListener('blur', function() {
+
+    compareStartTime();
+
+  });
+
+  // Compare start date to today's datetimes
+  function compareStartTime() {
+
+    // Private Variables
+    // Current time is accurate but future dates subtract 4 hours
+    // This substracts 4 hours from the present time to make the comparison accurate
+    var present = new Date( (new Date) * 1 - 1000 * 7200 * 2 );
+    var startDateTime = new Date(startInput.value);
+    var requireFuture = document.querySelector('#require-future');
+
+    if (startDateTime > present) {
+
+      isInTheFuture = true;
+      startInput.classList.remove('is-invalid');
+      startInput.classList.add('is-valid');
+      requireFuture.classList.add('is-hidden');
+      retrieveFuture(isInTheFuture);
+
+    } else {
+
+      isInTheFuture = false;
+      startInput.classList.remove('is-valid');
+      startInput.classList.add('is-invalid');
+      requireFuture.classList.remove('is-hidden');
+      retrieveFuture(isInTheFuture);
+
+    }
+
+  }
+
   // Compare times
   function compareTimes() {
 
+    // Private Variables
     var startDateTime = new Date(startInput.value);
     var endDateTime = new Date(endInput.value);
+    var requireAfter = document.querySelector('#require-after');
 
+    // Conditional check for date comparison
     if (endDateTime > startDateTime) {
 
       isAfter = true;
       endInput.classList.remove('is-invalid');
       endInput.classList.add('is-valid');
+      requireAfter.classList.add('is-hidden');
       retrieveValidation(isAfter);
 
     } else {
@@ -170,6 +301,7 @@ function validationDateTime() {
       isAfter = false;
       endInput.classList.remove('is-valid');
       endInput.classList.add('is-invalid');
+      requireAfter.classList.remove('is-hidden');
       retrieveValidation(isAfter);
 
     }
@@ -181,6 +313,12 @@ function validationDateTime() {
 function retrieveValidation(isAfter) {
 
   return isAfter;
+
+}
+
+function retrieveFuture(isInTheFuture) {
+
+  return isInTheFuture;
 
 }
 
@@ -214,4 +352,5 @@ function clearForm() {
 // -------------------------------------
 
 validation();
+validationEmail();
 validationDateTime();

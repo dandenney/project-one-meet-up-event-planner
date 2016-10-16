@@ -6,5 +6,6 @@ A meet-up event planner app as project one of [Udacity's Senior Web Developer Na
 Clone the repo
 ```
 $ npm install
+$ cd src
 $ gulp
 ```

@@ -13,14 +13,18 @@
 // Create an account in Firebase
 function firebaseCreate(firebaseEmail, firebasePassword) {
 
+  var elCreateMessage = document.querySelector('#feedback-create');
+
   // Firebase's event watcher for creating an account
   firebase.auth().createUserWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function(error) {
 
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // ...
-    alert(error.message);
+
+    elCreateMessage.innerHTML = error.message;
+    elCreateMessage.classList.add('is-failing');
+    elCreateMessage.classList.add('is-visible');
 
   });
 
@@ -113,8 +117,6 @@ function firebaseSignIn() {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // ...
-      console.log(errorCode, errorMessage);
 
       elAuthMessage.innerHTML = error.message;
       elAuthMessage.classList.add('is-failing');
@@ -152,8 +154,6 @@ function firebaseSignOut() {
     },100);
 
   }, function(error) {
-
-    console.log('Sign out failed');
 
   });
 
@@ -209,7 +209,7 @@ function resetPassword() {
     firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
       window.location = '/#auth-account';
     }, function(error) {
-      console.log('sending failed');
+
     });
 
   });
